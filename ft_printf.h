@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/05 18:34:03 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/05 20:21:36 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,36 @@
 # define FT_PRINTF
 
 # include "libft/libft.h"
-# include <string.h> //?
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h> //for testing
 
-typedef struct		s_list
+typedef struct		s_print_list
 {
-	size_t			count;
-	size_t			len;
+	unsigned int	count;
+	unsigned int	len;
 	char			*flags;
-}					t_list;
+	char			type;
+	int				hh;
+	int				h;
+	int				ll;
+	int				l;
+	int				L;
+	int				sharp;
+	int				nul;
+	int				minus;
+	int				plus;
+	int				space;
+	int				width;
+	int				precision;
+}					t_print_list;
 
-//t_print			ft_parse(char const *format, t_list all);
-t_list				ft_init(t_list all);
+//t_list			ft_parse(char const *format, t_list all);
+t_print_list		ft_init(t_print_list all);
+
+t_print_list		ft_convert(t_print_list all, va_list ap);
+t_print_list		ft_modify_integer(int num, t_print_list all);
+t_print_list		ft_integer(t_print_list all, va_list ap);
 
 #endif
