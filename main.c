@@ -6,14 +6,10 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/05 20:32:23 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/05 20:35:07 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> //for testing
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "ft_printf.h"
 
 // MANDATORY
@@ -87,6 +83,5 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-//	printf("real\n");
 	ft_printf("ab\n%i\nc\n", 55);
 }
