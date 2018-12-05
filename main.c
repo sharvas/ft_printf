@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/05 18:27:13 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/05 18:38:59 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_printf.h"
-
-// TO DO
-// write the function base to deal with multiple arguments
-// the functions goes through the first argument and prints until % or '\0'
-// if there is %, then I call the funtion
 
 // MANDATORY
 // can use: write, malloc, free, exit, <stdarg.h>
