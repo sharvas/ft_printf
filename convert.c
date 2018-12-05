@@ -15,26 +15,22 @@
 t_print_list	ft_modify_integer(int num, t_print_list all)
 {
 	char	*str;
-	char	*buf;
-	int		i;
+	int	i;
 
 	i = 0;
-	str = ft_itoa(num);
-	if (all.width != 0)
+	if (!(str = ft_itoa(num)))
+		return (all); //error
+	if (all.width != 0 && !all.nul && !all.minus)
 	{
 		if (ft_strlen(str) < all.width)
 		{
 			all.width = all.width - ft_strlen(str);
-			if (!(buf = (char*)malloc(sizeof(char) * (all.width + 1))))
-				return (all);
-//				ft_error(all);
-			while (i < all.width)
-				buf[i++] = '0';
-			str = ft_strjoin(buf, str);
+			while (i++ < all.width)
+				write(1, " ", 1);
 		}
 	}
 	ft_putstr(str);
-	all.count = ft_strlen(str);
+	all.count = ft_strlen(str) + i;
 	free(str);
 	return (all);
 }
