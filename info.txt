@@ -1,0 +1,34 @@
+NUMBERS
+1. int
+flags: -, +, 0, ' ', width, precision
+
+	decimal
+	 -d/-i (int)
+	 	-ll (long long int)
+		-l (long int)
+	 	-hh (unsigned short int)
+	 	-h (short int)
+	 
+	 -u (unsigned int)
+	 	-ll (lon long unsigned int)
+		-l (long unsigned int)
+		-hh/-h (unsigned short int)
+
+	octal
+	 -o (int)
+	
+	hex
+	 -x (int)
+	 -X (int)
+
+2. float
+	-l
+	-L
+
+STRINGS (s)
+	-unicode (S)
+
+CHAR (c)
+	-unicode (C)
+
+POINTER

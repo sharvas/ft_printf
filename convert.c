@@ -46,7 +46,7 @@ char		*ft_fill_width(char *num_str, t_print all, char c)
 	return (num_str);
 }
 
-char		*ft_intplus(char *num_str, t_print all)
+char		*ft_int_plus(char *num_str, t_print all)
 {
 	if (all.sign > 0)
 	{
@@ -58,12 +58,15 @@ char		*ft_intplus(char *num_str, t_print all)
 	return (num_str);
 }
 
+char		*ft_minus(char *num_str, t_print all);
+char		*ft_negative(char *num_str, t_print all);
+
 t_print		ft_justify(char *num_str, t_print all)
 {	
 	if (all.minus == 0)
 	{
 		if (all.plus || all.space) //flags: + and space
-			num_str = ft_intplus(num_str, all);
+			num_str = ft_int_plus(num_str, all);
 	}
 	if (all.width != 0 && !all.zero)
 		num_str = ft_fill_width(num_str, all, ' ');
@@ -72,7 +75,7 @@ t_print		ft_justify(char *num_str, t_print all)
 	if (all.minus == 1)
 	{
 		if (all.plus || all.space) //flags: + and space
-			num_str = ft_intplus(num_str, all);
+			num_str = ft_int_plus(num_str, all);
 	}
 	ft_putstr(num_str);
 	all.count = all.count + ft_strlen(num_str);
