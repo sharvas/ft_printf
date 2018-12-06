@@ -12,57 +12,70 @@
 
 #include "ft_printf.h"
 
-void		ft_fill_width(int len, t_print all, char c)
+char		*ft_fill_width(char *num_str, t_print all, char c)
 {
 	int i;
+	int len;
+	char *tmp;
 
 	i = 0;
-	if (len < all.width)
-		{
-			all.width = all.width - len;
-			while (i++ < all.width)
-				write(1, &c, 1);
-		}
-}
-
-t_print		ft_intplus(char *num_str, t_print all)
-{
-	if (num_str[0] != '-')
+	len = 0;
+	if ((len = ft_strlen(num_str)) < all.width)
 	{
-		if (all.plus)
-			write(1, "+", 1);
-		if (all.space)
-			write(1, " ", 1);
-		all.count++;
-	}
-	ft_putstr(num_str);
-	all.count = all.count + ft_strlen(num_str);
-	return (all);
-}
-
-t_print		ft_justif(char *num_str, t_print all)
-{
-	if ((all.plus || all.space) && num_str[0] != '-')
-		all.width--;
-	if (all.minus == 1)
-	{
-		if (all.plus || all.space) //flags: + and space
-			all = ft_intplus(num_str, all);
+		if (all.sign < 0 || all.plus || all.space)
+			all.width--;
+		all.width = all.width - len;
+		tmp = (char*)malloc(sizeof(char) * (all.width + 1));
+			//ft_error(all);
+		while (i < all.width)
+			tmp[i++] = c;
+		tmp[i] = '\0';
+		if (all.minus == 1)
+			num_str = ft_strjoin(num_str, tmp);
 		else
-			ft_putstr(num_str);
+		{
+			num_str = ft_strjoin(tmp, num_str);
+			if (all.space && all.sign > 0)
+				num_str = ft_strjoin(" ", num_str);
+		}
+		if (all.sign < 0)
+			num_str = ft_strjoin("-", num_str);
+		if (all.plus && !all.minus && all.sign > 0)
+			num_str = ft_strjoin("+", num_str);
 	}
-	if (all.width != 0 && !all.zero)
-		ft_fill_width(ft_strlen(num_str), all, ' ');
-	if ((all.width != 0 && all.zero == 1) || all.precision)
-		ft_fill_width(ft_strlen(num_str), all, '0');
+	return (num_str);
+}
+
+char		*ft_intplus(char *num_str, t_print all)
+{
+	if (all.sign > 0)
+	{
+		if (all.plus && all.minus)
+			num_str = ft_strjoin("+", num_str);
+		if (all.space && all.minus)
+			num_str = ft_strjoin(" ", num_str);
+	}
+	return (num_str);
+}
+
+t_print		ft_justify(char *num_str, t_print all)
+{	
 	if (all.minus == 0)
 	{
 		if (all.plus || all.space) //flags: + and space
-			all = ft_intplus(num_str, all);
-		else
-			ft_putstr(num_str);
+			num_str = ft_intplus(num_str, all);
 	}
-	all.count = all.count + ft_strlen(num_str) + all.width;
+	if (all.width != 0 && !all.zero)
+		num_str = ft_fill_width(num_str, all, ' ');
+	if ((all.width != 0 && all.zero == 1) || all.precision)
+		num_str = ft_fill_width(num_str, all, '0');
+	if (all.minus == 1)
+	{
+		if (all.plus || all.space) //flags: + and space
+			num_str = ft_intplus(num_str, all);
+	}
+	ft_putstr(num_str);
+	all.count = all.count + ft_strlen(num_str);
 	return (all);
 }
 
@@ -70,15 +83,18 @@ t_print		ft_justif(char *num_str, t_print all)
 t_print		ft_modify_int(t_print all, va_list ap)
 {
 	char	*num_str;
-	int		num;
+	int	num;
 
 	num = va_arg(ap, int);
+	if (num < 0)
+	{
+		all.sign = -1;
+		num = -num;
+	}
 	if (!(num_str = ft_itoa(num)))
-		return (all); //ft_error
-//	if (all.plus || all.space) //flags: + and space
-//		all = ft_intplus(num_str, all);
+		return (all); //ft_errori
 	if (all.minus || all.zero || all.width) //flags: 0, -, min_width
-		all = ft_justif(num_str, all);
+		all = ft_justify(num_str, all);
 	free(num_str);
 	return (all);
 }

@@ -23,27 +23,28 @@ typedef struct		s_print
 {
 	unsigned int	count;
 	unsigned int	len;
-	char			*flags;
-	char			type;
-	int				hh;
-	int				h;
-	int				ll;
-	int				l;
-	int				L;
-	int				sharp;
-	int				zero;
-	int				minus;
-	int				plus;
-	int				space;
-	int				width;
-	int				precision;
-}					t_print;
+	char		*flags;
+	char		type;
+	int		hh;
+	int		h;
+	int		ll;
+	int		l;
+	int		L;
+	int		sharp;
+	int		zero;
+	int		minus;
+	int		plus;
+	int		space;
+	int		width;
+	int		precision;
+	int		sign;
+}			t_print;
 
-//t_print			ft_parse(char const *format, t_list all);
-t_print				ft_init(t_print all);
+//t_print		ft_parse(char const *format, t_list all);
+t_print			ft_init(t_print all);
 
-t_print				ft_print(t_print all, va_list ap);
-t_print				ft_modify_int(t_print all, va_list ap);
-t_print				ft_int(t_print all, va_list ap);
+t_print			ft_print(t_print all, va_list ap);
+t_print			ft_modify_int(t_print all, va_list ap);
+t_print			ft_int(t_print all, va_list ap);
 
 #endif

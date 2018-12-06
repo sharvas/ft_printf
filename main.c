@@ -38,12 +38,13 @@ t_print		ft_init(t_print all)
 	all.l = 0;
 	all.L = 0;
 	all.sharp = 0;
-	all.zero = 1;
-	all.minus = 0;
+	all.zero = 0;
+	all.minus = 1;
 	all.plus = 0;
 	all.space = 1;
 	all.width = 5;
 	all.precision = 0;
+	all.sign = 1;
 	return (all);
 }
 
@@ -51,8 +52,8 @@ int 	ft_printf(char const *format, ...)
 {
 	va_list 	ap;
 	t_print		all;
-	int			i;
-	int			count;
+	int		i;
+	int		count;
 
 	count = 0;
 	va_start(ap, format);
@@ -80,7 +81,7 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("% 05d\n", 55);
+	printf("%- 5d\n", 55);
 	ft_printf("%i\n", 55);
 	ft_printf("%i\n", -55);
 }
