@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/05 20:21:36 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:31:33 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_print_list
 	int				l;
 	int				L;
 	int				sharp;
-	int				nul;
+	int				zero;
 	int				minus;
 	int				plus;
 	int				space;

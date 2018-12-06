@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/05 20:35:07 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:31:15 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_print_list	ft_init(t_print_list all)
 	all.l = 0;
 	all.L = 0;
 	all.sharp = 0;
-	all.nul = 0;
+	all.zero = 0;
 	all.minus = 0;
 	all.plus = 0;
 	all.space = 0;
