@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/06 10:31:33 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/06 15:27:31 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h> //for testing
 
-typedef struct		s_print_list
+typedef struct		s_print
 {
 	unsigned int	count;
 	unsigned int	len;
@@ -37,13 +37,13 @@ typedef struct		s_print_list
 	int				space;
 	int				width;
 	int				precision;
-}					t_print_list;
+}					t_print;
 
-//t_list			ft_parse(char const *format, t_list all);
-t_print_list		ft_init(t_print_list all);
+//t_print			ft_parse(char const *format, t_list all);
+t_print				ft_init(t_print all);
 
-t_print_list		ft_convert(t_print_list all, va_list ap);
-t_print_list		ft_modify_integer(int num, t_print_list all);
-t_print_list		ft_integer(t_print_list all, va_list ap);
+t_print				ft_print(t_print all, va_list ap);
+t_print				ft_modify_integer(int num, t_print all);
+t_print				ft_integer(t_print all, va_list ap);
 
 #endif
