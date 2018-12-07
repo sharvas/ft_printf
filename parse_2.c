@@ -144,8 +144,8 @@ void	ft_update_length(t_print *all)
 	}
 }
 
-void	ft_print_struct(t_print *all)
-{
+void	ft_print_struct(t_print *all)//
+{//
 	printf("\tprinted: %d\n", all->printed);
 	printf("\tlen: %d\n", all->len);
 	printf("\tform: %s\n", all->form);
@@ -165,7 +165,7 @@ void	ft_print_struct(t_print *all)
 	printf("\twidth: %d\n", all->width);
 	printf("\tprecision: %d\n", all->precision);
 	printf("\tsign: %d\n", all->sign);
-}
+}//
 
 // void	ft_update_error(t_print *all)
 // {
