@@ -29,9 +29,9 @@
 t_print		ft_init(t_print all)
 {
 	all.count = 0;
-	all.len = 2;
+	all.len = 0;
 	all.flags = NULL;
-	all.type = 'd';
+	all.type = NULL;
 	all.hh = 0;
 	all.h = 0;
 	all.ll = 0;
@@ -39,12 +39,12 @@ t_print		ft_init(t_print all)
 	all.L = 0;
 	all.sharp = 0;
 	all.zero = 0;
-	all.minus = 1;
+	all.minus = 0;
 	all.plus = 0;
-	all.space = 1;
-	all.width = 5;
-	all.precision = 0;
-	all.sign = 1;
+	all.space = 0;
+	all.width = 0;
+	all.precision = -6;
+	all.sign = 0;
 	return (all);
 }
 

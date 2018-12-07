@@ -21,9 +21,9 @@
 
 typedef struct		s_print
 {
-	unsigned int	count;
+	unsigned int	printed;
 	unsigned int	len;
-	char		*flags;
+	char		*form;
 	char		type;
 	int		hh;
 	int		h;
@@ -41,7 +41,7 @@ typedef struct		s_print
 }			t_print;
 
 //t_print		ft_parse(char const *format, t_list all);
-t_print			ft_init(t_print all);
+//t_print			ft_init(t_print all);
 
 t_print			ft_print(t_print all, va_list ap);
 t_print			ft_modify_int(t_print all, va_list ap);
