@@ -27,9 +27,11 @@ typedef struct		s_print
 	char		type;
 	int		hh;
 	int		h;
+	int		j;
 	int		ll;
 	int		l;
 	int		L;
+	int		z;
 	int		sharp;
 	int		zero;
 	int		minus;
