@@ -56,6 +56,16 @@ void	ft_update_width(t_print *all)
 	all->len += count;
 }
 
+void	ft_update_conflicts(t_print *all)
+{
+	if (all->minus && all->zero)
+		all->zero = 0;
+	if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
+		all->type != 's' && all->type != 'S' && all->type != 'f' &&
+		all->type != 'p')
+		all->width = all->precision;
+}
+
 void	ft_parse(t_print *all)
 {
 	while (all->form[all->len] &&
@@ -67,4 +77,5 @@ void	ft_parse(t_print *all)
 		ft_update_length(all);
 	}
 	ft_update_type(all);
+	ft_update_conflicts(all);
 }
