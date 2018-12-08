@@ -6,11 +6,34 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 13:20:02 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 14:52:27 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*void	ft_init(t_print *all)
+{
+	all->printed = 0;
+	all->len = 0;
+	all->form = 0;
+	all->type = '0';
+	all->hh = 0;
+	all->h = 0;
+	all->j = 0;
+	all->ll = 0;
+	all->l = 0;
+	all->L = 0;
+	all->z = 0;
+	all->sharp = 0;
+	all->zero = 0;
+	all->minus = 0;
+	all->plus = 0;
+	all->space = 0;
+	all->width = 0;
+	all->precision = -6;
+	all->sign = 0;
+}*/
 
 int		ft_isflag(char c)
 {

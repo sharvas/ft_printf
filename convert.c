@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 13:39:50 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 14:54:15 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char		*ft_negative(char *num_str, t_print *all)
 {
-	if (all->sign < 0)
+	if (all->sign)
 		num_str = ft_strjoin("-", num_str);
 	return (num_str);
 }
@@ -41,9 +41,9 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	str = NULL;
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
-		if (all->sign < 0 && !all->minus && !all->zero && all->precision < 0)
+		if (all->sign && !all->minus && !all->zero && all->precision < 0)
 			num_str = ft_negative(num_str, all);
-		if ((all->sign < 0 || ((all->plus || all->space) && (all->minus ||
+		if ((all->sign || ((all->plus || all->space) && (all->minus ||
 							all->zero))) && all->precision < 0)
 			all->width--;
 		all->width = all->width - i;
@@ -59,7 +59,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 
 char		*ft_int_plus(char *num_str, t_print *all)
 {
-	if (all->sign > 0)
+	if (!all->sign)
 	{
 		if (all->plus)
 			num_str = ft_strjoin("+", num_str);
@@ -104,7 +104,7 @@ void		ft_int(t_print *all, va_list ap)
 		num = (int)va_arg(ap, int);
 	if (num < 0)
 	{
-		all->sign = -1;
+		all->sign = 1;
 		num = -num;
 	}
 	num_str = ft_itoa(num);
@@ -118,13 +118,13 @@ void		ft_number(t_print *all, va_list ap)
 	if (all->type == 'i' || all->type == 'd')
 		ft_int(all, ap);
 /*	if (all.type == 'u')
-		all = ft_unsigned(all, ap);
+		ft_unsigned(all, ap);
 	if (all.type == 'o')
-		ft_int_octal(all, ap);//to write
+		ft_int_octal(all, ap);
 	if (all.type == 'x' || all.type == 'X')
-		ft_int_hex(all, ap);//to write
+		ft_int_hex(all, ap);
 	if (all.type =='f')
-		ft_int_float(all, ap);//to write*/
+		ft_int_float(all, ap);*/
 }
 
 void		ft_print(t_print *all, va_list ap)
@@ -132,12 +132,12 @@ void		ft_print(t_print *all, va_list ap)
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
 			all->type == 'o' || all->type == 'x' || all->type == 'X')
 		ft_number(all, ap);
-/*	if (all.type == 's') //string
-		all = ft_string(all, ap);
-	if (all.type == 'c') //char
-		all = ft_char(all, ap);
-	if (all.type == 'f') //float
-		all = ft_float(all, ap);
-	if (all.type == 'p') //pointer
-		all = ft_pointer(all, ap);*/
+/*	if (all.type == 's')
+		ft_string(all, ap);
+	if (all.type == 'c')
+		ft_char(all, ap);
+	if (all.type == 'f')
+		ft_float(all, ap);
+	if (all.type == 'p')
+		ft_pointer(all, ap);*/
 }
