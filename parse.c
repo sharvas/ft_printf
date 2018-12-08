@@ -6,13 +6,13 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/05 15:04:28 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/08 13:20:02 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_init(t_print *all)
+/*void	ft_init(t_print *all)
 {
 	all->printed = 0;
 	all->len = 0;
@@ -33,7 +33,7 @@ void	ft_init(t_print *all)
 	all->width = 0;
 	all->precision = -6;
 	all->sign = 0;
-}
+}*/
 
 int		ft_isflag(char c)
 {
