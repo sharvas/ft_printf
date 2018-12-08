@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 14:53:28 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:08:30 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ int 	ft_printf(char const *format, ...)
 //		all.len++;
 	}
 	va_end(ap);
-//	printf("%i\n", count);
+//	printf("%i\n", all.printed);
 	return (all.printed);
 }
 
 int 	main(void)
 {
-	printf("rl.%+.5i\n", 55);
-	printf("rl.%+.5i\n", -55);
-	ft_printf("ft.%+.5i\n", 55);
-	ft_printf("ft.%+.5i\n", -55);
+	printf("rl.%8.6i\n", 55);
+	printf("rl.%8.6i\n", -55);
+	ft_printf("ft.%8.6i\n", 55);
+	ft_printf("ft.%8.6i\n", -55);
 }

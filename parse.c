@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 14:52:27 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:06:04 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_update_conflicts(t_print *all)
 		all->zero = 0;
 	if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
 		all->type != 's' && all->type != 'S' && all->type != 'f' &&
-		all->type != 'p')
+		all->type != 'p' && all->precision != -6)
 		all->width = all->precision;
 }
 
