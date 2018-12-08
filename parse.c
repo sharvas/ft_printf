@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void		ft_init(t_print *all)
+void	ft_init(t_print *all)
 {
 	all->printed = 0;
 	all->len = 0;
@@ -35,7 +35,7 @@ void		ft_init(t_print *all)
 	all->sign = 0;
 }
 
-int	ft_isflag(char c)
+int		ft_isflag(char c)
 {
 	if (c == '+' || c == '-' || c == ' ' || c == '0' || c == '#')
 		return (1);
