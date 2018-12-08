@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/07 15:07:18 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 11:41:57 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,53 +26,53 @@
 // %b for binary, %r for non printables, %k for date
 // colors, fd, etc.
 
-t_print		ft_init(t_print all)
+void	ft_init(t_print *all)
 {
-	all.count = 0;
-	all.len = 0;
-	all.flags = NULL;
-	all.type = NULL;
-	all.hh = 0;
-	all.h = 0;
-	all.ll = 0;
-	all.l = 0;
-	all.L = 0;
-	all.sharp = 0;
-	all.zero = 0;
-	all.minus = 0;
-	all.plus = 0;
-	all.space = 0;
-	all.width = 0;
-	all.precision = -6;
-	all.sign = 0;
-	return (all);
+	all->printed = 0;
+	all->len = 0;
+	all->form = NULL;
+	all->type = '0';
+	all->hh = 0;
+	all->h = 0;
+	all->ll = 0;
+	all->l = 0;
+	all->L = 0;
+	all->z = 0;
+	all->sharp = 0;
+	all->zero = 0;
+	all->minus = 0;
+	all->plus = 0;
+	all->space = 0;
+	all->width = 0;
+	all->precision = -6;
+	all->sign = 0;
 }
 
 int 	ft_printf(char const *format, ...)
 {
 	va_list	ap;
 	t_print	all;
-	int		i;
 	int		count;
 
 	count = 0;
 	va_start(ap, format);
+	ft_init(&all);
+	all.form = format;
 	while (*format != '\0')
 	{
 		if (*format == '%' && *(format + 1) && *(format + 1) != '%')
 		{
-			all = ft_init(all);
-//			all = ft_parse(format, all);
-			all = ft_print(all, ap);
-			format = format + (all.len - 1);
-			count = count + all.count;
+			ft_parse(&all);
+			ft_print(&all, ap);
+			format = format + all.len;
+			count = count + all.printed;
 		}
 		else
 		{
 			write(1, (char*)format, 1);
 			count++;
+			all.len++;
 		}
-		format++;
 	}
 	va_end(ap);
 //	printf("%i\n", count);

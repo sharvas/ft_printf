@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/06 17:42:42 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 11:40:13 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,40 +23,40 @@ typedef struct		s_print
 {
 	unsigned int	printed;
 	unsigned int	len;
-	char		*form;
-	char		type;
-	int		hh;
-	int		h;
-	int		j;
-	int		ll;
-	int		l;
-	int		L;
-	int		z;
-	int		sharp;
-	int		zero;
-	int		minus;
-	int		plus;
-	int		space;
-	int		width;
-	int		precision;
-	int		sign;
-}			t_print;
+	const char		*form;
+	char			type;
+	int				hh;
+	int				h;
+	int				j;
+	int				ll;
+	int				l;
+	int				L;
+	int				z;
+	int				sharp;
+	int				zero;
+	int				minus;
+	int				plus;
+	int				space;
+	int				width;
+	int				precision;
+	int				sign;
+}					t_print;
 
-void		ft_init(t_print *all);
-int			ft_isflag(char c);
-void		ft_update_flags(t_print *all);
-void		ft_update_width(t_print *all);
-void		ft_update_precision(t_print *all)
-int			ft_islength(char c);
-void		ft_update_length(t_print *all);
-int			ft_istype(char c);
-void		ft_update_type(t_print *all);
-void		ft_parse(t_print *all);
+void				ft_init(t_print *all);
+int					ft_isflag(char c);
+void				ft_update_flags(t_print *all);
+void				ft_update_width(t_print *all);
+void				ft_update_precision(t_print *all);
+int					ft_islength(char c);
+void				ft_update_length(t_print *all);
+int					ft_istype(char c);
+void				ft_update_type(t_print *all);
+void				ft_parse(t_print *all);
 
-t_print		ft_print(t_print all, va_list ap);
-t_print		ft_modify_int(t_print all, va_list ap);
-t_print		ft_int(t_print all, va_list ap);
+void				ft_print(t_print *all, va_list ap);
+void				ft_modify_int(t_print *all, va_list ap);
+void				ft_int(t_print *all, va_list ap);
 
-void		ft_print_struct(t_print *all);//rm!!!!!!!!!
+void				ft_print_struct(t_print *all); //rm!!!!!!!!!
 
 #endif
