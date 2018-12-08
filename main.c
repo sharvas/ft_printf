@@ -63,7 +63,7 @@ int 	ft_printf(char const *format, ...)
 		{
 			all.len++;
 			ft_parse(&all);
-			ft_print_struct(&all);
+//			ft_print_struct(&all);
 			ft_print(&all, ap);
 		}
 		else
