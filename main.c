@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 17:39:36 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 17:55:30 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	long int a = 1;
-	long int b = 55000;
+	unsigned long long int a = 1;
+	unsigned long long int b = 5500000000000000000;
 
-	printf("rl.%8.5lx\n", a);
-	printf("rl.%8.5lx\n", b);
-	ft_printf("ft.%8.5lx\n", a);
-	ft_printf("ft.%8.5lx\n", b);
+	printf("rl.%-8.5llo\n", a);
+	printf("rl.%-8.5llo\n", b);
+	ft_printf("ft.%-8.5llo\n", a);
+	ft_printf("ft.%-8.5llo\n", b);
 }
