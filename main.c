@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 15:08:30 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:24:55 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_init(t_print *all)
 	all->plus = 0;
 	all->space = 0;
 	all->width = 0;
-	all->precision = -6;
+	all->precision = 0;
 	all->sign = 0;
 }
 
@@ -81,8 +81,8 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("rl.%8.6i\n", 55);
-	printf("rl.%8.6i\n", -55);
-	ft_printf("ft.%8.6i\n", 55);
-	ft_printf("ft.%8.6i\n", -55);
+	printf("rl.%-.3i\n", 55);
+	printf("rl.%-.3i\n", -55);
+	ft_printf("ft.%-.3i\n", 55);
+	ft_printf("ft.%-.3i\n", -55);
 }
