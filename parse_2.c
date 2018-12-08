@@ -52,7 +52,7 @@ void	ft_update_length(t_print *all)
 			if (all->form[all->len + 1] == 'h')
 			{
 				all->hh = 1;
-				all->len ++;
+				all->len++;
 			}
 			else
 				all->h = 1;
@@ -64,7 +64,7 @@ void	ft_update_length(t_print *all)
 			if (all->form[all->len + 1] == 'l')
 			{
 				all->ll = 1;
-				all->len ++;
+				all->len++;
 			}
 			else
 				all->l = 1;
