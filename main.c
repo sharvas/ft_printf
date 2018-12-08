@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 13:38:48 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 14:43:06 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int 	ft_printf(char const *format, ...)
 		{
 			all.len++;
 			ft_parse(&all);
-			ft_print_struct(&all);
 			ft_print(&all, ap);
 		}
 		else
@@ -81,8 +80,8 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("rl.%-+5i\n", 55);
-//	printf("rl.%-+5i\n", -55);
-	ft_printf("ft.%-+5i\n", 55);
-//	ft_printf("ft.%-+5i\n", -55);
+	printf("rl.%+.5i\n", 55);
+	printf("rl.%+.5i\n", -55);
+	ft_printf("ft.%+.5i\n", 55);
+	ft_printf("ft.%+.5i\n", -55);
 }
