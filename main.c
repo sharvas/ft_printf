@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 15:51:19 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 16:09:51 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("rl.%-+8.5i\n", 55);
-	printf("rl.%-+8.5i\n", -55);
-	ft_printf("ft.%-+8.5i\n", 55);
-	ft_printf("ft.%-+8.5i\n", -55);
+	signed char a = 1;
+	signed char b = -55;
+
+	printf("rl.%-+8.5hhd\n", a);
+	printf("rl.%-+8.5hhd\n", b);
+	ft_printf("ft.%-+8.5hhd\n", a);
+	ft_printf("ft.%-+8.5hhd\n", b);
 }

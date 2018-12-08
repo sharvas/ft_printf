@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 15:48:17 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:54:40 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,22 +112,18 @@ void		ft_int(t_print *all, va_list ap)
 	long long	num;
 	char		*num_str;
 
-/*	if (all.l)
+	if (all->l)
 		num = (long long)va_arg(ap, long);
-	else if (all.ll)
+	else if (all->ll)
 		num = (long long)va_arg(ap, long long);
-	else if (all.h)
-		num = (long long)va_arg(ap, int);
-	else if (all.hh)
-		num = (long long)va_arg(ap, int);
-	else*/
+	else
 		num = (int)va_arg(ap, int);
 	if (num < 0)
 	{
 		all->sign = 1;
 		num = -num;
 	}
-	num_str = ft_itoa(num);
+	num_str = ft_itoa_mod(num);
 		//ft_error
 	ft_justify(num_str, all);
 	free(num_str);
