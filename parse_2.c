@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:20:58 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/07 10:20:59 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/08 13:24:24 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	ft_print_struct(t_print *all)//
 	printf("\tsign: %d\n", all->sign);
 }//
 
-int	main(void)
+/*int	main(void)
 {
 	char	*form;
 	t_print	all;
@@ -133,4 +133,4 @@ int	main(void)
 	printf("\nAfter Parse:\n");
 	ft_print_struct(&all);
 	return (0);
-}
+}*/

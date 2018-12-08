@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 11:41:57 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 13:38:48 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_init(t_print *all)
 	all->type = '0';
 	all->hh = 0;
 	all->h = 0;
+	all->j = 0;
 	all->ll = 0;
 	all->l = 0;
 	all->L = 0;
@@ -52,37 +53,36 @@ int 	ft_printf(char const *format, ...)
 {
 	va_list	ap;
 	t_print	all;
-	int		count;
 
-	count = 0;
 	va_start(ap, format);
 	ft_init(&all);
-	all.form = format;
-	while (*format != '\0')
+	all.form = ft_strdup(format);
+	while (all.form[all.len] != '\0')
 	{
-		if (*format == '%' && *(format + 1) && *(format + 1) != '%')
+		if (all.form[all.len] == '%')
 		{
+			all.len++;
 			ft_parse(&all);
+			ft_print_struct(&all);
 			ft_print(&all, ap);
-			format = format + all.len;
-			count = count + all.printed;
 		}
 		else
 		{
-			write(1, (char*)format, 1);
-			count++;
+			ft_putchar(all.form[all.len]);
+			all.printed++;
 			all.len++;
 		}
+//		all.len++;
 	}
 	va_end(ap);
 //	printf("%i\n", count);
-	return (count);
+	return (all.printed);
 }
 
 int 	main(void)
 {
-	printf("rl.% 5d\n", 55);
-	printf("rl.% 5d\n", -55);
-	ft_printf("ft.%i\n", 55);
-	ft_printf("ft.%i\n", -55);
+	printf("rl.%-+5i\n", 55);
+//	printf("rl.%-+5i\n", -55);
+	ft_printf("ft.%-+5i\n", 55);
+//	ft_printf("ft.%-+5i\n", -55);
 }

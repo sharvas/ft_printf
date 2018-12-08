@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 12:49:40 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 13:17:24 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_print
 {
 	unsigned int	printed;
 	unsigned int	len;
-	const char		*form;
+	char			*form;
 	char			type;
 	int				hh;
 	int				h;
