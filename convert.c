@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 17:57:35 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 19:38:47 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,17 +192,30 @@ void		ft_number(t_print *all, va_list ap)
 		ft_int_hex(all, ap);
 }
 
+void		ft_pointer(t_print *all, va_list ap)
+{
+	unsigned long long	num;
+	char				*num_str;
+
+	num = (unsigned long long)va_arg(ap, void*);
+	num_str = ft_itoa_base(num, 16, 'x');
+		//ft_error
+	num_str = ft_strjoin("0x", num_str);
+	ft_justify(num_str, all);
+	free(num_str);
+}
+
 void		ft_print(t_print *all, va_list ap)
 {
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
 			all->type == 'o' || all->type == 'x' || all->type == 'X')
 		ft_number(all, ap);
-/*	if (all.type == 's')
+/*	if (all->type == 's')
 		ft_string(all, ap);
-	if (all.type == 'c')
+	if (all->type == 'c')
 		ft_char(all, ap);
-	if (all.type == 'f')
-		ft_float(all, ap);
-	if (all.type == 'p')
-		ft_pointer(all, ap);*/
+	if (all->type == 'f')
+		ft_float(all, ap);*/
+	if (all->type == 'p')
+		ft_pointer(all, ap);
 }
