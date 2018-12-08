@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 15:54:40 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 16:27:08 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,17 +129,39 @@ void		ft_int(t_print *all, va_list ap)
 	free(num_str);
 }
 
+void		ft_unsigned(t_print *all, va_list ap)
+{
+	unsigned long long	num;
+	char				*num_str;
+
+	if (all->l)
+		num = (unsigned long long)va_arg(ap, unsigned long);
+	else if (all->ll)
+		num = (unsigned long long)va_arg(ap, unsigned long long);
+	else
+		num = (unsigned int)va_arg(ap, unsigned int);
+	if (num < 0)
+	{
+		all->sign = 1;
+		num = -num;
+	}
+	num_str = ft_itoa_unsigned(num);
+		//ft_error
+	ft_justify(num_str, all);
+	free(num_str);
+
+}
+
 void		ft_number(t_print *all, va_list ap)
 {
 	if (all->type == 'i' || all->type == 'd')
 		ft_int(all, ap);
-/*	if (all.type == 'u')
+	if (all.type == 'u')
 		ft_unsigned(all, ap);
-	if (all.type == 'o')
+/*	if (all.type == 'o')
 		ft_int_octal(all, ap);
 	if (all.type == 'x' || all.type == 'X')
-		ft_int_hex(all, ap);
-*/
+		ft_int_hex(all, ap);*/
 }
 
 void		ft_print(t_print *all, va_list ap)
