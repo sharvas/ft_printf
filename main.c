@@ -81,15 +81,8 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-<<<<<<< HEAD
 	printf("rl.%8.0i\n", 55);
 	printf("rl.%8.0i\n", -55);
 	ft_printf("ft.%8.0i\n", 55);
 	ft_printf("ft.%8.0i\n", -55);
-=======
-	printf("rl.%-.3i\n", 55);
-	printf("rl.%-.3i\n", -55);
-	ft_printf("ft.%-.3i\n", 55);
-	ft_printf("ft.%-.3i\n", -55);
->>>>>>> 83263125a2bfbe7a4b6b7f2542e8a8b9b2db9029
 }

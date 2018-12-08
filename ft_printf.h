@@ -52,6 +52,7 @@ void				ft_update_length(t_print *all);
 int					ft_istype(char c);
 void				ft_update_type(t_print *all);
 void				ft_parse(t_print *all);
+void				ft_update_conflicts(t_print *all);
 
 void				ft_print(t_print *all, va_list ap);
 void				ft_modify_int(t_print *all, va_list ap);
