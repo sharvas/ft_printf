@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 14:54:15 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:14:37 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,7 @@ void		ft_number(t_print *all, va_list ap)
 		ft_int_octal(all, ap);
 	if (all.type == 'x' || all.type == 'X')
 		ft_int_hex(all, ap);
-	if (all.type =='f')
-		ft_int_float(all, ap);*/
+*/
 }
 
 void		ft_print(t_print *all, va_list ap)
