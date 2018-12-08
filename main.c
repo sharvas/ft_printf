@@ -81,8 +81,8 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("rl.%8.6i\n", 55);
-	printf("rl.%8.6i\n", -55);
-	ft_printf("ft.%8.6i\n", 55);
-	ft_printf("ft.%8.6i\n", -55);
+	printf("rl.%8.0i\n", 55);
+	printf("rl.%8.0i\n", -55);
+	ft_printf("ft.%8.0i\n", 55);
+	ft_printf("ft.%8.0i\n", -55);
 }
