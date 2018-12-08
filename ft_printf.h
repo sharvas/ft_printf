@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 11:40:13 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 12:49:40 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void				ft_parse(t_print *all);
 void				ft_print(t_print *all, va_list ap);
 void				ft_modify_int(t_print *all, va_list ap);
 void				ft_int(t_print *all, va_list ap);
+int					ft_printf(char const *format, ...);
 
 void				ft_print_struct(t_print *all); //rm!!!!!!!!!
 
