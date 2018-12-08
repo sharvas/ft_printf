@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/07 14:53:13 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:53:38 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ char		*ft_fill_width(char *num_str, t_print all, char c)
 	{
 		if (all.sign < 0 && !all.minus && !all.zero && all.precision < 0)
 			num_str = ft_negative(num_str, all);
-		if ((all.sign < 0 || ((all.plus || all.space) && (all.minus || all.zero))) && all.precision < 0)
+		if ((all.sign < 0 || ((all.plus || all.space) && (all.minus ||
+							all.zero))) && all.precision < 0)
 			all.width--;
 		all.width = all.width - i;
 		str = ft_build_width(all, c);
@@ -70,7 +71,8 @@ char		*ft_int_plus(char *num_str, t_print all)
 
 t_print		ft_justify(char *num_str, t_print all)
 {
-	if (!all.minus && (all.plus || all.space) && !all.zero && all.precision < 0)
+	if (!all.minus && (all.plus || all.space) && !all.zero &&
+			all.precision < 0)
 		num_str = ft_int_plus(num_str, all);
 	if (all.width && !all.zero && all.precision < 0)
 		num_str = ft_fill_width(num_str, all, ' ');
@@ -78,52 +80,48 @@ t_print		ft_justify(char *num_str, t_print all)
 		num_str = ft_fill_width(num_str, all, '0');
 	if (all.minus || all.zero || all.precision > 0)
 		num_str = ft_negative(num_str, all);
-	if ((all.minus && (all.plus || all.space)) || all.zero || all.precision > 0)
+	if ((all.minus && (all.plus || all.space)) || all.zero ||
+			all.precision > 0)
 		num_str = ft_int_plus(num_str, all);
 	ft_putstr(num_str);
 	all.count = all.count + ft_strlen(num_str);
 	return (all);
 }
 
-//modifying d, i and u without h, hh, l and ll
-t_print		ft_modify_int(t_print all, va_list ap)
+t_print		ft_int(t_print all, va_list ap)
 {
-	char	*num_str;
-	int		num;
+	intmax_t	num;
+	char		*num_str;
 
-	num = va_arg(ap, int);
+	if (all.l)
+		num = (intmax_t)va_arg(ap, long);
+	else if (all.ll)
+		num = (intmax_t)va_arg(ap, long long);
+	else if (all.h)
+		num = (intmax_t)va_arg(ap, short);
+	else if (all.hh)
+		num = (intmax_t)va_arg(ap, signed char);
+	else
+		num = (intmax_t)va_arg(ap, int);
 	if (num < 0)
 	{
 		all.sign = -1;
 		num = -num;
 	}
-	if (!(num_str = ft_itoa(num)))
+	if (!(num_str = ft_itoa_mod(num)))
 		return (all); //ft_error
 	all = ft_justify(num_str, all);
 	free(num_str);
 	return (all);
 }
 
-t_print		ft_int(t_print all, va_list ap)
-{
-/*	if (all.l)
-		ft_long_int(all, ap);//to write
-	else if (all.ll)
-		ft_long_long_int(all, ap);//to write
-	else if (all.h)
-		ft_short_int(all, ap);//to write
-	else if (all.hh)
-		ft_unsigned_int(all, ap);//to write
-	else*/
-		all = ft_modify_int(all, ap);
-	return (all);
-}
-
 t_print		ft_number(t_print all, va_list ap)
 {
-	if (all.type == 'i' || all.type == 'd' || all.type == 'u')
+	if (all.type == 'i' || all.type == 'd')
 		all = ft_int(all, ap);
-/*	if (all.type == 'o')
+/*	if (all.type == 'u')
+		all = ft_unsigned(all, ap);
+	if (all.type == 'o')
 		ft_int_octal(all, ap);//to write
 	if (all.type == 'x' || all.type == 'X')
 		ft_int_hex(all, ap);//to write
@@ -135,7 +133,7 @@ t_print		ft_number(t_print all, va_list ap)
 t_print		ft_print(t_print all, va_list ap)
 {
 	if (all.type == 'i' || all.type == 'd' || all.type == 'u' ||
-			all.type == 'o' || all.type == 'x' || all.type == 'X') //ints
+			all.type == 'o' || all.type == 'x' || all.type == 'X')
 		all = ft_number(all, ap);
 /*	if (all.type == 's') //string
 		all = ft_string(all, ap);

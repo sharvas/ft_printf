@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/07 14:44:48 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:07:18 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("real\n");
-	printf("% 5d\n", 55);
-	printf("% 5d\n", -55);
-	ft_printf("function\n");
-	ft_printf("%i\n", 55);
-	ft_printf("%i\n", -55);
+	printf("rl.% 5d\n", 55);
+	printf("rl.% 5d\n", -55);
+	ft_printf("ft.%i\n", 55);
+	ft_printf("ft.%i\n", -55);
 }
