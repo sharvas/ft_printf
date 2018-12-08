@@ -6,43 +6,54 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/06 18:08:16 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 10:59:34 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+char		*ft_negative(char *num_str, t_print all)
+{
+	if (all.sign < 0)
+		num_str = ft_strjoin("-", num_str);
+	return (num_str);
+}
+
+char		*ft_build_width(t_print all, char c)
+{
+	char *str;
+	int i;
+	
+	i = 0;
+	if (!(str = (char*)malloc(sizeof(char) * (all.width + 1))))
+		return (str); //ft_error
+	while (i < all.width)
+		str[i++] = c;
+	str[i] = '\0';
+	return (str);
+}
+
 char		*ft_fill_width(char *num_str, t_print all, char c)
 {
 	int i;
-	int len;
-	char *tmp;
+	char *str;
 
-	i = 0;
-	len = 0;
-	if ((len = ft_strlen(num_str)) < all.width)
+	str = NULL;
+	if ((i = ft_strlen(num_str)) < all.width)
 	{
-		if (all.sign < 0 || all.plus || all.space)
+		if (all.sign < 0 && !all.minus && !all.zero && all.precision < 0)
+			num_str = ft_negative(num_str, all);
+		if ((all.sign < 0 || ((all.plus || all.space) && (all.minus ||
+							all.zero))) && all.precision < 0)
 			all.width--;
-		all.width = all.width - len;
-		tmp = (char*)malloc(sizeof(char) * (all.width + 1));
-			//ft_error(all);
-		while (i < all.width)
-			tmp[i++] = c;
-		tmp[i] = '\0';
-		if (all.minus == 1)
-			num_str = ft_strjoin(num_str, tmp);
+		all.width = all.width - i;
+		str = ft_build_width(all, c);
+		if (all.minus)
+			num_str = ft_strjoin(num_str, str);
 		else
-		{
-			num_str = ft_strjoin(tmp, num_str);
-			if (all.space && all.sign > 0)
-				num_str = ft_strjoin(" ", num_str);
-		}
-		if (all.sign < 0)
-			num_str = ft_strjoin("-", num_str);
-		if (all.plus && !all.minus && all.sign > 0)
-			num_str = ft_strjoin("+", num_str);
+			num_str = ft_strjoin(str, num_str);
 	}
+	free(str);
 	return (num_str);
 }
 
@@ -50,78 +61,67 @@ char		*ft_int_plus(char *num_str, t_print all)
 {
 	if (all.sign > 0)
 	{
-		if (all.plus && all.minus)
+		if (all.plus)
 			num_str = ft_strjoin("+", num_str);
-		if (all.space && all.minus)
+		if (all.space && !all.plus)
 			num_str = ft_strjoin(" ", num_str);
 	}
 	return (num_str);
 }
 
-char		*ft_minus(char *num_str, t_print all);
-char		*ft_negative(char *num_str, t_print all);
-
 t_print		ft_justify(char *num_str, t_print all)
-{	
-	if (all.minus == 0)
-	{
-		if (all.plus || all.space) //flags: + and space
-			num_str = ft_int_plus(num_str, all);
-	}
-	if (all.width != 0 && !all.zero)
+{
+	if (!all.minus && (all.plus || all.space) && !all.zero &&
+			all.precision < 0)
+		num_str = ft_int_plus(num_str, all);
+	if (all.width && !all.zero && all.precision < 0)
 		num_str = ft_fill_width(num_str, all, ' ');
-	if ((all.width != 0 && all.zero == 1) || all.precision)
+	else if ((all.width && all.zero) || all.precision > 0)
 		num_str = ft_fill_width(num_str, all, '0');
-	if (all.minus == 1)
-	{
-		if (all.plus || all.space) //flags: + and space
-			num_str = ft_int_plus(num_str, all);
-	}
+	if (all.minus || all.zero || all.precision > 0)
+		num_str = ft_negative(num_str, all);
+	if ((all.minus && (all.plus || all.space)) || all.zero ||
+			all.precision > 0)
+		num_str = ft_int_plus(num_str, all);
 	ft_putstr(num_str);
 	all.count = all.count + ft_strlen(num_str);
 	return (all);
 }
 
-//modifying d, i and u without h, hh, l and ll
-t_print		ft_modify_int(t_print all, va_list ap)
+t_print		ft_int(t_print all, va_list ap)
 {
-	char	*num_str;
-	int	num;
+	long long	num;
+	char		*num_str;
 
-	num = va_arg(ap, int);
+/*	if (all.l)
+		num = (long long)va_arg(ap, long);
+	else if (all.ll)
+		num = (long long)va_arg(ap, long long);
+	else if (all.h)
+		num = (long long)va_arg(ap, int);
+	else if (all.hh)
+		num = (long long)va_arg(ap, int);
+	else*/
+		num = (int)va_arg(ap, int);
 	if (num < 0)
 	{
 		all.sign = -1;
 		num = -num;
 	}
 	if (!(num_str = ft_itoa(num)))
-		return (all); //ft_errori
-	if (all.minus || all.zero || all.width) //flags: 0, -, min_width
-		all = ft_justify(num_str, all);
+		return (all); //ft_error
+	all = ft_justify(num_str, all);
 	free(num_str);
-	return (all);
-}
-
-t_print		ft_int(t_print all, va_list ap)
-{
-/*	if (all.l)
-		ft_long_int(all, ap);//to write
-	else if (all.ll)
-		ft_long_long_int(all, ap);//to write
-	else if (all.h)
-		ft_short_int(all, ap);//to write
-	else if (all.hh)
-		ft_unsigned_int(all, ap);//to write
-	else*/
-		all = ft_modify_int(all, ap);
 	return (all);
 }
 
 t_print		ft_number(t_print all, va_list ap)
 {
-	if (all.type == 'i' || all.type == 'd' || all.type == 'u')
+	if (all.type == 'i' || all.type == 'd')
 		all = ft_int(all, ap);
-/*	if (all.type == 'o')
+/*	if (all.type == 'u')
+		all = ft_unsigned(all, ap);
+	if (all.type == 'o')
 		ft_int_octal(all, ap);//to write
 	if (all.type == 'x' || all.type == 'X')
 		ft_int_hex(all, ap);//to write
@@ -133,7 +133,7 @@ t_print		ft_number(t_print all, va_list ap)
 t_print		ft_print(t_print all, va_list ap)
 {
 	if (all.type == 'i' || all.type == 'd' || all.type == 'u' ||
-			all.type == 'o' || all.type == 'x' || all.type == 'X') //ints
+			all.type == 'o' || all.type == 'x' || all.type == 'X')
 		all = ft_number(all, ap);
 /*	if (all.type == 's') //string
 		all = ft_string(all, ap);

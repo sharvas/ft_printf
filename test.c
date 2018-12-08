@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:37:44 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/06 17:58:48 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/07 16:28:30 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int main(void)
 {
-	unsigned int i = 5;
-	printf("%u\n", i);
+	long long int i = 50000000000;
+	printf("%d\n", i);
 }

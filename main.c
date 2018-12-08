@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/06 18:00:57 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:07:18 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_print		ft_init(t_print all)
 
 int 	ft_printf(char const *format, ...)
 {
-	va_list 	ap;
-	t_print		all;
+	va_list	ap;
+	t_print	all;
 	int		i;
 	int		count;
 
@@ -59,7 +59,7 @@ int 	ft_printf(char const *format, ...)
 	va_start(ap, format);
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && *(format + 1) && *(format + 1) != '%')
 		{
 			all = ft_init(all);
 //			all = ft_parse(format, all);
@@ -81,7 +81,8 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	printf("%- 5d\n", 55);
-	ft_printf("%i\n", 55);
-	ft_printf("%i\n", -55);
+	printf("rl.% 5d\n", 55);
+	printf("rl.% 5d\n", -55);
+	ft_printf("ft.%i\n", 55);
+	ft_printf("ft.%i\n", -55);
 }
