@@ -42,11 +42,21 @@ typedef struct		s_print
 	int		sign;
 }			t_print;
 
-//t_print		ft_parse(char const *format, t_list all);
-//t_print			ft_init(t_print all);
+void		ft_init(t_print *all);
+int			ft_isflag(char c);
+void		ft_update_flags(t_print *all);
+void		ft_update_width(t_print *all);
+void		ft_update_precision(t_print *all)
+int			ft_islength(char c);
+void		ft_update_length(t_print *all);
+int			ft_istype(char c);
+void		ft_update_type(t_print *all);
+void		ft_parse(t_print *all);
 
-t_print			ft_print(t_print all, va_list ap);
-t_print			ft_modify_int(t_print all, va_list ap);
-t_print			ft_int(t_print all, va_list ap);
+t_print		ft_print(t_print all, va_list ap);
+t_print		ft_modify_int(t_print all, va_list ap);
+t_print		ft_int(t_print all, va_list ap);
+
+void		ft_print_struct(t_print *all);//rm!!!!!!!!!
 
 #endif
