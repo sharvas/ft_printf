@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 15:18:22 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:48:17 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	str = NULL;
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
-		if (all->sign && !all->minus && !all->zero && all->precision < 0)
+		if (all->sign && !all->minus && !all->zero)
 			num_str = ft_negative(num_str, all);
 		if ((all->sign || ((all->plus || all->space) && (all->minus ||
-							all->zero))) && all->precision < 0)
+							all->zero))))
 			all->width--;
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
@@ -69,19 +69,39 @@ char		*ft_int_plus(char *num_str, t_print *all)
 	return (num_str);
 }
 
+char		*ft_precision(char *num_str, t_print *all)
+{
+	char	*str;
+	int		i;
+
+	str = NULL;
+	if ((i = ft_strlen(num_str)) < all->precision)
+	{
+		if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
+			return (str); //ft_error
+		all->precision = all->precision - i;
+		i = 0;
+		while (i < all->precision)
+			str[i++] = '0';
+		str[i] = '\0';
+		num_str = ft_strjoin(str, num_str);
+	}
+	return (num_str);
+}
+
 void		ft_justify(char *num_str, t_print *all)
 {
-	if (!all->minus && (all->plus || all->space) && !all->zero &&
-			all->precision < 0)
+	if (all->precision)
+		num_str = ft_precision(num_str, all);
+	if (!all->minus && (all->plus || all->space) && !all->zero)
 		num_str = ft_int_plus(num_str, all);
-	if (all->width && !all->zero && all->precision < 0)
+	if (all->width && !all->zero)
 		num_str = ft_fill_width(num_str, all, ' ');
-	else if ((all->width && all->zero) || all->precision > 0)
+	else if (all->width && all->zero)
 		num_str = ft_fill_width(num_str, all, '0');
-	if (all->minus || all->zero || all->precision > 0)
+	if (all->minus || all->zero)
 		num_str = ft_negative(num_str, all);
-	if ((all->minus && (all->plus || all->space)) || all->zero ||
-			all->precision > 0)
+	if ((all->minus && (all->plus || all->space)) || all->zero)
 		num_str = ft_int_plus(num_str, all);
 	ft_putstr(num_str);
 	all->printed = all->printed + ft_strlen(num_str);
