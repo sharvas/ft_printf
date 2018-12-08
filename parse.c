@@ -12,59 +12,82 @@
 
 #include "ft_printf.h"
 
-int	ft_is_letter(char c)
+void	ft_init(t_print *all)
 {
-	if (c == 'c' || c == 'd' || c == 'e' || c == 'f' || c == 'g' ||
-		c == 'i' || c == 'o' || c == 's' || c == 'u' || c == 'x')
+	all->printed = 0;
+	all->len = 0;
+	all->form = 0;
+	all->type = '0';
+	all->hh = 0;
+	all->h = 0;
+	all->j = 0;
+	all->ll = 0;
+	all->l = 0;
+	all->L = 0;
+	all->z = 0;
+	all->sharp = 0;
+	all->zero = 0;
+	all->minus = 0;
+	all->plus = 0;
+	all->space = 0;
+	all->width = 0;
+	all->precision = -6;
+	all->sign = 0;
+}
+
+int		ft_isflag(char c)
+{
+	if (c == '+' || c == '-' || c == ' ' || c == '0' || c == '#')
 		return (1);
 	return (0);
 }
 
-int	ft_form_len(char *str, int i)
+void	ft_update_flags(t_print *all)
 {
-	int	len;
-
-	len = 1;
-	while (ft_is_letter(str[i]) == 0)
+	while (ft_isflag(all->form[all->len]))
 	{
-		len++;
-		i++;
+		if (all->form[all->len] == '+')
+			all->plus = 1;
+		if (all->form[all->len] == '-')
+			all->minus = 1;
+		if (all->form[all->len] == ' ')
+			all->space = 1;
+		if (all->form[all->len] == '0')
+			all->zero = 1;
+		if (all->form[all->len] == '#')
+			all->sharp = 1;
+		all->len++;
 	}
-	return (len);
 }
 
-char	*ft_form_cut(char *str, int i)
+void	ft_update_width(t_print *all)
 {
-	char	*form;
-	int		len;
+	unsigned int	n;
+	unsigned int	count;
+	unsigned int	multi;
 
-	len = ft_form_len(str, i);
-	form = (ft_strndup(str, len));
-	return (form);
+	multi = 1;
+	n = all->len;
+	while (ft_isdigit(all->form[n]))
+		n++;
+	count = n - all->len;
+	while (n-- > all->len)
+	{
+		all->width = all->width + (all->form[n] - 48) * multi;
+		multi *= 10;
+	}
+	all->len += count;
 }
 
-// int	ft_parse(char *form)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (form[i] == '%')
-// 	{
-// 		ft_putchar('%');
-// 		return (1);
-// 	}
-// 	if//
-// }
-
-#include <stdio.h>//
-
-int	main(void)//
+void	ft_parse(t_print *all)
 {
-	char	*str;
-	char	*str2;
-
-	str = "%05d";
-	str2 = ft_form_cut(str, 0);
-	printf("%s\n", str2);
-	return (0);
+	while (all->form[all->len] &&
+		ft_strchr("+- 0#123456789.hlLjz", all->form[all->len]))
+	{
+		ft_update_flags(all);
+		ft_update_width(all);
+		ft_update_precision(all);
+		ft_update_length(all);
+	}
+	ft_update_type(all);
 }
