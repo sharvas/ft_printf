@@ -215,7 +215,7 @@ int	main(void)
 	int		i;
 
 	i = 0;
-	form = "+5.7lf. string";
+	form = "+5.7ld. string";
 	ft_init(&all);
 	all.form = form;
 	all.len = i;
