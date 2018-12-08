@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/07 17:53:38 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 10:59:34 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,25 +90,25 @@ t_print		ft_justify(char *num_str, t_print all)
 
 t_print		ft_int(t_print all, va_list ap)
 {
-	intmax_t	num;
+	long long	num;
 	char		*num_str;
 
-	if (all.l)
-		num = (intmax_t)va_arg(ap, long);
+/*	if (all.l)
+		num = (long long)va_arg(ap, long);
 	else if (all.ll)
-		num = (intmax_t)va_arg(ap, long long);
+		num = (long long)va_arg(ap, long long);
 	else if (all.h)
-		num = (intmax_t)va_arg(ap, short);
+		num = (long long)va_arg(ap, int);
 	else if (all.hh)
-		num = (intmax_t)va_arg(ap, signed char);
-	else
-		num = (intmax_t)va_arg(ap, int);
+		num = (long long)va_arg(ap, int);
+	else*/
+		num = (int)va_arg(ap, int);
 	if (num < 0)
 	{
 		all.sign = -1;
 		num = -num;
 	}
-	if (!(num_str = ft_itoa_mod(num)))
+	if (!(num_str = ft_itoa(num)))
 		return (all); //ft_error
 	all = ft_justify(num_str, all);
 	free(num_str);
