@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 14:43:06 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/08 14:53:28 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int 	ft_printf(char const *format, ...)
 		{
 			all.len++;
 			ft_parse(&all);
+//			ft_print_struct(&all);
 			ft_print(&all, ap);
 		}
 		else
