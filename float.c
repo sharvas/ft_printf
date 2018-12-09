@@ -6,12 +6,13 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/09 14:17:02 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:36:49 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "ft_printf.h"
 
 long double	ft_modulus(long double a, long double b)
 {
@@ -113,12 +114,17 @@ char	*ft_itoa_float(long double n)
 
 char	*ft_precision_float(char *num_str, t_print *all)
 {
-	int i;
+	int		i;
+	char	*p;
 
+	
 	i = 0;
-	if (!all->precision)
+	if (all->precision == 0)
 	{
-		*ft_strchr(num_str, '.') = '\0';
+		p = ft_strchr(num_str, '.');
+		if (*(p + 1) > '4')
+			*(p - 1) = *(p - 1) + 1;
+		*p = '\0';
 		return (num_str);
 	}
 	else
@@ -127,13 +133,13 @@ char	*ft_precision_float(char *num_str, t_print *all)
 			i++;
 		if (num_str[i + all->precision + 1] > '4')
 			num_str[i + all->precision]++;
-		num_str[i + all->precision] = '\0';
+		num_str[i + all->precision + 1] = '\0';
 	}
 	return (num_str);
 }
 
-int main(void)
+/*int main(void)
 {
 	long double i = -991.99999356789;
 	printf("%s\n", ft_itoa_float(i));
-}
+}*/

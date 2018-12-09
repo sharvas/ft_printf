@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/08 19:38:47 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:14:25 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ void		ft_int(t_print *all, va_list ap)
 	if (all->l)
 		num = (long long)va_arg(ap, long);
 	else if (all->ll)
-		num = (long long)va_arg(ap, long long);
+		num = va_arg(ap, long long);
 	else
-		num = (int)va_arg(ap, int);
+		num = (long long)va_arg(ap, int);
 	if (num < 0)
 	{
 		all->sign = 1;
@@ -137,9 +137,9 @@ void		ft_unsigned(t_print *all, va_list ap)
 	if (all->l)
 		num = (unsigned long long)va_arg(ap, unsigned long);
 	else if (all->ll)
-		num = (unsigned long long)va_arg(ap, unsigned long long);
+		num = va_arg(ap, unsigned long long);
 	else
-		num = (unsigned int)va_arg(ap, unsigned int);
+		num = (unsigned long long)va_arg(ap, unsigned int);
 	num_str = ft_itoa_unsigned(num);
 		//ft_error
 	ft_justify(num_str, all);
@@ -154,9 +154,9 @@ void		ft_int_octal(t_print *all, va_list ap)
 	if (all->l)
 		num = (unsigned long long)va_arg(ap, unsigned long);
 	else if (all->ll)
-		num = (unsigned long long)va_arg(ap, unsigned long long);
+		num = va_arg(ap, unsigned long long);
 	else
-		num = (unsigned int)va_arg(ap, unsigned int);
+		num = (unsigned long long)va_arg(ap, unsigned int);
 	num_str = ft_itoa_base(num, 8, all->type);
 		//ft_error
 	ft_justify(num_str, all);
@@ -171,9 +171,9 @@ void		ft_int_hex(t_print *all, va_list ap)
 	if (all->l)
 		num = (unsigned long long)va_arg(ap, unsigned long);
 	else if (all->ll)
-		num = (unsigned long long)va_arg(ap, unsigned long long);
+		num = va_arg(ap, unsigned long long);
 	else
-		num = (unsigned int)va_arg(ap, unsigned int);
+		num = (unsigned long long)va_arg(ap, unsigned int);
 	num_str = ft_itoa_base(num, 16, all->type);
 		//ft_error
 	ft_justify(num_str, all);
@@ -205,6 +205,22 @@ void		ft_pointer(t_print *all, va_list ap)
 	free(num_str);
 }
 
+void		ft_float(t_print *all, va_list ap)
+{
+	long double	num;
+	char		*num_str;
+
+	if (all->l || all->L)
+		num = (long double)va_arg(ap, long double);
+	else
+		num = (long double)va_arg(ap, double);
+	num_str = ft_itoa_float(num);
+		//ft_error
+	num_str = ft_precision_float(num_str, all);
+	ft_justify(num_str, all);
+	free(num_str);
+}
+
 void		ft_print(t_print *all, va_list ap)
 {
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
@@ -213,9 +229,9 @@ void		ft_print(t_print *all, va_list ap)
 /*	if (all->type == 's')
 		ft_string(all, ap);
 	if (all->type == 'c')
-		ft_char(all, ap);
+		ft_char(all, ap);*/
 	if (all->type == 'f')
-		ft_float(all, ap);*/
+		ft_float(all, ap);
 	if (all->type == 'p')
 		ft_pointer(all, ap);
 }
