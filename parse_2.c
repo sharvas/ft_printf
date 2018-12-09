@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-
-
 int		ft_islength(char c)
 {
 	if (c == 'h' || c == 'j' || c == 'l' || c == 'L' || c == 'z')
@@ -75,6 +73,8 @@ void	ft_update_conflicts(t_print *all)
 {
 	if (all->minus && all->zero)
 		all->zero = 0;
+	if (all->type == 'f' && all->prec_set == 0)
+		all->precision = 6;
 	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
 	// 	all->type != 's' && all->type != 'S' && all->type != 'f' &&
 	// 	all->type != 'p' && all->precision != -6)

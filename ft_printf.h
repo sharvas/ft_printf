@@ -39,10 +39,12 @@ typedef struct		s_print
 	int				space;
 	int				width;
 	int				precision;
+	int				prec_set;
 	int				sign;
 }					t_print;
 
 void				ft_init(t_print *all);
+void				ft_init_partial(t_print *all);
 
 int					ft_isflag(char c);
 void				ft_update_flags(t_print *all);

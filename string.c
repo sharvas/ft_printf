@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_string(t_print *all)
-{
+// void	ft_string(t_print *all)
+// {
 	
-}
+// }

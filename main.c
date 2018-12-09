@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/09 15:35:07 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:39:27 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,35 @@ void	ft_init(t_print *all)
 	all->space = 0;
 	all->width = 0;
 	all->precision = 0;
+	all->prec_set = 0;
+	all->sign = 0;
+}
+
+void	ft_init_partial(t_print *all)
+{
+	all->type = '0';
+	all->hh = 0;
+	all->h = 0;
+	all->j = 0;
+	all->ll = 0;
+	all->l = 0;
+	all->L = 0;
+	all->z = 0;
+	all->sharp = 0;
+	all->zero = 0;
+	all->minus = 0;
+	all->plus = 0;
+	all->space = 0;
+	all->width = 0;
+	all->precision = 0;
+	all->prec_set = 0;
 	all->sign = 0;
 }
 
 int 	ft_printf(char const *format, ...)
 {
-	va_list	ap;
-	t_print	all;
+	va_list			ap;
+	t_print			all;
 
 	va_start(ap, format);
 	ft_init(&all);
@@ -62,9 +84,18 @@ int 	ft_printf(char const *format, ...)
 		if (all.form[all.len] == '%')
 		{
 			all.len++;
-			ft_parse(&all);
-//			ft_print_struct(&all);
-			ft_print(&all, ap);
+			if (all.form[all.len] != '%')
+			{
+				ft_parse(&all);
+				ft_print(&all, ap);
+				ft_init_partial(&all);
+			}
+			else
+			{
+				ft_putchar('%');
+				all.printed++;
+				all.len++;
+			}
 		}
 		else
 		{
@@ -72,7 +103,6 @@ int 	ft_printf(char const *format, ...)
 			all.printed++;
 			all.len++;
 		}
-//		all.len++;
 	}
 	va_end(ap);
 //	printf("%i\n", all.printed);
@@ -92,4 +122,8 @@ int 	main(void)
 	printf("rl.%f\n", j);
 	ft_printf("ft.%Lf\n", i);
 	ft_printf("ft.%f\n", j);
+	printf("rl.%.f\n test2 %.0f\n", p, p, a);
+	printf("rl.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
+	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", p, p, a);
+	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
 }

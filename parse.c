@@ -71,7 +71,10 @@ void	ft_update_precision(t_print *all)
 	while (ft_isdigit(all->form[n]))
 		n++;
 	all->precision = 0;
+	all->prec_set = 0;
 	count = n - all->len;
+	if (count)
+		all->prec_set = 1;
 	while (n-- > all->len)
 	{
 		all->precision = all->precision + (all->form[n] - 48) * multi;
