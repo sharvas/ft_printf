@@ -12,29 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_update_precision(t_print *all)
-{
-	unsigned int	n;
-	unsigned int	count;
-	unsigned int	multi;
 
-	multi = 1;
-	if (all->form[all->len] == '.')
-		all->len++;
-	else
-		return ;
-	n = all->len;
-	while (ft_isdigit(all->form[n]))
-		n++;
-	all->precision = 0;
-	count = n - all->len;
-	while (n-- > all->len)
-	{
-		all->precision = all->precision + (all->form[n] - 48) * multi;
-		multi *= 10;
-	}
-	all->len += count;
-}
 
 int		ft_islength(char c)
 {
@@ -91,6 +69,16 @@ void	ft_update_type(t_print *all)
 {
 	if (ft_istype(all->form[all->len]))
 		all->type = all->form[all->len++];
+}
+
+void	ft_update_conflicts(t_print *all)
+{
+	if (all->minus && all->zero)
+		all->zero = 0;
+	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
+	// 	all->type != 's' && all->type != 'S' && all->type != 'f' &&
+	// 	all->type != 'p' && all->precision != -6)
+	// 	all->width = all->precision;
 }
 
 void	ft_print_struct(t_print *all)//

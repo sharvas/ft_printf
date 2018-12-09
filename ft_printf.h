@@ -43,21 +43,37 @@ typedef struct		s_print
 }					t_print;
 
 void				ft_init(t_print *all);
+
 int					ft_isflag(char c);
 void				ft_update_flags(t_print *all);
 void				ft_update_width(t_print *all);
 void				ft_update_precision(t_print *all);
+void				ft_parse(t_print *all);
+
 int					ft_islength(char c);
 void				ft_update_length(t_print *all);
 int					ft_istype(char c);
 void				ft_update_type(t_print *all);
-void				ft_parse(t_print *all);
 void				ft_update_conflicts(t_print *all);
 
 void				ft_print(t_print *all, va_list ap);
 void				ft_modify_int(t_print *all, va_list ap);
 void				ft_int(t_print *all, va_list ap);
 int					ft_printf(char const *format, ...);
+
+char				*ft_negative(char *num_str, t_print *all);
+char				*ft_build_width(t_print *all, char c);
+char				*ft_fill_width(char *num_str, t_print *all, char c);
+char				*ft_int_plus(char *num_str, t_print *all);
+char				*ft_precision(char *num_str, t_print *all);
+void				ft_justify(char *num_str, t_print *all);
+void				ft_int(t_print *all, va_list ap);
+void				ft_unsigned(t_print *all, va_list ap);
+void				ft_int_octal(t_print *all, va_list ap);
+void				ft_int_hex(t_print *all, va_list ap);
+void				ft_number(t_print *all, va_list ap);
+void				ft_pointer(t_print *all, va_list ap);
+void				ft_print(t_print *all, va_list ap);
 
 void				ft_print_struct(t_print *all); //rm!!!!!!!!!
 
