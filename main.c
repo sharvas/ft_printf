@@ -49,13 +49,37 @@ void	ft_init(t_print *all)
 	all->sign = 0;
 }
 
+void	ft_init_partial(t_print *all)
+{
+	all->type = '0';
+	all->hh = 0;
+	all->h = 0;
+	all->j = 0;
+	all->ll = 0;
+	all->l = 0;
+	all->L = 0;
+	all->z = 0;
+	all->sharp = 0;
+	all->zero = 0;
+	all->minus = 0;
+	all->plus = 0;
+	all->space = 0;
+	all->width = 0;
+	all->precision = 0;
+	all->sign = 0;
+}
+
 int 	ft_printf(char const *format, ...)
 {
-	va_list	ap;
-	t_print	all;
+	va_list			ap;
+	t_print			all;
+	unsigned int	tmp_len;
+	unsigned int	tmp_printed;
 
 	va_start(ap, format);
 	ft_init(&all);
+	tmp_len = 0;
+	tmp_printed = 0;
 	all.form = ft_strdup(format);
 	while (all.form[all.len] != '\0')
 	{
@@ -65,6 +89,7 @@ int 	ft_printf(char const *format, ...)
 			ft_parse(&all);
 //			ft_print_struct(&all);
 			ft_print(&all, ap);
+			ft_init_partial(&all);
 		}
 		else
 		{
@@ -82,12 +107,12 @@ int 	ft_printf(char const *format, ...)
 int 	main(void)
 {
 	unsigned long long int a = 1;
-	unsigned long long int b = 5500000000000000000;
+	// unsigned long long int b = 5500000000000000000;
 	char *p = ft_strdup("abc");
 	int n[] = {0, 1, 2};
 
-	printf("rl.%20p\n", p);
-	printf("rl.%20p\n", n);
-	ft_printf("ft.%20p\n", p);
-	ft_printf("ft.%20p\n", n);
+	printf("rl.%20p\n test2 %20p\n test3 %lli\n", p, p, a);
+	printf("rl.%20p\n test2 %20p\n test3 %lli\n", n, n, a);
+	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n", p, p, a);
+	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n", n, n, a);
 }
