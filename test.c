@@ -14,3 +14,10 @@
 // 	printf("%p\n", p);
 // 	printf("0x%s\n", ft_itoa_base((unsigned long)p, 16, 'x'));
 // }
+
+int main(void)
+{
+	double d = 0.03;
+
+	printf("%d\n", (int)((d - (int)d)*10));
+}

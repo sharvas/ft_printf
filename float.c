@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/09 15:36:49 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/09 19:59:36 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-long double	ft_modulus(long double a, long double b)
+double	ft_modulus(long double a, long double b)
 {
-	long long result;
-	
-	result = (long long)( a / b );
-	return (a - (long double)(result) * b);
+	long result;
+
+	result = (long)(a / b);
+//	printf("\nresult %lld\n", result);
+	return (a - (double)result * b);
 }
 
 unsigned int	ft_len(long double n)
@@ -27,12 +28,13 @@ unsigned int	ft_len(long double n)
 	long long		i;
 	long double		d;
 	long double		t;
+	long double		mod;
 	unsigned int	len;
 
 	i = (long long)n;
 	len = 0;
 	d = 1;
-	t = 10;
+	t = 1;
 	if (n < 0)
 	{
 		len++;
@@ -44,11 +46,16 @@ unsigned int	ft_len(long double n)
 		len++;
 	}
 	len++;
-	while ((int)(ft_modulus(n, d) * t) > 0)
+//	while ((long long)(ft_modulus(n , d) * t)  > 0)
+	mod = n - (long long)n;
+	while ((int)(mod * 10)  > 0)
 	{
+//		printf("\nmodulus %.20Lf result %d\n", ft_modulus(n, d), (int)(ft_modulus(n, d) * t));
 		len++;
-		d = d / 10;
-		t = t * 10;
+		mod = mod * 10;
+		mod = mod - (long long)mod;
+//		d = d / 10;
+//		t = t * 10;
 	}
 	return (len);
 }
@@ -57,6 +64,7 @@ int	ft_len_int(long long n)
 {
 	int len;
 
+	len = 0;
 	if (n < 0)
 	{
 		n = -n;
@@ -78,6 +86,7 @@ char	*ft_itoa_float(long double n)
 	long long	l;
 	long long	b;
 	int			int_len;
+	long double	mod;
 
 	i = 1;
 	j = 10;
@@ -101,23 +110,37 @@ char	*ft_itoa_float(long double n)
 		l++;
 	}
 	str[l++] = '.';
-	while ((int)(ft_modulus(n, i) * j) > 0)
+//	while ((long long)(ft_modulus(n, i) * j) > 0)
+	mod = n - (long long)n;
+	while ((int)(mod * 10) > 0)
 	{
-		str[l] = (int)(ft_modulus(n, i) * j) + '0';
-		i = i / 10;
-		j = j * 10;
+//		str[l] = (long long)(ft_modulus(n, i) * j) + '0';
+		str[l] = (int)(mod * 10) + '0';		
+		mod = (mod * 10) - (long long)(mod * 10);
 		l++;
 	}
 	str[l] = '\0';
 	return (str);
 }
+char		*ft_build_fl_width(int j, t_print *all)
+{
+	char	*str;
+	int 	i;
 
+	i = 0;
+	if (!(str = (char*)malloc(sizeof(char) * (all->precision - j + 1))))
+		return (str); //ft_error
+	while (i < (all->precision - j))
+		str[i++] = '0';
+	str[i] = '\0';
+	return (str);
+}
 char	*ft_precision_float(char *num_str, t_print *all)
 {
 	int		i;
 	char	*p;
+	int		j;
 
-	
 	i = 0;
 	if (all->precision == 0)
 	{
@@ -131,15 +154,18 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	{
 		while (num_str[i] != '.')
 			i++;
-		if (num_str[i + all->precision + 1] > '4')
-			num_str[i + all->precision]++;
-		num_str[i + all->precision + 1] = '\0';
+		if (num_str[i + all->precision] > '4')
+			num_str[i + all->precision - 1]++;
+		num_str[i + all->precision] = '\0';
 	}
+	j = ft_strlen(ft_strchr(num_str, '.'));
+	if (j < (all->precision + 1))
+		num_str = ft_strjoin(num_str, ft_build_fl_width(j - 1, all));
 	return (num_str);
 }
 
 /*int main(void)
-{
-	long double i = -991.99999356789;
-	printf("%s\n", ft_itoa_float(i));
-}*/
+  {
+  long double i = -991.99999356789;
+  printf("%s\n", ft_itoa_float(i));
+  }*/

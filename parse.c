@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 15:06:04 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:54:25 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,16 @@ void	ft_update_precision(t_print *all)
 
 	multi = 1;
 	if (all->form[all->len] == '.')
+	{
 		all->len++;
+		all->prec_set = 1;
+	}
 	else
 		return ;
 	n = all->len;
 	while (ft_isdigit(all->form[n]))
 		n++;
-	all->precision = 0;
-	all->prec_set = 0;
 	count = n - all->len;
-	if (count)
-		all->prec_set = 1;
 	while (n-- > all->len)
 	{
 		all->precision = all->precision + (all->form[n] - 48) * multi;
