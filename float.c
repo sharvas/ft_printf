@@ -57,6 +57,7 @@ int	ft_len_int(long long n)
 {
 	int len;
 
+	len = 0;
 	if (n < 0)
 	{
 		n = -n;

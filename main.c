@@ -111,19 +111,25 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	unsigned long long int a = 1;
-	unsigned long long int b = 5500000000000000000;
-	long double i = -91.55896;
-	double j = 92.66951;
-	char *p = ft_strdup("abc");
-	int n[] = {0, 1, 2};
+	// unsigned long long int a = 1;
+	// // unsigned long long int b = 5500000000000000000;
+	// long double i = -91.55896;
+	// double j = 92.66951;
+	// char *p = ft_strdup("abc");
+	// int n[] = {0, 1, 2};
 
-	printf("rl.%Lf\n", i);
-	printf("rl.%f\n", j);
-	ft_printf("ft.%Lf\n", i);
-	ft_printf("ft.%f\n", j);
-	printf("rl.%.f\n test2 %.0f\n", p, p, a);
-	printf("rl.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
-	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", p, p, a);
-	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
+	// printf("rl.%Lf\n", i);
+	// // printf("rl.%f\n", j);
+	// // ft_printf("ft.%Lf\n", i);
+	// ft_printf("ft.%f\n", j);
+	// printf("ft.%20p test2 %20p test3 %lli test 4%%\n\n", p, p, a);
+	// printf("rl.%20p test2 %20p test3 %lli test 4%%\n\n", n, n, a);
+	// ft_printf("ft.%20p test2 %20p test3 %lli test 4%%\n\n", p, p, a);
+	// ft_printf("ft.%20p test2 %20p test3 %lli test 4%%\n\n", n, n, a);
+
+	char	*str;
+
+	str = "test me";
+	printf("go on: %s. please\n", str);
+	ft_printf("go on: %s. please\n", str);
 }
