@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-
-
 int		ft_islength(char c)
 {
 	if (c == 'h' || c == 'j' || c == 'l' || c == 'L' || c == 'z')

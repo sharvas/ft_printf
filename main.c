@@ -73,13 +73,9 @@ int 	ft_printf(char const *format, ...)
 {
 	va_list			ap;
 	t_print			all;
-	unsigned int	tmp_len;
-	unsigned int	tmp_printed;
 
 	va_start(ap, format);
 	ft_init(&all);
-	tmp_len = 0;
-	tmp_printed = 0;
 	all.form = ft_strdup(format);
 	while (all.form[all.len] != '\0')
 	{
@@ -87,7 +83,6 @@ int 	ft_printf(char const *format, ...)
 		{
 			all.len++;
 			ft_parse(&all);
-//			ft_print_struct(&all);
 			ft_print(&all, ap);
 			ft_init_partial(&all);
 		}
@@ -97,7 +92,6 @@ int 	ft_printf(char const *format, ...)
 			all.printed++;
 			all.len++;
 		}
-//		all.len++;
 	}
 	va_end(ap);
 //	printf("%i\n", all.printed);
