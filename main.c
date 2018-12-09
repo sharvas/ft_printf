@@ -82,9 +82,18 @@ int 	ft_printf(char const *format, ...)
 		if (all.form[all.len] == '%')
 		{
 			all.len++;
-			ft_parse(&all);
-			ft_print(&all, ap);
-			ft_init_partial(&all);
+			if (all.form[all.len] != '%')
+			{
+				ft_parse(&all);
+				ft_print(&all, ap);
+				ft_init_partial(&all);
+			}
+			else
+			{
+				ft_putchar('%');
+				all.printed++;
+				all.len++;
+			}
 		}
 		else
 		{
@@ -105,8 +114,8 @@ int 	main(void)
 	char *p = ft_strdup("abc");
 	int n[] = {0, 1, 2};
 
-	printf("rl.%20p\n test2 %20p\n test3 %lli\n", p, p, a);
-	printf("rl.%20p\n test2 %20p\n test3 %lli\n", n, n, a);
-	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n", p, p, a);
-	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n", n, n, a);
+	printf("rl.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", p, p, a);
+	printf("rl.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
+	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", p, p, a);
+	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
 }
