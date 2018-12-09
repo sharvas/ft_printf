@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   float.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
+/*   Updated: 2018/12/09 14:17:02 by svaskeli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,9 +23,9 @@ long double	ft_modulus(long double a, long double b)
 
 unsigned int	ft_len(long double n)
 {
-	long long	i;
-	long double	d;
-	long double	t;
+	long long		i;
+	long double		d;
+	long double		t;
 	unsigned int	len;
 
 	i = (long long)n;
@@ -64,7 +76,7 @@ char	*ft_itoa_float(long double n)
 	char		*str;
 	long long	l;
 	long long	b;
-	int		int_len;
+	int			int_len;
 
 	i = 1;
 	j = 10;
@@ -113,8 +125,11 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	{
 		while (num_str[i] != '.')
 			i++;
-		if (num_str[])
+		if (num_str[i + all->precision + 1] > '4')
+			num_str[i + all->precision]++;
+		num_str[i + all->precision] = '\0';
 	}
+	return (num_str);
 }
 
 int main(void)
