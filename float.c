@@ -99,6 +99,24 @@ char	*ft_itoa_float(long double n)
 	return (str);
 }
 
+char	*ft_precision_float(char *num_str, t_print *all)
+{
+	int i;
+
+	i = 0;
+	if (!all->precision)
+	{
+		*ft_strchr(num_str, '.') = '\0';
+		return (num_str);
+	}
+	else
+	{
+		while (num_str[i] != '.')
+			i++;
+		if (num_str[])
+	}
+}
+
 int main(void)
 {
 	long double i = -991.99999356789;
