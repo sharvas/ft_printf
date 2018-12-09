@@ -39,6 +39,7 @@ typedef struct		s_print
 	int				space;
 	int				width;
 	int				precision;
+	int				prec_set;
 	int				sign;
 }					t_print;
 

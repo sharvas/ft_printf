@@ -46,6 +46,7 @@ void	ft_init(t_print *all)
 	all->space = 0;
 	all->width = 0;
 	all->precision = 0;
+	all->prec_set = 0;
 	all->sign = 0;
 }
 
@@ -66,6 +67,7 @@ void	ft_init_partial(t_print *all)
 	all->space = 0;
 	all->width = 0;
 	all->precision = 0;
+	all->prec_set = 0;
 	all->sign = 0;
 }
 
@@ -114,7 +116,7 @@ int 	main(void)
 	char *p = ft_strdup("abc");
 	int n[] = {0, 1, 2};
 
-	printf("rl.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", p, p, a);
+	printf("rl.%.f\n test2 %.0f\n, p, p, a);
 	printf("rl.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
 	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", p, p, a);
 	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
