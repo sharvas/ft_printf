@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/10 09:41:05 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:04:37 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "ft_printf.h"
 
-double	ft_modulus(long double a, long double b)
+/*double	ft_modulus(long double a, long double b)
 {
 	long result;
 
@@ -76,9 +76,21 @@ int	ft_len_int(long long n)
 		len++;
 	}
 	return (len);
+}*/
+
+
+long long	ft_multiply_float(long double n, *t_print *all)
+{
+	while ((long long)n % 10 != 0)
+	{
+		n *= 10;
+		all->float_multi++;
+	}
+	all->float_multi--;
+	return (n / 10);
 }
 
-char	*ft_itoa_float(long double n)
+/*char	*ft_itoa_float(long double n)
 {
 	long double	i;
 	long double	j;
@@ -166,7 +178,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	return (num_str);
 }
 
-/*int main(void)
+int main(void)
   {
   long double i = -991.99999356789;
   printf("%s\n", ft_itoa_float(i));
