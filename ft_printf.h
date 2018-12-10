@@ -40,6 +40,7 @@ typedef struct		s_print
 	int				width;
 	int				precision;
 	int				prec_set;
+	int				float_multi;
 	int				sign;
 }					t_print;
 
@@ -86,5 +87,7 @@ unsigned int	ft_len(long double n);
 int	ft_len_int(long long n);
 char	*ft_itoa_float(long double n);
 char	*ft_precision_float(char *num_str, t_print *all);
+
+long long	ft_multiply_float(long double n, t_print *all);
 
 #endif

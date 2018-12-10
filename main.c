@@ -47,6 +47,7 @@ void	ft_init(t_print *all)
 	all->width = 0;
 	all->precision = 0;
 	all->prec_set = 0;
+	all->float_multi = 0;
 	all->sign = 0;
 }
 
@@ -68,6 +69,7 @@ void	ft_init_partial(t_print *all)
 	all->width = 0;
 	all->precision = 0;
 	all->prec_set = 0;
+	all->float_multi = 0;
 	all->sign = 0;
 }
 
@@ -111,12 +113,12 @@ int 	ft_printf(char const *format, ...)
 
 int 	main(void)
 {
-	unsigned long long int a = 1;
-	unsigned long long int b = 5500000000000000000;
+	// unsigned long long int a = 1;
+	// unsigned long long int b = 5500000000000000000;
 	long double i = -91.5005859;
-	double j = 92.6600951;
-	char *p = ft_strdup("abc");
-	int n[] = {0, 1, 2};
+	// double j = 92.6600951;
+	// char *p = ft_strdup("abc");
+	// int n[] = {0, 1, 2};
 
 //	printf("rl.%Lf\n", i);
 //	printf("rl.%f\n", j);
