@@ -79,7 +79,7 @@ int	ft_len_int(long long n)
 }*/
 
 
-long long	ft_multiply_float(long double n, *t_print *all)
+long long	ft_multiply_float(long double n, t_print *all)
 {
 	while ((long long)n % 10 != 0)
 	{
