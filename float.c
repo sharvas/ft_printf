@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/10 11:23:02 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/10 12:00:45 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,20 @@ int	ft_len_int(long long n)
 
 long long	ft_multiply_float(long double n, t_print *all)
 {
-	while ((long long)n % 10 != 0)
+	long long i = 0;
+	while ((i = (long long)n % 10) != 0/* && n < 1000000000000000*/)
 	{
 		n *= 10;
 		all->float_multi++;
+//		printf("%lld\n", i);
 	}
 	all->float_multi--;
 	return (n / 10);
 }
 
-char	*ft_itoa_float(long double n)
+char	*ft_itoa_float(long double n, t_print *all)
 {
+	char *str;
 	int len;
 	long long n_int;
 	long long num_int_part;
@@ -52,10 +55,16 @@ char	*ft_itoa_float(long double n)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = ft_multiply_float(n);
+//	printf("a\n");
+	n_int = ft_multiply_float(n, all);
+//	printf("%lld\n", n_int);
 	len = ft_len_int(n_int) + 1;
+	if(all->sign)
+		len++;
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
+	if (all->sign)
+		str[0] = '-';
 	str[len--] = '\0';
 	while (n_int > 0 && all->float_multi)
 	{
@@ -65,12 +74,13 @@ char	*ft_itoa_float(long double n)
 	}
 	str[len--] = '.';
 	num_int_part = (long long)n;
-	len_int_part = ftlen_int(num_int_part);
+	len_int_part = ft_len_int(num_int_part);
 	while (num_int_part > 0)
 	{
 		str[len--] = (num_int_part % 10) + '0';
 		num_int_part /= 10;
 	}
+
 	return (str);
 }
 char		*ft_build_fl_width(int j, t_print *all)

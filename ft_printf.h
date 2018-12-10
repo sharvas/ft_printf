@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/09 19:38:53 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:26:04 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void				ft_print_struct(t_print *all); //rm!!!!!!!!!
 double	ft_modulus(long double a, long double b);
 unsigned int	ft_len(long double n);
 int	ft_len_int(long long n);
-char	*ft_itoa_float(long double n);
+char	*ft_itoa_float(long double n, t_print *all);
 char	*ft_precision_float(char *num_str, t_print *all);
 
 long long	ft_multiply_float(long double n, t_print *all);
