@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/09 19:59:36 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/10 09:41:05 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	ft_modulus(long double a, long double b)
 	long result;
 
 	result = (long)(a / b);
-//	printf("\nresult %lld\n", result);
+	printf("\nresult %lld\n", result);
 	return (a - (double)result * b);
 }
 
@@ -33,8 +33,8 @@ unsigned int	ft_len(long double n)
 
 	i = (long long)n;
 	len = 0;
-	d = 1;
-	t = 1;
+	d = 1.0;
+	t = 10.0;
 	if (n < 0)
 	{
 		len++;
@@ -46,16 +46,16 @@ unsigned int	ft_len(long double n)
 		len++;
 	}
 	len++;
-//	while ((long long)(ft_modulus(n , d) * t)  > 0)
-	mod = n - (long long)n;
-	while ((int)(mod * 10)  > 0)
+	while ((long long)(ft_modulus(n , d) * t)  > 0)
+//	mod = n - (long long)n;
+//	while ((int)(mod * 10.0)  > 0)
 	{
 //		printf("\nmodulus %.20Lf result %d\n", ft_modulus(n, d), (int)(ft_modulus(n, d) * t));
 		len++;
-		mod = mod * 10;
-		mod = mod - (long long)mod;
-//		d = d / 10;
-//		t = t * 10;
+//		mod = mod * 10.0;
+//		mod = mod - (long long)mod;
+		d = d / 10.0;
+		t = t * 10.0;
 	}
 	return (len);
 }
@@ -88,8 +88,8 @@ char	*ft_itoa_float(long double n)
 	int			int_len;
 	long double	mod;
 
-	i = 1;
-	j = 10;
+	i = 1.0;
+	j = 10.0;
 	l = 0;
 	if (!(str = (char*)malloc(sizeof(char) * (ft_len(n) + 1))))
 		return (NULL);
@@ -110,14 +110,16 @@ char	*ft_itoa_float(long double n)
 		l++;
 	}
 	str[l++] = '.';
-//	while ((long long)(ft_modulus(n, i) * j) > 0)
-	mod = n - (long long)n;
-	while ((int)(mod * 10) > 0)
+	while ((long long)(ft_modulus(n, i) * j) > 0)
+//	mod = n - (long long)n;
+//	while ((int)(mod * 10.0) > 0)
 	{
-//		str[l] = (long long)(ft_modulus(n, i) * j) + '0';
-		str[l] = (int)(mod * 10) + '0';		
-		mod = (mod * 10) - (long long)(mod * 10);
+		str[l] = (long long)(ft_modulus(n, i) * j) + '0';
+//		str[l] = (int)(mod * 10.0) + '0';		
+//		mod = (mod * 10.0) - (long long)(mod * 10.0);
 		l++;
+		i /= 10.0;
+		j *= 10.0;
 	}
 	str[l] = '\0';
 	return (str);

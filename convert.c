@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/09 19:36:58 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/10 09:21:35 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,8 +226,8 @@ void		ft_print(t_print *all, va_list ap)
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
 			all->type == 'o' || all->type == 'x' || all->type == 'X')
 		ft_number(all, ap);
-	if (all->type == 's')
-		ft_string(all, ap);
+	//if (all->type == 's')
+	//	ft_string(all, ap);
 	// if (all->type == 'c')
 	// 	ft_char(all, ap);*/
 	if (all->type == 'f')
