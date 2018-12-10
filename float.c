@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/10 12:00:45 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/10 17:06:32 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_len_int(long long n)
 long long	ft_multiply_float(long double n, t_print *all)
 {
 	long long i = 0;
-	while ((i = (long long)n % 10) != 0/* && n < 1000000000000000*/)
+	while ((long long)n % 10 != 0/* && n < 1000000000000000*/)
 	{
 		n *= 10;
 		all->float_multi++;
