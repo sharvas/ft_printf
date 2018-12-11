@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/11 17:48:44 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/11 18:00:08 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int 	main(void)
 {
 	// unsigned long long int a = 1;
 	// unsigned long long int b = 5500000000000000000;
-	long double i = -91.567867891234565;
+	long double i = -91.56786007891234565;
 	// double j = 92.6600951;
 	// char *p = ft_strdup("abc");
 	// int n[] = {0, 1, 2};
