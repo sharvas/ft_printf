@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/11 11:37:18 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:48:44 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int 	main(void)
 {
 	// unsigned long long int a = 1;
 	// unsigned long long int b = 5500000000000000000;
-	long double i = -91.598008877;
+	long double i = -91.567867891234565;
 	// double j = 92.6600951;
 	// char *p = ft_strdup("abc");
 	// int n[] = {0, 1, 2};
@@ -124,7 +124,7 @@ int 	main(void)
 //	printf("rl.%f\n", j);
 //	ft_printf("ft.%Lf\n", i);
 //	ft_printf("ft.%f\n", j);
-	printf("rl.%.20Lf test2 %Lf test3 %.Lf test 4%% %.5d\n", i, i, i, -2);
-	ft_printf("ft.%.20Lf test2 %Lf test3 %.Lf test 4%% %.5d\n", i, i, i, -2);
+	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d\n", i, i, i, -2);
+	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d\n", i, i, i, -2);
 //	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
 }

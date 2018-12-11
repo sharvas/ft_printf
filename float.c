@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/11 13:11:14 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:44:05 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,22 @@ int	ft_len_int(long long n)
 	return (len);
 }
 
-long long	ft_multiply_float(long double n, t_print *all)
+long long	ft_pow_ten(t_print *all)
 {
-	long long i = 0;
-	while ((long long)((n - (long long)n) * 10000000) != 0)
-	{
-		n *= 10;
-		all->float_multi++;
-	}
-	all->float_multi--;
-	return (n / 10);
+	int i;
+	long long res;
+
+	i = 0;
+	res = 1;
+	while (i++ < all->precision + 1)
+		res = res * 10;
+	return (res);
 }
 
 char	*ft_itoa_float(long double n, t_print *all)
 {
-	char *str;
+	char *num;
+	char *num_end;
 	int len;
 	long long n_int;
 	long long num_int_part;
@@ -54,41 +55,26 @@ char	*ft_itoa_float(long double n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = ft_multiply_float(n, all);
-	len = ft_len_int(n_int) + 1;
-	if(all->sign)
-		len++;
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	if (all->sign)
-		str[0] = '-';
-	str[len--] = '\0';
-	while (n_int > 0 && all->float_multi)
-	{
-		str[len--] = (n_int % 10) + '0';
-		n_int /= 10;
-		all->float_multi--;
-	}
-	str[len--] = '.';
-	num_int_part = (long long)n;
-	len_int_part = ft_len_int(num_int_part);
-	while (num_int_part > 0)
-	{
-		str[len--] = (num_int_part % 10) + '0';
-		num_int_part /= 10;
-	}
-
-	return (str);
+	n_int = (long long)(n * ft_pow_ten(all));
+	printf("\n%lld\n", n_int);
+	num = ft_itoa_mod((long long)n);
+	len = ft_strlen(num);
+	num = ft_strjoin(num, ".");
+	num_end = ft_itoa_mod(n_int);
+	num_end = num_end + len;
+	num = ft_strjoin(num, num_end);
+	printf("\n--->%s\n", num);
+	return (num);
 }
-char		*ft_build_fl_width(int j, t_print *all)
+char		*ft_build_fl_width(int len)
 {
 	char	*str;
 	int 	i;
 
 	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (all->precision - j + 1))))
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
 		return (str); //ft_error
-	while (i < (all->precision - j))
+	while (i < len)
 		str[i++] = '0';
 	str[i] = '\0';
 	return (str);
@@ -96,28 +82,31 @@ char		*ft_build_fl_width(int j, t_print *all)
 char	*ft_precision_float(char *num_str, t_print *all)
 {
 	int		i;
-	char	*p;
-	int		j;
-
+	char	*tmp;
+	int		len;
+	
 	i = 0;
 	if (all->precision == 0)
 	{
-		p = ft_strchr(num_str, '.');
-		if (*(p + 1) > '4')
-			*(p - 1) = *(p - 1) + 1;
-		*p = '\0';
+		tmp = ft_strchr(num_str, '.');
+		if (*(tmp + 1) > '4')
+			*(tmp - 1) = *(tmp - 1) + 1;
+		*tmp = '\0';
 		return (num_str);
 	}
 	else
 	{
-		while (num_str[i] != '.')
-			i++;
-		if (num_str[i + all->precision] > '4')
-			num_str[i + all->precision - 1]++;
-		num_str[i + all->precision] = '\0';
+		len = ft_strlen(ft_strchr(num_str, '.'));
+		if (len > all->precision)
+		{
+			while (num_str[i] && num_str[i] != '.')
+				i++;
+			if (num_str[i + all->precision + 1] > '4')
+				num_str[i + all->precision]++;
+			num_str[i + all->precision + 1] = '\0';
+		}
+		else
+			num_str = ft_strjoin(num_str, ft_build_fl_width(all->precision - len));
 	}
-	j = ft_strlen(ft_strchr(num_str, '.'));
-	if (j < (all->precision + 1))
-		num_str = ft_strjoin(num_str, ft_build_fl_width(j - 1, all));
 	return (num_str);
 }

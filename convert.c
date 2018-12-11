@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/11 16:06:49 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:23:31 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_fill_width(num_str, all, ' ');
 	else if (all->width && all->zero)
 		num_str = ft_fill_width(num_str, all, '0');
-	if (all->minus || all->zero || (all->precision && all->type != 'f'))
+	if ((all->minus || all->zero || all->prec_set || all->precision) && (!all->width || all->zero))
 		num_str = ft_negative(num_str, all);
 	if ((all->minus && (all->plus || all->space)) || all->zero)
 		num_str = ft_int_plus(num_str, all);
