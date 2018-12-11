@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/10 17:06:32 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:11:14 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ int	ft_len_int(long long n)
 long long	ft_multiply_float(long double n, t_print *all)
 {
 	long long i = 0;
-	while ((long long)n % 10 != 0/* && n < 1000000000000000*/)
+	while ((long long)((n - (long long)n) * 10000000) != 0)
 	{
 		n *= 10;
 		all->float_multi++;
-//		printf("%lld\n", i);
 	}
 	all->float_multi--;
 	return (n / 10);
@@ -55,9 +54,7 @@ char	*ft_itoa_float(long double n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-//	printf("a\n");
 	n_int = ft_multiply_float(n, all);
-//	printf("%lld\n", n_int);
 	len = ft_len_int(n_int) + 1;
 	if(all->sign)
 		len++;
