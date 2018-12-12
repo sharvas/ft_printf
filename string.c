@@ -25,7 +25,11 @@ void	ft_char(t_print *all, va_list ap)
 	char	c;
 	char	*str;
 
-	c = (char)va_arg(ap, int);
+	if (all->type == '%')
+		c = '%';
+	else
+		c = (char)va_arg(ap, int);
+	// printf("\n\nhere: %c\n\n", c);
 	if (!(str = malloc(sizeof(char) * 2)))
 		return ;
 	str[0] = c;
