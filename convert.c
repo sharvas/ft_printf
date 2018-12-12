@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 14:53:25 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:13:12 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,15 +229,30 @@ void		ft_double(t_print *all, va_list ap)
 
 void		ft_float(t_print *all, va_list ap)
 {
-	float	num;
-	char	*num_str;
+	float		num;
+	long double long_num;
+	char		*num_str;
 
-	num = (float)va_arg(ap, double);
-	num_str = ft_itoa_float(num, all);
-		//error
-	num_str = ft_precision_float(num_str, all);
-	ft_justify(num_str, all);
-	free(num_str);
+	num = 0;
+	long_num = 0;
+	if (!all->long_float)
+	{
+		num = (float)va_arg(ap, double);
+		num_str = ft_itoa_float(num, all);
+			//error
+		num_str = ft_precision_float(num_str, all);
+		ft_justify(num_str, all);
+		free(num_str);
+	}
+	else if (all->long_float)
+	{
+		long_num = (long double)va_arg(ap, double);
+		num_str = ft_itoa_double(long_num, all);
+			//error
+		num_str = ft_precision_float(num_str, all);
+		ft_justify(num_str, all);
+		free(num_str);
+	}
 }
 
 void		ft_long_double(t_print *all, va_list ap)
@@ -245,6 +260,7 @@ void		ft_long_double(t_print *all, va_list ap)
 	long double	num;
 	char		*num_str;
 
+	num = 0;
 	num = va_arg(ap, long double);
 	num_str = ft_itoa_double(num, all);
 		//error
@@ -259,7 +275,7 @@ void		ft_floating(t_print *all, va_list ap)
 		ft_double(all, ap);
 	else if (all->L)
 		ft_long_double(all, ap);
-	else
+	else if (!all->l && !all->L)
 		ft_float(all, ap);
 }
 
@@ -268,14 +284,14 @@ void		ft_print(t_print *all, va_list ap)
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
 			all->type == 'o' || all->type == 'x' || all->type == 'X')
 		ft_number(all, ap);
-	if (all->type == 's')
+	else if (all->type == 's')
 		ft_string(all, ap);
-	if (all->type == 'c')
+	else if (all->type == 'c')
 		ft_char(all, ap);
-	if (all->type == '%')
+	else if (all->type == '%')
 		ft_char(all, ap);
-	if (all->type == 'f')
+	else if (all->type == 'f')
 		ft_floating(all, ap);
-	if (all->type == 'p')
+	else if (all->type == 'p')
 		ft_pointer(all, ap);
 }

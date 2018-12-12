@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 14:40:06 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:52:57 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 
 int 	main(void)
 {
-	// unsigned long long int a = 1;
- 	// unsigned long long int b = 5500000000000000000;
- 	long double	i = -91.56799885445;
+	unsigned long long int a = 1000;
+ 	unsigned long long int b = 5500;
+ 	long double	i = -91.99999885445;
 	float		f = -8.569;
  	int			j = 123456789;
 	char		c;
@@ -42,14 +42,10 @@ int 	main(void)
 //	char *p = ft_strdup("abc");
 //	int n[] = {0, 1, 2};
 
-//	printf("rl.%Lf\n", i);
-//	printf("rl.%f\n", j);
-//	ft_printf("ft.%Lf\n", i);
-//	ft_printf("ft.%f\n", j);
-
-	printf("rl.%20.15Lf test2 %.10f test3 %.Lf test 4%% %.5d i: %.5i str: %.50s c: %c\n", i, f, i, -2, j, str, c);
-	ft_printf("ft.%20.15Lf test2 %.10f test3 %.Lf test 4%% %.5d i: %.5i str: %.50s c: %c\n", i, f, i, -2, j, str, c);
-//	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
-//	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
-//	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
+	printf("rl.%20.1Lf test2 %20.10f test3 %.f\n", i, f, 12.212);
+	ft_printf("ft.%20.1Lf test2 %20.10f test3 %.f\n", i, f, 12.212);
+	printf("rl. test 4%% %.5d i: %.5i str: %.50s c: %c\n", -2, j, str, c);
+	ft_printf("ft. test 4%% %.5d i: %.5i str: %.50s c: %c\n", -2, j, str, c);
+	printf("rl. %%lld %lld %%llx %llx %%llo %llo \n", a, a, b);
+	ft_printf("ft. %%lld %lld %%llx %llx %%llo %llo \n", a, a, b);
 }

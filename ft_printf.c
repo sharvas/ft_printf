@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:57:46 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/12 13:57:48 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/12 16:49:51 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_init(t_print *all)
 	all->prec_set = 0;
 	all->float_multi = 0;
 	all->sign = 0;
+	all->long_float = 0;
 }
 
 void	ft_init_partial(t_print *all)
@@ -57,6 +58,7 @@ void	ft_init_partial(t_print *all)
 	all->prec_set = 0;
 	all->float_multi = 0;
 	all->sign = 0;
+	all->long_float = 0;
 }
 
 int 	ft_printf(char const *format, ...)
@@ -74,9 +76,9 @@ int 	ft_printf(char const *format, ...)
 			all.len++;
 			// if (all.form[all.len] != '%')
 			// {
-				ft_parse(&all);
-				ft_print(&all, ap);
-				ft_init_partial(&all);
+			ft_parse(&all);
+			ft_print(&all, ap);
+			ft_init_partial(&all);
 			// }
 			// else
 			// {

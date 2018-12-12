@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/12 14:25:53 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:54:32 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_print
 	int				prec_set;
 	int				float_multi;
 	int				sign;
+	int				long_float;
 }					t_print;
 
 void				ft_init(t_print *all);

@@ -6,12 +6,10 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 14:25:34 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:52:52 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "ft_printf.h"
 
 int	ft_len_int(long long n)
@@ -45,7 +43,7 @@ char	*ft_itoa_float(float n, t_print *all)
 	long	n_int;
 
 	if (n == 0)
-		return ("0");
+		return (ft_strdup("0"));
 	if (n < 0)
 	{
 		all->sign = 1;
@@ -69,7 +67,7 @@ char	*ft_itoa_double(long double n, t_print *all)
 	long long	n_int;
 
 	if (n == 0)
-		return ("0");
+		return (ft_strdup("0"));
 	if (n < 0)
 	{
 		all->sign = 1;
@@ -106,6 +104,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	int		len;
 	
 	i = 0;
+	len = 0;
 	if (all->precision == 0)
 	{
 		tmp = ft_strchr(num_str, '.');
@@ -116,13 +115,32 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	}
 	else
 	{
-		len = ft_strlen(ft_strchr(num_str, '.'));
-		if (len > all->precision)
+		if (ft_strlen(ft_strchr(num_str, '.')) > all->precision)
 		{
 			while (num_str[i] && num_str[i] != '.')
 				i++;
 			if (num_str[i + all->precision + 1] > '4')
-				num_str[i + all->precision]++;
+			{
+				if (num_str[i + all->precision] < '9')
+					num_str[i + all->precision]++;
+				else
+				{
+					len = i + 1;
+					while (num_str[i + all->precision] == '9' || num_str[i + all->precision] == '.')
+						i--;
+					while (i < len)
+					{
+						if (num_str[i + all->precision] == '.')
+							i++;
+						if (num_str[i + all->precision] == '9')
+							num_str[i + all->precision] = '0';
+						else
+							num_str[i + all->precision]++;
+						i++;
+					}
+					i--;
+				}
+			}
 			num_str[i + all->precision + 1] = '\0';
 		}
 	}
