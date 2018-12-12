@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/11 16:23:31 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:38:09 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		else
 			num_str = ft_strjoin(str, num_str);
 	}
+	else if (all->type == 'f')
+			num_str = ft_negative(num_str, all);
 	free(str);
 	return (num_str);
 }
