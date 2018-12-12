@@ -17,9 +17,13 @@ void	ft_string(t_print *all, va_list ap)
 	char	*str;
 
 	str = va_arg(ap, char*);
-//	printf("err str: %s\n", str);
 	ft_justify(str, all);
-	// str = ft_strdup(ap);
-	// printf("%s\n", str);
-	// ft_putstr(str);
 }
+
+// void	ft_char(t_print *all, va_list ap)
+// {
+// 	char	*c;
+
+// 	c = va_arg(ap, char*);
+// 	ft_justify(c, all);
+// }

@@ -75,6 +75,11 @@ void	ft_update_conflicts(t_print *all)
 		all->zero = 0;
 	if (all->type == 'f' && all->prec_set == 0)
 		all->precision = 6;
+	// if (all->type == 's')
+	// {
+	// 	all->prec_set = 0;
+	// 	all->precision = 0;
+	// }
 	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
 	// 	all->type != 's' && all->type != 'S' && all->type != 'f' &&
 	// 	all->type != 'p' && all->precision != -6)
