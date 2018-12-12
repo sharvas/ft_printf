@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 13:48:25 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:01:07 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,7 @@ void		ft_just_float(t_print *all, va_list ap)
 	float	num;
 	char	*num_str;
 
-	num = va_arg(ap, float);
+	num = (float)va_arg(ap, double);
 	num_str = ft_itoa_float(num, all);
 		//error
 	num_str = ft_precision_float(num_str, all);
