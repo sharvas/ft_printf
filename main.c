@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 12:59:16 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:28:29 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,11 @@ int 	ft_printf(char const *format, ...)
 	return (all.printed);
 }
 
-int 	main(void)
+/*int 	main(void)
 {
 	// unsigned long long int a = 1;
 	// unsigned long long int b = 5500000000000000000;
-	/*long*/ double i = -91.567;
+	long double i = -91.567;
 	int	j = 123456789;
 
 // 	char	c;
@@ -136,5 +136,5 @@ int 	main(void)
 	ft_printf("ft.%.15f test2 %f test3 %.f test 4%% %.5d i: %.5i str: %.5s c: %c\n", i, i, i, -2, j, str, c);
 //	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
 //	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
-//	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
+//	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);*/
 }
