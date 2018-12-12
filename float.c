@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/11 17:59:50 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:53:41 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,22 @@ int	ft_len_int(long long n)
 	return (len);
 }
 
-long long	ft_pow_ten(t_print *all)
+long long	ft_pow(int a, int b)
 {
-	int i;
-	long long res;
+	long long	res;
 
-	i = 0;
-	res = 10;
-	while (i++ < all->precision)
-		res = res * 10;
+	res = a;
+	while (b--)
+		res = res * a;
 	return (res);
 }
 
 char	*ft_itoa_float(long double n, t_print *all)
 {
-	char *num;
-	char *num_end;
-	int len;
-	long long n_int;
-//	long long num_int_part;
-//	long long len_int_part;
+	char		*num;
+	char		*num_end;
+	int			len;
+	long long	n_int;
 
 	if (n == 0)
 		return ("0");
@@ -55,15 +51,13 @@ char	*ft_itoa_float(long double n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (long long)(n * ft_pow_ten(all));
-//	printf("\n%lld\n", n_int);
+	n_int = (long long)(n * ft_pow(10, all->precision));
 	num = ft_itoa_mod((long long)n);
 	len = ft_strlen(num);
 	num = ft_strjoin(num, ".");
 	num_end = ft_itoa_mod(n_int);
 	num_end = num_end + len;
 	num = ft_strjoin(num, num_end);
-//	printf("\n--->%s\n", num);
 	return (num);
 }
 char		*ft_build_fl_width(int len)
@@ -105,8 +99,8 @@ char	*ft_precision_float(char *num_str, t_print *all)
 				num_str[i + all->precision]++;
 			num_str[i + all->precision + 1] = '\0';
 		}
-		else
-			num_str = ft_strjoin(num_str, ft_build_fl_width(all->precision - len));
+//		else
+//			num_str = ft_strjoin(num_str, ft_build_fl_width(all->precision - len));
 	}
 	return (num_str);
 }
