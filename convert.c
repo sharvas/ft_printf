@@ -237,8 +237,8 @@ void		ft_print(t_print *all, va_list ap)
 		ft_number(all, ap);
 	if (all->type == 's')
 		ft_string(all, ap);
-	// if (all->type == 'c')
-	// 	ft_char(all, ap);*/
+	if (all->type == 'c')
+		ft_char(all, ap);
 	if (all->type == 'f')
 		ft_float(all, ap);
 	if (all->type == 'p')
