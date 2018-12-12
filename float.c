@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 11:53:41 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:24:04 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ char	*ft_itoa_float(long double n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (long long)(n * ft_pow(10, all->precision));
+	n_int = (long long)(n * (long double)ft_pow(10, all->precision));
+//	printf("\n-->%.15f\n", n_int);
 	num = ft_itoa_mod((long long)n);
 	len = ft_strlen(num);
 	num = ft_strjoin(num, ".");
