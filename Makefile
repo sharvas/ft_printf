@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 SRCS = convert.c \
 		float.c \
-		main.c \
+		ft_printf.c \
 		parse.c \
 		parse_2.c \
 		string.c
