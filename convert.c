@@ -75,7 +75,7 @@ char		*ft_precision(char *num_str, t_print *all)
 	int		i;
 
 	str = NULL;
-	if ((i = ft_strlen(num_str)) < all->precision)
+	if ((i = ft_strlen(num_str)) < all->precision && !(all->type == 's'))
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 			return (str); //ft_error
@@ -85,6 +85,13 @@ char		*ft_precision(char *num_str, t_print *all)
 			str[i++] = '0';
 		str[i] = '\0';
 		num_str = ft_strjoin(str, num_str);
+	}
+	if (all->type == 's' && all->precision /*&& ft_strlen(num_str) < (size_t)all->precision*/)
+	{
+		str = ft_strdup(num_str);
+		str[all->precision] = '\0';
+		num_str = str;
+//strndup??
 	}
 	return (num_str);
 }

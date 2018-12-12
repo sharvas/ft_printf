@@ -17,6 +17,7 @@ SRCS = convert.c \
 		main.c \
 		parse.c \
 		parse_2.c \
+		string.c
 
 OBJ = $(SRCS:.c=.o)
 
