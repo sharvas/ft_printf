@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 17:52:52 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:54:37 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	}
 	else
 	{
-		if (ft_strlen(ft_strchr(num_str, '.')) > all->precision)
+		if (ft_strlen(ft_strchr(num_str, '.')) > (size_t)all->precision)
 		{
 			while (num_str[i] && num_str[i] != '.')
 				i++;
