@@ -20,10 +20,16 @@ void	ft_string(t_print *all, va_list ap)
 	ft_justify(str, all);
 }
 
-// void	ft_char(t_print *all, va_list ap)
-// {
-// 	char	*c;
+void	ft_char(t_print *all, va_list ap)
+{
+	char	c;
+	char	*str;
 
-// 	c = va_arg(ap, char*);
-// 	ft_justify(c, all);
-// }
+	c = (char)va_arg(ap, int);
+	if (!(str = malloc(sizeof(char) * 2)))
+		return ;
+	str[0] = c;
+	str[1] = '\0';
+	ft_justify(str, all);
+	free (str);
+}

@@ -118,10 +118,10 @@ int 	main(void)
 	long double i = -91.56786007891234565;
 	int	j = 123456789;
 
-//	char	c;
+	char	c;
 	char	*str;
 
-//	c = 'c';
+	c = 'c';
 	str = "test me";
 	// double j = 92.6600951;
 	// char *p = ft_strdup("abc");
@@ -131,7 +131,9 @@ int 	main(void)
 //	printf("rl.%f\n", j);
 //	ft_printf("ft.%Lf\n", i);
 //	ft_printf("ft.%f\n", j);
-	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
-	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
+	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n\n c: %c\n\n", i, i, i, -2, j, str, c);
+	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n\n c: %c\n\n", i, i, i, -2, j, str, c);
+//	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
+//	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
 //	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
 }
