@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 17:13:12 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:58:44 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ char		*ft_precision(char *num_str, t_print *all)
 		str[i] = '\0';
 		num_str = ft_strjoin(str, num_str);
 	}
-	if (all->type == 's' && all->precision /*&& ft_strlen(num_str) < (size_t)all->precision*/)
+	if (all->type == 's' && all->precision)
 	{
 		str = ft_strdup(num_str);
 		str[all->precision] = '\0';
 		num_str = str;
-//strndup??
+		//strndup??
 	}
 	return (num_str);
 }
@@ -193,11 +193,11 @@ void		ft_number(t_print *all, va_list ap)
 {
 	if (all->type == 'i' || all->type == 'd')
 		ft_int(all, ap);
-	if (all->type == 'u')
+	else if (all->type == 'u')
 		ft_unsigned(all, ap);
-	if (all->type == 'o')
+	else if (all->type == 'o')
 		ft_int_octal(all, ap);
-	if (all->type == 'x' || all->type == 'X')
+	else if (all->type == 'x' || all->type == 'X')
 		ft_int_hex(all, ap);
 }
 
