@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 11:38:09 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:22:36 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,13 +214,23 @@ void		ft_pointer(t_print *all, va_list ap)
 	free(num_str);
 }
 
+/*void		ft_double(t_print *all, va_list ap)
+{
+	double	num;
+	char	*num_str;
+
+
+}*/
+
 void		ft_float(t_print *all, va_list ap)
 {
 	long double	num;
 	char		*num_str;
 
-	if (all->l || all->L)
-		num = (long double)va_arg(ap, long double);
+	if (all->l)
+		num = (long double)va_arg(ap, double);
+	else if (all->L)
+		num = va_arg(ap, long double);
 	else
 		num = (long double)va_arg(ap, double);
 	num_str = ft_itoa_float(num, all);
