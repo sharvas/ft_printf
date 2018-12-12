@@ -45,8 +45,8 @@ char	*ft_itoa_float(long double n, t_print *all)
 	char *num_end;
 	int len;
 	long long n_int;
-	long long num_int_part;
-	long long len_int_part;
+//	long long num_int_part;
+//	long long len_int_part;
 
 	if (n == 0)
 		return ("0");

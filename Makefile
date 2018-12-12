@@ -10,9 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf
+NAME = libftprintf.a
 
-SRCS = *.c
+SRCS = convert.c \
+		float.c \
+		main.c \
+		parse.c \
+		parse_2.c \
 
 OBJ = $(SRCS:.c=.o)
 
