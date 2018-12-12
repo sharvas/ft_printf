@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 13:22:36 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:48:25 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,30 +214,53 @@ void		ft_pointer(t_print *all, va_list ap)
 	free(num_str);
 }
 
-/*void		ft_double(t_print *all, va_list ap)
-{
-	double	num;
-	char	*num_str;
-
-
-}*/
-
-void		ft_float(t_print *all, va_list ap)
+void		ft_double(t_print *all, va_list ap)
 {
 	long double	num;
 	char		*num_str;
 
-	if (all->l)
-		num = (long double)va_arg(ap, double);
-	else if (all->L)
-		num = va_arg(ap, long double);
-	else
-		num = (long double)va_arg(ap, double);
-	num_str = ft_itoa_float(num, all);
-		//ft_error
+	num = (long double)va_arg(ap, double);
+	num_str = ft_itoa_double(num, all);
+		//error
 	num_str = ft_precision_float(num_str, all);
 	ft_justify(num_str, all);
 	free(num_str);
+}
+
+void		ft_just_float(t_print *all, va_list ap)
+{
+	float	num;
+	char	*num_str;
+
+	num = va_arg(ap, float);
+	num_str = ft_itoa_float(num, all);
+		//error
+	num_str = ft_precision_float(num_str, all);
+	ft_justify(num_str, all);
+	free(num_str);
+}
+
+void		ft_long_double(t_print *all, va_list ap)
+{
+	long double	num;
+	char		*num_str;
+
+	num = va_arg(ap, long double);
+	num_str = ft_itoa_double(num, all);
+		//error
+	num_str = ft_precision_float(num_str, all);
+	ft_justify(num_str, all);
+	free(num_str);
+}
+
+void		ft_float(t_print *all, va_list ap)
+{
+	if (all->l)
+		ft_double(all, ap);
+	else if (all->L)
+		ft_long_double(all, ap);
+	else
+		ft_float(all, ap);
 }
 
 void		ft_print(t_print *all, va_list ap)

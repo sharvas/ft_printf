@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 13:24:04 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:50:05 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,31 @@ long long	ft_pow(int a, int b)
 	return (res);
 }
 
-char	*ft_itoa_float(long double n, t_print *all)
+char	*ft_itoa_float(float n, t_print *all)
+{
+	char	*num;
+	char	*num_end;
+	int		len;
+	int		n_int;
+
+	if (n == 0)
+		return ("0");
+	if (n < 0)
+	{
+		all->sign = 1;
+		n = -n;
+	}
+	n_int = (int)(n * (float)ft_pow(10, all->precision));
+	num = ft_itoa_mod((int)n);
+	len = ft_strlen(num);
+	num = ft_strjoin(num, ".");
+	num_end = ft_itoa_mod(n_int);
+	num_end = num_end + len;
+	num = ft_strjoin(num, num_end);
+	return (num);
+}
+
+char	*ft_itoa_double(long double n, t_print *all)
 {
 	char		*num;
 	char		*num_end;
@@ -52,7 +76,6 @@ char	*ft_itoa_float(long double n, t_print *all)
 		n = -n;
 	}
 	n_int = (long long)(n * (long double)ft_pow(10, all->precision));
-//	printf("\n-->%.15f\n", n_int);
 	num = ft_itoa_mod((long long)n);
 	len = ft_strlen(num);
 	num = ft_strjoin(num, ".");
@@ -61,6 +84,7 @@ char	*ft_itoa_float(long double n, t_print *all)
 	num = ft_strjoin(num, num_end);
 	return (num);
 }
+
 char		*ft_build_fl_width(int len)
 {
 	char	*str;
@@ -74,6 +98,7 @@ char		*ft_build_fl_width(int len)
 	str[i] = '\0';
 	return (str);
 }
+
 char	*ft_precision_float(char *num_str, t_print *all)
 {
 	int		i;
@@ -100,8 +125,6 @@ char	*ft_precision_float(char *num_str, t_print *all)
 				num_str[i + all->precision]++;
 			num_str[i + all->precision + 1] = '\0';
 		}
-//		else
-//			num_str = ft_strjoin(num_str, ft_build_fl_width(all->precision - len));
 	}
 	return (num_str);
 }
