@@ -118,14 +118,14 @@ int 	main(void)
 	/*long*/ double i = -91.567;
 	int	j = 123456789;
 
-	char	c;
-	char	*str;
+// 	char	c;
+// 	char	*str;
 
-	c = 'c';
-	str = "test me";
-	// double j = 92.6600951;
-	// char *p = ft_strdup("abc");
-	// int n[] = {0, 1, 2};
+// 	c = 'c';
+// 	str = "test me";
+// 	// double j = 92.6600951;
+// 	// char *p = ft_strdup("abc");
+// 	// int n[] = {0, 1, 2};
 
 //	printf("rl.%Lf\n", i);
 //	printf("rl.%f\n", j);
