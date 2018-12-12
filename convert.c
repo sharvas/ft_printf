@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 17:58:44 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 18:41:53 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	{
 		if (all->sign && !all->minus && !all->zero)
 			num_str = ft_negative(num_str, all);
-		if ((all->sign || ((all->plus || all->space) && (all->minus ||
+		if ((all->sign || ((all->sharp || all->plus || all->space) && (all->minus ||
 							all->zero))))
+		{
+			if (all->sharp && all->type != 'o')
+				all->width--;
 			all->width--;
+		}
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
 		if (all->minus)
@@ -65,9 +69,15 @@ char		*ft_int_plus(char *num_str, t_print *all)
 	{
 		if (all->plus)
 			num_str = ft_strjoin("+", num_str);
-		if (all->space && !all->plus)
+		else if (all->space && !all->plus)
 			num_str = ft_strjoin(" ", num_str);
 	}
+	if (all->sharp && all->type == 'x' && *num_str != '0') //potential problem
+		num_str = ft_strjoin("0x", num_str);
+	else if (all->sharp && all->type == 'X' && *num_str != '0')
+		num_str = ft_strjoin("0X", num_str);
+	else if (all->sharp && all->type == 'o')
+		num_str = ft_strjoin("0", num_str);
 	return (num_str);
 }
 
@@ -102,7 +112,7 @@ void		ft_justify(char *num_str, t_print *all)
 {
 	if (all->precision)
 		num_str = ft_precision(num_str, all);
-	if (!all->minus && (all->plus || all->space) && !all->zero)
+	if (!all->minus && (all->plus || all->sharp || all->space) && !all->zero)
 		num_str = ft_int_plus(num_str, all);
 	if (all->width && !all->zero)
 		num_str = ft_fill_width(num_str, all, ' ');
@@ -110,7 +120,7 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_fill_width(num_str, all, '0');
 	if ((all->minus || all->zero || all->prec_set || all->precision) && (!all->width || all->zero))
 		num_str = ft_negative(num_str, all);
-	if ((all->minus && (all->plus || all->space)) || all->zero)
+	if ((all->minus && (all->plus || all->sharp || all->space)) || all->zero)
 		num_str = ft_int_plus(num_str, all);
 	ft_putstr(num_str);
 	all->printed = all->printed + ft_strlen(num_str);
