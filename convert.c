@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 14:01:07 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:25:07 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,7 @@ void		ft_double(t_print *all, va_list ap)
 	free(num_str);
 }
 
-void		ft_just_float(t_print *all, va_list ap)
+void		ft_float(t_print *all, va_list ap)
 {
 	float	num;
 	char	*num_str;
@@ -253,7 +253,7 @@ void		ft_long_double(t_print *all, va_list ap)
 	free(num_str);
 }
 
-void		ft_float(t_print *all, va_list ap)
+void		ft_floating(t_print *all, va_list ap)
 {
 	if (all->l)
 		ft_double(all, ap);
@@ -275,7 +275,7 @@ void		ft_print(t_print *all, va_list ap)
 	if (all->type == '%')
 		ft_char(all, ap);
 	if (all->type == 'f')
-		ft_float(all, ap);
+		ft_floating(all, ap);
 	if (all->type == 'p')
 		ft_pointer(all, ap);
 }
