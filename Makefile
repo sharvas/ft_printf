@@ -19,19 +19,44 @@ SRCS = convert.c \
 		parse_2.c \
 		string.c
 
+LIBO = libft/ft_isdigit.o \
+		libft/ft_itoa_base.o \
+		libft/ft_itoa_mod.o \
+		libft/ft_itoa_unsigned.o \
+		libft/ft_putchar.o \
+		libft/ft_putstr.o \
+		libft/ft_strchr.o \
+		libft/ft_strdup.o \
+		libft/ft_strjoin.o \
+		libft/ft_strlen.o \
+		libft/ft_strcat.o \
+		libft/ft_strcpy.o \
+		libft/ft_strnew.o \
+		libft/ft_bzero.o \
+		libft/ft_memset.o
+
 OBJ = $(SRCS:.c=.o)
 
 FLAGS = -Wall -Werror -Wextra
 
 HEADER = -I libft/
 
+INC = ft_printf.h
+
 LIB = -L libft/ -lft
 
-all: $(NAME)
+all: lib $(NAME)
 
-$(NAME): lib
-	gcc $(FLAGS) $(HEADER) -c $(SRCS) -g
-	gcc $(OBJ) $(HEADER) $(LIB) -g -o $(NAME)
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ) $(LIBO)
+	@ranlib $(NAME)
+
+$(OBJ): $(SRCS)
+	@gcc -c $(FLAGS) $(SRCS) -I $(INC)
+
+##$(NAME): lib
+##	gcc $(FLAGS) $(HEADER) -c $(SRCS) -g
+##	gcc $(OBJ) $(HEADER) $(LIB) -g -o $(NAME)
 
 lib: 
 	@make -C libft/ all
