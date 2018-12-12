@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 14:26:09 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:40:06 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int 	main(void)
 //	ft_printf("ft.%Lf\n", i);
 //	ft_printf("ft.%f\n", j);
 
-	printf("rl.%20.15Lf test2 %.10lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s c: %c\n", i, f, i, -2, j, str, c);
-	ft_printf("ft.%20.15Lf test2 %.10lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s c: %c\n", i, f, i, -2, j, str, c);
+	printf("rl.%20.15Lf test2 %.10f test3 %.Lf test 4%% %.5d i: %.5i str: %.50s c: %c\n", i, f, i, -2, j, str, c);
+	ft_printf("ft.%20.15Lf test2 %.10f test3 %.Lf test 4%% %.5d i: %.5i str: %.50s c: %c\n", i, f, i, -2, j, str, c);
 //	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
 //	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d i: %.5i str: %.50s\n", i, i, i, -2, j, str);
 //	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
