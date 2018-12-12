@@ -12,10 +12,14 @@
 
 #include "ft_printf.h"
 
-// void	ft_string(t_print *all, va_list ap)
-// {
-// 	//ft_justify(ap, all);
-// 	// str = ft_strdup(ap);
-// 	// printf("%s\n", str);
-// 	// ft_putstr(str);
-// }
+void	ft_string(t_print *all, va_list ap)
+{
+	char	*str;
+
+	str = va_arg(ap, char*);
+//	printf("err str: %s\n", str);
+	ft_justify(str, all);
+	// str = ft_strdup(ap);
+	// printf("%s\n", str);
+	// ft_putstr(str);
+}

@@ -116,6 +116,8 @@ int 	main(void)
 	// unsigned long long int a = 1;
 	// unsigned long long int b = 5500000000000000000;
 	long double i = -91.56786007891234565;
+	char	*str;
+	str = "test me";
 	// double j = 92.6600951;
 	// char *p = ft_strdup("abc");
 	// int n[] = {0, 1, 2};
@@ -124,7 +126,7 @@ int 	main(void)
 //	printf("rl.%f\n", j);
 //	ft_printf("ft.%Lf\n", i);
 //	ft_printf("ft.%f\n", j);
-	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d\n", i, i, i, -2);
-	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d\n", i, i, i, -2);
+	printf("rl.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d str: %s\n", i, i, i, -2, str);
+	ft_printf("ft.%20.15Lf test2 %Lf test3 %.Lf test 4%% %.5d str: %s\n", i, i, i, -2, str);
 //	ft_printf("ft.%20p\n test2 %20p\n test3 %lli\n test 4%%\n\n", n, n, a);
 }

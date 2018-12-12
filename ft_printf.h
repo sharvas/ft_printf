@@ -79,6 +79,7 @@ void				ft_pointer(t_print *all, va_list ap);
 void				ft_print(t_print *all, va_list ap);
 
 void				ft_string(t_print *all, va_list ap);
+//void				ft_string(/*t_print *all, */va_list ap);
 
 void				ft_print_struct(t_print *all); //rm!!!!!!!!!
 
