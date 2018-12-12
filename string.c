@@ -16,7 +16,8 @@ void	ft_string(t_print *all, va_list ap)
 {
 	char	*str;
 
-	str = va_arg(ap, char*);
+	if (!(str = va_arg(ap, char*)))
+		str = ft_strdup("(null)");
 	ft_justify(str, all);
 }
 
