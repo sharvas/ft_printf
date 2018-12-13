@@ -46,7 +46,6 @@ void		ft_justify(char *num_str, t_print *all)
 	}
 	else
 		ft_putstr(num_str);
-
 	all->printed = all->printed + ft_strlen(num_str);
 }
 
