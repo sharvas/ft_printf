@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 17:54:37 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:44:59 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_itoa_float(float n, t_print *all)
 {
 	char	*num;
 	char	*num_end;
-	int		len;
+//	int		len;
 	long	n_int;
 
 	if (n == 0)
@@ -49,12 +49,10 @@ char	*ft_itoa_float(float n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (long)(n * (float)ft_pow(10, all->precision));
-	num = ft_itoa_mod((long)n);
-	len = ft_strlen(num);
+	n_int = (long)((n - (long)n) * (float)ft_pow(10, all->precision));
+	num = ft_itoa_mod((intmax_t)n);
 	num = ft_strjoin(num, ".");
 	num_end = ft_itoa_mod(n_int);
-	num_end = num_end + len;
 	num = ft_strjoin(num, num_end);
 	return (num);
 }
@@ -63,8 +61,8 @@ char	*ft_itoa_double(long double n, t_print *all)
 {
 	char		*num;
 	char		*num_end;
-	int			len;
-	long long	n_int;
+//	int			len;
+	intmax_t	n_int;
 
 	if (n == 0)
 		return (ft_strdup("0"));
@@ -73,12 +71,10 @@ char	*ft_itoa_double(long double n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (long long)(n * (long double)ft_pow(10, all->precision));
-	num = ft_itoa_mod((long long)n);
-	len = ft_strlen(num);
+	n_int = (intmax_t)((n - (intmax_t)n) * (long double)ft_pow(10, all->precision));
+	num = ft_itoa_mod((intmax_t)n);
 	num = ft_strjoin(num, ".");
 	num_end = ft_itoa_mod(n_int);
-	num_end = num_end + len;
 	num = ft_strjoin(num, num_end);
 	return (num);
 }

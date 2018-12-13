@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/09 15:54:25 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:57:46 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void	ft_update_DOUF(t_print *all)
 	if (all->form[all->len] == 'F')
 	{
 		all->type = 'f';
-//		all->ll = 1;
 		all->len++;
 	}
 }
@@ -113,14 +112,14 @@ void	ft_update_DOUF(t_print *all)
 void	ft_parse(t_print *all)
 {
 	while (all->form[all->len] &&
-		ft_strchr("+- #0123456789.hlLjzDOUF", all->form[all->len]))
+		ft_strchr("+- #0123456789.hlLjz", all->form[all->len]))
 	{
 		ft_update_flags(all);
 		ft_update_width(all);
 		ft_update_precision(all);
 		ft_update_length(all);
-		ft_update_DOUF(all);
 	}
+	ft_update_DOUF(all);
 	ft_update_type(all);
 	ft_update_conflicts(all);
 }
