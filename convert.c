@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/12 18:41:53 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 10:52:27 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		else if (all->space && !all->plus)
 			num_str = ft_strjoin(" ", num_str);
 	}
-	if (all->sharp && all->type == 'x' && *num_str != '0') //potential problem
+	if (all->sharp && all->type == 'x' && !all->hex_o_zero && *num_str != '0')
 		num_str = ft_strjoin("0x", num_str);
-	else if (all->sharp && all->type == 'X' && *num_str != '0')
+	else if (all->sharp && all->type == 'X' && !all->hex_o_zero && *num_str != '0')
 		num_str = ft_strjoin("0X", num_str);
-	else if (all->sharp && all->type == 'o')
+	else if (all->sharp && all->type == 'o' && !all->hex_o_zero)
 		num_str = ft_strjoin("0", num_str);
 	return (num_str);
 }
@@ -176,8 +176,12 @@ void		ft_int_octal(t_print *all, va_list ap)
 		num = va_arg(ap, unsigned long long);
 	else
 		num = (unsigned long long)va_arg(ap, unsigned int);
-	num_str = ft_itoa_base(num, 8, all->type);
-		//ft_error
+	if (!all->hex_o_zero)
+		num_str = ft_itoa_base(num, 8, all->type);
+			//ft_error
+	else
+		num_str = ft_strdup("");
+			//ft_error
 	ft_justify(num_str, all);
 	free(num_str);
 }
@@ -193,8 +197,11 @@ void		ft_int_hex(t_print *all, va_list ap)
 		num = va_arg(ap, unsigned long long);
 	else
 		num = (unsigned long long)va_arg(ap, unsigned int);
-	num_str = ft_itoa_base(num, 16, all->type);
-		//ft_error
+	if (!all->hex_o_zero)
+		num_str = ft_itoa_base(num, 16, all->type);
+			//ft_error
+	else
+		num_str = ft_strdup("");
 	ft_justify(num_str, all);
 	free(num_str);
 }

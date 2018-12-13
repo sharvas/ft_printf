@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:57:46 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/12 16:49:51 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 10:33:48 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_init(t_print *all)
 	all->float_multi = 0;
 	all->sign = 0;
 	all->long_float = 0;
+	all->hex_o_zero = 0;
 }
 
 void	ft_init_partial(t_print *all)
@@ -59,6 +60,7 @@ void	ft_init_partial(t_print *all)
 	all->float_multi = 0;
 	all->sign = 0;
 	all->long_float = 0;
+	all->hex_o_zero = 0;
 }
 
 int 	ft_printf(char const *format, ...)
