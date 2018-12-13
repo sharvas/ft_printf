@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 13:01:30 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 13:22:05 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,10 @@ void		ft_int(t_print *all, va_list ap)
 		num = (long long)va_arg(ap, long);
 	else if (all->ll)
 		num = va_arg(ap, long long);
+	else if (all->h)
+		num = (long long)(short)va_arg(ap, int);
+	else if (all->hh)
+		num = (long long)(signed char)va_arg(ap, int);
 	else
 		num = (long long)va_arg(ap, int);
 	if (num < 0)
@@ -148,7 +152,7 @@ void		ft_int(t_print *all, va_list ap)
 	if (all->type == 'd' && !all->precision && all->prec_set && num == 0)
 		num_str = ft_strdup("");
 	else
-		num_str = ft_itoa_mod(num);
+		num_str = ft_itoa_mod((long long)num);
 		//ft_error
 	ft_justify(num_str, all);
 	free(num_str);
