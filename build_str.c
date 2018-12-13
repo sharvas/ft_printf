@@ -3,7 +3,7 @@
 
 char		*ft_negative(char *num_str, t_print *all)
 {
-	if (all->sign)
+	if (all->sign && !all->print_negative)
 		num_str = ft_strjoin("-", num_str);
 	all->print_negative = 1;
 	return (num_str);

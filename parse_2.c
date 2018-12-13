@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:20:58 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/13 11:29:46 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:22:33 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	ft_update_conflicts(t_print *all)
 		all->space = 0;
 		all->precision = 0;
 	}
+	if ((all->type == 'd' || all->type == 'i') && all->zero && all->prec_set)
+		all->zero = 0;
 	// if (all->type == 's')
 	// {
 	// 	all->prec_set = 0;
