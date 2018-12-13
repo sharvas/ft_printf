@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 12:16:47 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/13 13:26:51 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:45:17 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					ft_isprint(int c);
 char				*ft_itoa(int n);
 char				*ft_itoa_mod(intmax_t n);
 char				*ft_itoa_unsigned(unsigned long long n);
-char				*ft_itoa_base(unsigned long long n, int b, char type);
+char				*ft_itoa_base(uintmax_t n, int b, char type);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);

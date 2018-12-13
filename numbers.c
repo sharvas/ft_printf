@@ -39,7 +39,9 @@ void		ft_unsigned(t_print *all, va_list ap)
 	unsigned long long	num;
 	char				*num_str;
 
-	if (all->l)
+	if (all->j)
+		num = (unsigned long long)va_arg(ap, size_t);
+	else if (all->l)
 		num = (unsigned long long)va_arg(ap, unsigned long);
 	else if (all->ll)
 		num = va_arg(ap, unsigned long long);
@@ -74,15 +76,17 @@ void		ft_int_octal(t_print *all, va_list ap)
 
 void		ft_int_hex(t_print *all, va_list ap)
 {
-	unsigned long long	num;
-	char				*num_str;
+	uintmax_t	num;
+	char		*num_str;
 
-	if (all->l)
-		num = (unsigned long long)va_arg(ap, unsigned long);
+	if (all->j)
+		num = va_arg(ap, uintmax_t);
+	else if (all->l)
+		num = (uintmax_t)va_arg(ap, unsigned long);
 	else if (all->ll)
-		num = va_arg(ap, unsigned long long);
+		num = (uintmax_t)va_arg(ap, unsigned long long);
 	else
-		num = (unsigned long long)va_arg(ap, unsigned int);
+		num = (uintmax_t)va_arg(ap, unsigned int);
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->hex_o_zero)
