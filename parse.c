@@ -82,7 +82,7 @@ void	ft_update_precision(t_print *all)
 	all->len += count;
 }
 
-void	ft_DOU(t_print *all)
+void	ft_update_DOUF(t_print *all)
 {
 	if (all->form[all->len] == 'D')
 	{
@@ -102,18 +102,24 @@ void	ft_DOU(t_print *all)
 		all->l = 1;
 		all->len++;
 	}
+	if (all->form[all->len] == 'F')
+	{
+		all->type = 'f';
+//		all->ll = 1;
+		all->len++;
+	}
 }
 
 void	ft_parse(t_print *all)
 {
 	while (all->form[all->len] &&
-		ft_strchr("+- #0123456789.hlLjzDOU", all->form[all->len]))
+		ft_strchr("+- #0123456789.hlLjzDOUF", all->form[all->len]))
 	{
 		ft_update_flags(all);
 		ft_update_width(all);
 		ft_update_precision(all);
 		ft_update_length(all);
-		ft_DOU(all);
+		ft_update_DOUF(all);
 	}
 	ft_update_type(all);
 	ft_update_conflicts(all);

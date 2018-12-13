@@ -63,6 +63,8 @@ int					ft_istype(char c);
 void				ft_update_type(t_print *all);
 void				ft_update_conflicts(t_print *all);
 
+void				ft_update_DOUF(t_print *all);
+
 // build_str.c //
 char				*ft_negative(char *num_str, t_print *all);
 char				*ft_build_width(t_print *all, char c);
@@ -94,6 +96,7 @@ void				ft_init_partial(t_print *all);
 void				ft_pointer(t_print *all, va_list ap);
 void				ft_string(t_print *all, va_list ap);
 void				ft_char(t_print *all, va_list ap);
+
 
 
 double				ft_modulus(long double a, long double b);
