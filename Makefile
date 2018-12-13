@@ -20,8 +20,7 @@ SRCS = build_str.c \
 		numbers.c \
 		parse.c \
 		parse_2.c \
-		string.c \
-		build_str.c
+		string.c
 
 LIBO = libft/ft_isdigit.o \
 		libft/ft_itoa_base.o \

@@ -29,6 +29,10 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	char	*str;
 
 	str = NULL;
+	// if (all->type == 'c' && *num_str == '\0')
+	// {
+
+	// }
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
 		if (all->sign && !all->minus && !all->zero)

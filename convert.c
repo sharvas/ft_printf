@@ -28,8 +28,30 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_int_plus(num_str, all);
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);
+	// if (all->type == 'c')
+	// {
+	// 	while (*num_str && *num_str != '\0')
+	// 	{
+	// 		ft_putchar(*num_str);
+	// 		num_str++;
+	// 		all->printed++;
+	// 	}
+	// 	if (*num_str == '\0')
+	// 	{
+	// 		ft_putchar('\0');
+	// 		all->printed++;
+	// 	}
+	// 	while (*num_str && *num_str != '\0')
+	// 	{
+	// 		ft_putchar(*num_str);
+	// 		num_str++;
+	// 		all->printed++;
+	// 	}
+	// }
 	if (all->type == 'c' && *num_str == '\0')
 	{
+//		ft_putstr(num_str);
+//		if (*num_str == '\0')
 		ft_putchar('\0');
 		all->printed++;
 	}

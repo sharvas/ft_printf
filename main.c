@@ -36,7 +36,7 @@ int 	main(void)
 	char		c;
 	char		*str;
 
- 	c = 0;
+ 	c = 42;
  	str = "test me";
 //	double j = 92.6600951;
 //	char *p = ft_strdup("abc");
@@ -44,8 +44,8 @@ int 	main(void)
 
 	printf("rl.%20.1Lf test2 %20.10f test3 %.f\n", i, f, 12.212);
 	ft_printf("ft.%20.1Lf test2 %20.10f test3 %.f\n", i, f, 12.212);
-	printf("rl. test 4%% %.5d i: %.5i str: %.50s c: %2c\n", -2, j, str, c);
-	ft_printf("ft. test 4%% %.5d i: %.5i str: %.50s c: %2c\n", -2, j, str, c);
+	printf("rl. test 4%% %.5d i: %.5i str: %.50s c: %-2c\n", -2, j, str, c);
+	ft_printf("ft. test 4%% %.5d i: %.5i str: %.50s c: %-2c\n", -2, j, str, c);
 	printf("rl. %%lld %lld %%llx %llx %%llo %llo \n", a, a, b);
 	ft_printf("ft. %%lld %lld %%llx %llx %%llo %llo \n", a, a, b);
 }
