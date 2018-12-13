@@ -10,6 +10,10 @@ void		ft_int(t_print *all, va_list ap)
 		num = (long long)va_arg(ap, long);
 	else if (all->ll)
 		num = va_arg(ap, long long);
+	else if (all->h)
+		num = (long long)(short)va_arg(ap, int);
+	else if (all->hh)
+		num = (long long)(signed char)va_arg(ap, int);
 	else
 		num = (long long)va_arg(ap, int);
 	if (num < 0)
