@@ -17,7 +17,10 @@ SRCS = convert.c \
 		ft_printf.c \
 		parse.c \
 		parse_2.c \
-		string.c
+		string.c \
+		numbers.c \
+		float_types.c \
+		build_str.c
 
 LIBO = libft/ft_isdigit.o \
 		libft/ft_itoa_base.o \
