@@ -18,6 +18,8 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_precision(num_str, all);
 	if (!all->minus && (all->plus || all->sharp || all->space) && !all->zero)
 		num_str = ft_int_plus(num_str, all);
+	if (all->type == 'c' && all->char_zero == 1)
+		all->width--;
 	if (all->width && !all->zero)
 		num_str = ft_fill_width(num_str, all, ' ');
 	else if (all->width && all->zero)
@@ -49,16 +51,23 @@ void		ft_justify(char *num_str, t_print *all)
 	// 	}
 	// }
 
-	if (all->type == 'c' && *num_str == '\0')
+	if (all->type == 'c' && all->char_zero == 1)
 	{
-//		ft_putstr(num_str);
-//		if (*num_str == '\0')
-		ft_putchar('\0');
-		all->printed++;
+		if (all->minus)
+		{
+			ft_putchar('\0');
+			ft_putstr(num_str);
+		}
+		else
+		{
+			ft_putstr(num_str);
+			ft_putchar('\0');
+		}
+		all->printed++;// wrong number??
 	}
 	else
 		ft_putstr(num_str);
-	
+
 	all->printed = all->printed + ft_strlen(num_str);
 }
 

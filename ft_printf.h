@@ -45,6 +45,7 @@ typedef struct		s_print
 	int				long_float;
 	int				hex_o_zero;
 	int				num_zero;
+	int				char_zero;
 	int				print_negative;
 }					t_print;
 

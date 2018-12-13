@@ -32,6 +32,8 @@ void	ft_char(t_print *all, va_list ap)
 		c = (char)va_arg(ap, int);
 	if (!(str = malloc(sizeof(char) * 2)))
 		return ;
+	if (c == '\0')
+		all->char_zero = 1;
 	str[0] = c;
 	str[1] = '\0';
 	ft_justify(str, all);

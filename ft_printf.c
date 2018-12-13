@@ -38,6 +38,7 @@ void	ft_init(t_print *all)
 	all->long_float = 0;
 	all->hex_o_zero = 0;
 	all->num_zero = 0;
+	all->char_zero = 0;
 	all->print_negative = 0;
 }
 
@@ -64,6 +65,7 @@ void	ft_init_partial(t_print *all)
 	all->long_float = 0;
 	all->hex_o_zero = 0;
 	all->num_zero = 0;
+	all->char_zero = 0;
 	all->print_negative = 0;
 }
 

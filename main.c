@@ -36,7 +36,7 @@ int 	main(void)
 	char		c;
 	char		*str;
 
- 	c = 42;
+ 	c = 0;
  	str = "test me";
 //	double j = 92.6600951;
 //	char *p = ft_strdup("abc");
