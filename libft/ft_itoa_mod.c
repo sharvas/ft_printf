@@ -6,13 +6,13 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 10:56:02 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 13:28:25 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_find_len(long long n)
+static int	ft_find_len(intmax_t n)
 {
 	int			neg;
 	int			len;
@@ -29,7 +29,7 @@ static int	ft_find_len(long long n)
 	return ((neg) ? len + 1 : len);
 }
 
-char		*ft_itoa_mod(long long n)
+char		*ft_itoa_mod(intmax_t n)
 {
 	char	*fresh;
 	int		len;
@@ -37,6 +37,10 @@ char		*ft_itoa_mod(long long n)
 	len = ft_find_len(n);
 	if (!(fresh = ft_strnew(len)))
 		return (NULL);
+	if (n < -9223372036854775807)
+		return (ft_strdup("-9223372036854775808"));
+	else if (n > 9223372036854775806)
+		return (ft_strdup("9223372036854775807"));
 	if (n < 0)
 	{
 		fresh[0] = '-';
