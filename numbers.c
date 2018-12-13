@@ -3,19 +3,23 @@
 
 void		ft_int(t_print *all, va_list ap)
 {
-	long long	num;
+	intmax_t	num;
 	char		*num_str;
 
-	if (all->l)
-		num = (long long)va_arg(ap, long);
+	if (all->z)
+		num = (intmax_t)va_arg(ap, size_t);
+	else if (all->j)
+		num = va_arg(ap, intmax_t);
+	else if (all->l)
+		num = (intmax_t)va_arg(ap, long);
 	else if (all->ll)
-		num = va_arg(ap, long long);
+		num = (intmax_t)va_arg(ap, long long);
 	else if (all->h)
-		num = (long long)(short)va_arg(ap, int);
+		num = (intmax_t)(short)va_arg(ap, int);
 	else if (all->hh)
-		num = (long long)(signed char)va_arg(ap, int);
+		num = (intmax_t)(signed char)va_arg(ap, int);
 	else
-		num = (long long)va_arg(ap, int);
+		num = va_arg(ap, int);
 	if (num < 0)
 	{
 		all->sign = 1;
