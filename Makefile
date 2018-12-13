@@ -12,12 +12,16 @@
 
 NAME = libftprintf.a
 
-SRCS = convert.c \
+SRCS = build_str.c \
+		convert.c \
 		float.c \
+		float_types.c \
 		ft_printf.c \
+		numbers.c \
 		parse.c \
 		parse_2.c \
-		string.c
+		string.c \
+		build_str.c
 
 LIBO = libft/ft_isdigit.o \
 		libft/ft_itoa_base.o \

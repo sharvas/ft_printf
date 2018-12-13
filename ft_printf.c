@@ -80,18 +80,9 @@ int 	ft_printf(char const *format, ...)
 		if (all.form[all.len] == '%')
 		{
 			all.len++;
-			// if (all.form[all.len] != '%')
-			// {
 			ft_parse(&all);
 			ft_print(&all, ap);
 			ft_init_partial(&all);
-			// }
-			// else
-			// {
-			// 	ft_putchar('%');
-			// 	all.printed++;
-			// 	all.len++;
-			// }
 		}
 		else
 		{

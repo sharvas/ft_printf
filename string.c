@@ -30,7 +30,6 @@ void	ft_char(t_print *all, va_list ap)
 		c = '%';
 	else
 		c = (char)va_arg(ap, int);
-	// printf("\n\nhere: %c\n\n", c);
 	if (!(str = malloc(sizeof(char) * 2)))
 		return ;
 	str[0] = c;
