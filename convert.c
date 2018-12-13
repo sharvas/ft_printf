@@ -125,7 +125,13 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_int_plus(num_str, all);
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);
-	ft_putstr(num_str);
+	if (all->type == 'c' && *num_str == '\0')
+	{
+		ft_putchar('\0');
+		all->printed++;
+	}
+	else
+		ft_putstr(num_str);
 	all->printed = all->printed + ft_strlen(num_str);
 }
 
