@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 15:45:09 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 21:01:24 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,19 @@ void		ft_justify(char *num_str, t_print *all)
 
 void		ft_pointer(t_print *all, va_list ap)
 {
-	unsigned long long	num;
-	char				*num_str;
+	uintmax_t	num;
+	char		*num_str;
 
-	num = (unsigned long long)va_arg(ap, void*);
-	num_str = ft_itoa_base(num, 16, 'x');
+	num = (uintmax_t)va_arg(ap, void*);
+	if (all->type == 'p' && all->prec_set && !all->precision && num == 0)
+		num_str = ft_strdup("");
+	else
+		num_str = ft_itoa_base(num, 16, 'x');
 		//ft_error
-	num_str = ft_strjoin("0x", num_str);
+	if (num == 0)
+		all->num_zero = 1;
+	if (!all->precision || all->num_zero)
+		num_str = ft_strjoin("0x", num_str);
 	ft_justify(num_str, all);
 	free(num_str);
 }

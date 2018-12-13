@@ -20,12 +20,14 @@ void		ft_int(t_print *all, va_list ap)
 		num = (intmax_t)(signed char)va_arg(ap, int);
 	else
 		num = va_arg(ap, int);
+//	if (num == 0)
+//		all->num_zero = 1;
 	if (num < 0)
 	{
 		all->sign = 1;
 		num = -num;
 	}
-	if (all->type == 'd' && !all->precision && all->prec_set && num == 0)
+	if ((all->type == 'd' || all->type == 'i') && !all->precision && all->prec_set && num == 0)
 		num_str = ft_strdup("");
 	else
 		num_str = ft_itoa_mod(num);
@@ -36,34 +38,51 @@ void		ft_int(t_print *all, va_list ap)
 
 void		ft_unsigned(t_print *all, va_list ap)
 {
-	unsigned long long	num;
-	char				*num_str;
+	uintmax_t	num;
+	char		*num_str;
 
-	if (all->j)
-		num = (unsigned long long)va_arg(ap, size_t);
+	if (all->j || all->z)
+		num = va_arg(ap, uintmax_t);
 	else if (all->l)
-		num = (unsigned long long)va_arg(ap, unsigned long);
+		num = (uintmax_t)va_arg(ap, unsigned long);
 	else if (all->ll)
-		num = va_arg(ap, unsigned long long);
+		num = (uintmax_t)va_arg(ap, unsigned long long);
+	else if (all->h)
+		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
+	else if (all ->hh)
+		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
 	else
-		num = (unsigned long long)va_arg(ap, unsigned int);
-	num_str = ft_itoa_unsigned(num);
-		//ft_error
+		num = (uintmax_t)va_arg(ap, unsigned int);
+//	if (num == 0)
+//		all->num_zero = 1;
+	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
+		num_str = ft_strdup("");
+	else
+		num_str = ft_itoa_unsigned(num);
+			//ft_error
 	ft_justify(num_str, all);
 	free(num_str);
 }
 
 void		ft_int_octal(t_print *all, va_list ap)
 {
-	unsigned long long	num;
-	char				*num_str;
+	uintmax_t	num;
+	char		*num_str;
 
-	if (all->l)
-		num = (unsigned long long)va_arg(ap, unsigned long);
+	if (all->j || all->z)
+		num = va_arg(ap, uintmax_t);
+	else if (all->l)
+		num = (uintmax_t)va_arg(ap, unsigned long);
 	else if (all->ll)
-		num = va_arg(ap, unsigned long long);
+		num = (uintmax_t)va_arg(ap, unsigned long long);
+	else if (all->h)
+		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
+	else if (all->hh)
+		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
 	else
-		num = (unsigned long long)va_arg(ap, unsigned int);
+		num = (uintmax_t)va_arg(ap, unsigned int);
+	if (num == 0)
+		all->num_zero = 1;
 	if (!all->hex_o_zero || all->sharp)
 		num_str = ft_itoa_base(num, 8, all->type);
 			//ft_error
@@ -79,12 +98,16 @@ void		ft_int_hex(t_print *all, va_list ap)
 	uintmax_t	num;
 	char		*num_str;
 
-	if (all->j)
+	if (all->j || all->z)
 		num = va_arg(ap, uintmax_t);
 	else if (all->l)
 		num = (uintmax_t)va_arg(ap, unsigned long);
 	else if (all->ll)
 		num = (uintmax_t)va_arg(ap, unsigned long long);
+	else if (all->h)
+		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
+	else if (all->hh)
+		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
 	else
 		num = (uintmax_t)va_arg(ap, unsigned int);
 	if (num == 0)

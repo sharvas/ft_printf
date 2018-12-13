@@ -6,13 +6,13 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/08 16:26:27 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 19:30:08 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_find_len(unsigned long long n)
+static int	ft_find_len(uintmax_t n)
 {
 	int			len;
 
@@ -22,7 +22,7 @@ static int	ft_find_len(unsigned long long n)
 	return (len);
 }
 
-char		*ft_itoa_unsigned(unsigned long long n)
+char		*ft_itoa_unsigned(uintmax_t n)
 {
 	char	*fresh;
 	int		len;

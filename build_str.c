@@ -29,10 +29,6 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	char	*str;
 
 	str = NULL;
-	// if (all->type == 'c' && *num_str == '\0')
-	// {
-
-	// }
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
 		if (all->sign && !all->minus && !all->zero)
@@ -59,7 +55,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 
 char		*ft_int_plus(char *num_str, t_print *all)
 {
-	if (!all->sign && all->type != 'u')
+	if (!all->sign && (all->type == 'i' || all->type == 'd'))
 	{
 		if (all->plus)
 			num_str = ft_strjoin("+", num_str);
@@ -70,7 +66,9 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		num_str = ft_strjoin("0x", num_str);
 	else if (all->sharp && all->type == 'X' && !all->hex_o_zero && !all->num_zero)
 		num_str = ft_strjoin("0X", num_str);
-	else if (all->sharp && all->type == 'o' && !all->hex_o_zero)
+	else if (all->sharp && all->type == 'o' && !all->hex_o_zero && !all->num_zero)
+		num_str = ft_strjoin("0", num_str);
+	else if (all->sharp && all->type == 'o' && !all->precision && all->prec_set && !all->num_zero)
 		num_str = ft_strjoin("0", num_str);
 	return (num_str);
 }
@@ -79,9 +77,10 @@ char		*ft_precision(char *num_str, t_print *all)
 {
 	char	*str;
 	int		i;
+	int		len;
 
 	str = NULL;
-	if ((i = ft_strlen(num_str)) < all->precision && !(all->type == 's'))
+	if ((i = ft_strlen(num_str)) < all->precision && all->type != 's' && all->type != 'p')
 	{
 		if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 			return (str); //ft_error
@@ -92,12 +91,36 @@ char		*ft_precision(char *num_str, t_print *all)
 		str[i] = '\0';
 		num_str = ft_strjoin(str, num_str);
 	}
-	if (all->type == 's' && all->precision)
+	else if (all->type == 's' && all->precision)
 	{
 		str = ft_strdup(num_str);
 		str[all->precision] = '\0';
 		num_str = str;
 		//strndup??
+	}
+	else if (all->type == 'p' && all->precision && all->num_zero)
+	{
+		if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
+			return (str); //ft_error
+		i = 0;
+		while (i < all->precision - 1)
+			str[i++] = '0';
+		str[i] = '\0';
+		num_str = ft_strjoin(num_str, str);
+	}
+	else if (all->type == 'p' && all->precision && !all->num_zero)
+	{
+		if ((size_t)all->precision > ft_strlen(num_str))
+		{	
+			if (!(str = (char*)malloc(sizeof(char) * (all->precision - (len = ft_strlen(num_str)) + 1))))
+				return (str); //ft_error
+			i = 0;
+			while (i < all->precision - len)
+				str[i++] = '0';
+			str[i] = '\0';
+			num_str = ft_strjoin(str, num_str);
+		}
+		num_str = ft_strjoin("0x", num_str);
 	}
 	return (num_str);
 }
