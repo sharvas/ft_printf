@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 11:44:02 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 13:01:30 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 
 char		*ft_int_plus(char *num_str, t_print *all)
 {
-	if (!all->sign)
+	if (!all->sign && all->type != 'u')
 	{
 		if (all->plus)
 			num_str = ft_strjoin("+", num_str);
@@ -151,7 +151,10 @@ void		ft_int(t_print *all, va_list ap)
 		all->sign = 1;
 		num = -num;
 	}
-	num_str = ft_itoa_mod(num);
+	if (all->type == 'd' && !all->precision && all->prec_set && num == 0)
+		num_str = ft_strdup("");
+	else
+		num_str = ft_itoa_mod(num);
 		//ft_error
 	ft_justify(num_str, all);
 	free(num_str);
