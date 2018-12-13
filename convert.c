@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 11:30:04 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 11:44:02 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char		*ft_negative(char *num_str, t_print *all)
 {
 	if (all->sign)
 		num_str = ft_strjoin("-", num_str);
+	all->print_negative = 1;
 	return (num_str);
 }
 
@@ -122,6 +123,8 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_negative(num_str, all);
 	if ((all->minus && (all->plus || all->sharp || all->space)) || all->zero)
 		num_str = ft_int_plus(num_str, all);
+	if (all->sign && !all->print_negative)
+		num_str = ft_negative(num_str, all);
 	ft_putstr(num_str);
 	all->printed = all->printed + ft_strlen(num_str);
 }

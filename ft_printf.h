@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/13 11:17:39 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/13 11:41:04 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_print
 	int				long_float;
 	int				hex_o_zero;
 	int				num_zero;
+	int				print_negative;
 }					t_print;
 
 void				ft_init(t_print *all);
