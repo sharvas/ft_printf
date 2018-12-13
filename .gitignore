@@ -1,5 +1,4 @@
 a.out
 *.gch
 .DS_Store
-libft.a
-libftprintf.a
+*.a
