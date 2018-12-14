@@ -82,7 +82,7 @@ void	ft_update_precision(t_print *all)
 	all->len += count;
 }
 
-void	ft_update_DOUF(t_print *all)
+void	ft_update_upcase(t_print *all)
 {
 	if (all->form[all->len] == 'D')
 	{
@@ -120,6 +120,6 @@ void	ft_parse(t_print *all)
 		ft_update_length(all);
 	}
 	ft_update_type(all);
-	ft_update_DOUF(all);
+	ft_update_upcase(all);
 	ft_update_conflicts(all);
 }
