@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:44:59 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 13:05:42 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 13:43:31 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ void		ft_float(t_print *all, va_list ap)
 	long double long_num;
 	char		*num_str;
 
-//	num = 0;
-//	long_num = 0;
+	long_num = va_arg(ap, double);
 /*	if (!all->long_float)
 	{
-		num = (float)va_arg(ap, double);
+		num = (float)long_num;
 		num_str = ft_itoa_float(num, all);
 			//error
 		num_str = ft_precision_float(num_str, all);
@@ -44,7 +43,6 @@ void		ft_float(t_print *all, va_list ap)
 	}
 	else if (all->long_float)
 	{*/
-		long_num = (long double)va_arg(ap, double);
 		num_str = ft_itoa_double(long_num, all);
 			//error
 		num_str = ft_precision_float(num_str, all);

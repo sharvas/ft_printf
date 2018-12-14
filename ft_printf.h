@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/13 11:41:04 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 13:27:00 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void				ft_pointer(t_print *all, va_list ap);
 void				ft_string(t_print *all, va_list ap);
 void				ft_char(t_print *all, va_list ap);
 
-
+long long			ft_pow(int a, int b);
 
 double				ft_modulus(long double a, long double b);
 unsigned int		ft_len(long double n);
