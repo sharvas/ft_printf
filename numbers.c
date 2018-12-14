@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:16 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 11:09:43 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 14:41:57 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void		ft_unsigned(t_print *all, va_list ap)
 		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
 	else
 		num = (uintmax_t)va_arg(ap, unsigned int);
+	if (num == 0)
+		all->num_zero = 1;
 	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
 		num_str = ft_strdup("");
 	else

@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 11:07:07 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 15:51:10 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char		*ft_build_width(t_print *all, char c)
 	int 	i;
 	
 	i = 0;
+	if (all->type == 'u' && (all->precision || all->num_zero) && all->width)
+		c = ' ';
 	if (!(str = (char*)malloc(sizeof(char) * (all->width + 1))))
 		return (str); //ft_error
 	while (i < all->width)
