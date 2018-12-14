@@ -90,18 +90,15 @@ int 	main(void)
 //	ft_printf("ft. %%lld %lld %%llx %llx %%llo %llo \n", a, a, b);
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
+	
+	printf("rl: %*3d\n", 0, 0);
+	ft_printf("ft: %*3d\n", 0, 0);
 
-	printf("rl: %-5d\n", 42);
-	ft_printf("ft: %-5d\n", 42);
-
-	printf("wild rl: %*d\n", -5, 42);
-	ft_printf("wild ft: %*d\n", -5, 42);
-
-	printf("wild rl: %*c\n", -15, 0);
-	ft_printf("wild ft: %*c\n", -15, 0);
-
-	printf("rl: %-15c\n", 0);
-	ft_printf("ft: %-15c\n", 0);
+	printf("rl: %*3d\n", 5, 0);
+	ft_printf("ft: %*3d\n", 5, 0);
+	
+	printf("rl: %05.*d\n", -15, 42);
+	ft_printf("ft: %05.*d\n", -15, 42);
 	// printf("rl: %*3d\n", 0, 0);
 	// ft_printf("ft: %*3d\n", 0, 0);
 
