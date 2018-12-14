@@ -26,6 +26,42 @@
 // %b for binary, %r for non printables, %k for date
 // colors, fd, etc.
 
+void	ft_print_struct(t_print *all)//
+{//
+	printf("\tprinted: %d\n", all->printed);
+	printf("\tlen: %d\n", all->len);
+	printf("\tform: %s\n", all->form);
+	printf("\ttype: %c\n", all->type);
+	printf("\thh: %d\n", all->hh);
+	printf("\th: %d\n", all->h);
+	printf("\tj: %d\n", all->j);
+	printf("\tll: %d\n", all->ll);
+	printf("\tl: %d\n", all->l);
+	printf("\tL: %d\n", all->L);
+	printf("\tz: %d\n", all->z);
+	printf("\tsharp: %d\n", all->sharp);
+	printf("\tzero: %d\n", all->zero);
+	printf("\tminus: %d\n", all->minus);
+	printf("\tplus: %d\n", all->plus);
+	printf("\tspace: %d\n", all->space);
+	printf("\twidth: %d\n", all->width);
+	printf("\tprecision: %d\n", all->precision);
+	printf("\tprec_set: %d\n", all->prec_set);
+	printf("\tfloat_multi: %d\n", all->float_multi);
+	printf("\tlong_float: %d\n", all->long_float);
+	printf("\thex_o_zero: %d\n", all->hex_o_zero);
+	printf("\tnum_zero: %d\n", all->num_zero);
+	printf("\tchar_zero: %d\n", all->char_zero);
+	printf("\tprint_negative: %d\n", all->print_negative);
+	printf("\twild_width: %d\n", all->wild_width);
+	printf("\tall->wild_prec: %d\n", all->wild_prec);
+	printf("\tsign: %d\n", all->sign);
+}//
+
+// 
+
+
+
 int 	main(void)
 {
 //	unsigned long long int a = 1000;
@@ -55,8 +91,11 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-	printf("rl: %3d\n", 0);
-	ft_printf("ft: %3d\n", 0);
+	printf("rl: %###-#0000 33...12..#0+0d\n", 256);
+	ft_printf("ft: %###-#0000 33...12..#0+0d\n", 256);
+
+	// printf("rl: %*3d\n", 0, 0);
+	// ft_printf("ft: %*3d\n", 0, 0);
 
 	// printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 	// ft_printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
@@ -73,3 +112,23 @@ int 	main(void)
 // 	printf("rl: a%Ob%Oc%Od\n", 0, 55555, 100000);
 // 	ft_printf("ft: a%Ob%Oc%Od\n", 0, 55555, 100000);
 }
+
+// int	main(void)
+// {
+// 	char	*form;
+// 	t_print	all;
+// 	int		i;
+
+// 	i = 0;
+// 	form = "+5.7ld. string";
+// 	ft_init(&all);
+// 	all.form = form;
+// 	all.len = i;
+// 	printf("Before Parse:\n");
+// 	ft_print_struct(&all);
+// 	ft_parse(&all);
+// 	printf("\nAfter Parse:\n");
+// 	ft_print_struct(&all);
+// 	return (0);
+// }
+

@@ -55,9 +55,11 @@ void	ft_update_width(t_print *all, va_list ap)
 	if (all->form[n] == '*')
 	{
 		all->width = va_arg(ap, int);
+		all->wild_width = 1;
 		all->len++;
+		n++;
 	}
-	else
+	if (!all->wild_width)
 	{
 		while (n-- > all->len)
 		{
@@ -79,6 +81,7 @@ void	ft_update_precision(t_print *all, va_list ap)
 	{
 		all->len++;
 		all->prec_set = 1;
+		all->precision = 0;
 	}
 	else
 		return ;
@@ -93,9 +96,11 @@ void	ft_update_precision(t_print *all, va_list ap)
 	if (all->form[n] == '*')
 	{
 		all->precision = va_arg(ap, int);
+		all->wild_prec = 1;
 		all->len++;
+		n++;
 	}
-	else
+	if (!all->wild_prec)
 	{
 		while (n-- > all->len)
 		{

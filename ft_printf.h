@@ -47,6 +47,8 @@ typedef struct		s_print
 	int				num_zero;
 	int				char_zero;
 	int				print_negative;
+	int				wild_width;
+	int				wild_prec;
 }					t_print;
 
 // parse.c //
