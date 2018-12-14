@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 20:42:11 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 20:45:54 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int 	main(void)
 //	ft_printf("ft. %%lld %lld %%llx %llx %%llo %llo \n", a, a, b);
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
-
 //	printf("rl: %-5d\n", 42);
 //	ft_printf("ft: %-5d\n", 42);
 
@@ -117,6 +116,15 @@ int 	main(void)
 //	ft_printf("ft. %024hho et%#5.3o %001.2O\n", (unsigned char)12, 0, 123654789);
 //	printf("rl. coco et %-#-#--24O titi %#012o\n", 12, -874);
 //	ft_printf("ft. coco et %-#-#--24O titi %#012o\n", 12, -874);
+	
+	printf("rl: %*3d\n", 0, 0);
+	ft_printf("ft: %*3d\n", 0, 0);
+
+	printf("rl: %*3d\n", 5, 0);
+	ft_printf("ft: %*3d\n", 5, 0);
+	
+	printf("rl: %05.*d\n", -15, 42);
+	ft_printf("ft: %05.*d\n", -15, 42);
 	// printf("rl: %*3d\n", 0, 0);
 	// ft_printf("ft: %*3d\n", 0, 0);
 
