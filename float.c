@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 18:30:44 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 12:00:33 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ char	*ft_itoa_float(float n, t_print *all)
 {
 	char	*num;
 	char	*num_end;
-//	int		len;
-	long	n_int;
+	intmax_t	n_int;
 
 	if (n == 0)
 		return (ft_strdup("0"));
@@ -49,7 +48,7 @@ char	*ft_itoa_float(float n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (long)((n - (long)n) * (float)ft_pow(10, all->float_multi));
+	n_int = (intmax_t)((n - (intmax_t)n) * (intmax_t)ft_pow(10, all->float_multi));
 	num = ft_itoa_mod((intmax_t)n);
 	num = ft_strjoin(num, ".");
 	num_end = ft_itoa_mod(n_int);
@@ -61,7 +60,6 @@ char	*ft_itoa_double(long double n, t_print *all)
 {
 	char		*num;
 	char		*num_end;
-//	int			len;
 	intmax_t	n_int;
 
 	if (n == 0)
