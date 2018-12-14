@@ -91,8 +91,8 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-	printf("rl: %###-#0000 33...12..#0+0d\n", 256);
-	ft_printf("ft: %###-#0000 33...12..#0+0d\n", 256);
+	printf("rl: %*d\n", -5, 42);
+	ft_printf("ft: %*d\n", -5, 42);
 
 	// printf("rl: %*3d\n", 0, 0);
 	// ft_printf("ft: %*3d\n", 0, 0);

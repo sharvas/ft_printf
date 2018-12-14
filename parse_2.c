@@ -71,34 +71,28 @@ void	ft_update_type(t_print *all)
 
 void	ft_update_conflicts(t_print *all)
 {
-	if (all->minus && all->zero)
+	if (all->minus)
 		all->zero = 0;
-	if (all->type == 'f' && all->prec_set == 0)
-		all->precision = 6;
-	if (all->type == '%' && all->space == 1)
-		all->space = 0;
-	if (all->type == 'f' && all->precision > 7)
-		all->long_float = 1;
-	if ((all->type == 'x' || all->type == 'X' || all->type == 'o') && all->prec_set && !all->precision)
-		all->hex_o_zero = 1;
-	if (all->type == 'c')
+	if (all->type == '%' || all->type == 'c')
 	{
 		all->space = 0;
 		all->precision = 0;
 	}
-	if ((all->type == 'd' || all->type == 'i') && all->zero && all->prec_set)
-		all->zero = 0;
 	if (all->type == 's')
-	{
 		all->space = 0;
-		// all->precision = 0;	
-	}
+	if ((all->type == 'x' || all->type == 'X' || all->type == 'o') && all->prec_set && !all->precision)
+		all->hex_o_zero = 1;
+	if ((all->type == 'd' || all->type == 'i') && all->prec_set)
+		all->zero = 0;
+	if (all->type == 'f' && all->prec_set == 0)
+		all->precision = 6;
+	if (all->type == 'f' && all->precision > 7)
+		all->long_float = 1;
 	if (all->type == 'f' && all->precision > 15)
 		all->float_multi = 15;
 	else if (all->type == 'f' && all->precision < 16)
 		all->float_multi = all->precision;
-	if (all->type == '%')
-		all->precision = 0;
+
 	// if (all->width)
 	// 	all->wildcard = 0;
 	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
