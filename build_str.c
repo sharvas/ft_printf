@@ -49,7 +49,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		if ((all->sign || ((all->sharp || all->plus || all->space) && (all->minus ||
 							all->zero))))
 		{
-			if (all->sharp && all->type != 'o')
+			if (all->sharp && !(all->type == 'o' || all->type == 'd' || all->type == 'i'))
 				all->width--;
 			all->width--;
 		}

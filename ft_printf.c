@@ -40,6 +40,8 @@ void	ft_init(t_print *all)
 	all->num_zero = 0;
 	all->char_zero = 0;
 	all->print_negative = 0;
+	all->wild_width = 0;
+	all->wild_prec = 0;
 }
 
 void	ft_init_partial(t_print *all)
@@ -67,6 +69,8 @@ void	ft_init_partial(t_print *all)
 	all->num_zero = 0;
 	all->char_zero = 0;
 	all->print_negative = 0;
+	all->wild_width = 0;
+	all->wild_prec = 0;
 }
 
 int 	ft_printf(char const *format, ...)

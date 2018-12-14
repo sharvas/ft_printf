@@ -71,62 +71,35 @@ void	ft_update_type(t_print *all)
 
 void	ft_update_conflicts(t_print *all)
 {
-	if (all->minus && all->zero)
+	if (all->minus)
 		all->zero = 0;
-	if (all->type == 'f' && all->prec_set == 0)
-		all->precision = 6;
-	if (all->type == '%' && all->space == 1)
-		all->space = 0;
-	if (all->type == 'f' && all->precision > 7)
-		all->long_float = 1;
-	if ((all->type == 'x' || all->type == 'X' || all->type == 'o') && all->prec_set && !all->precision)
-		all->hex_o_zero = 1;
-	if (all->type == 'c')
+	if (all->type == '%' || all->type == 'c')
 	{
 		all->space = 0;
 		all->precision = 0;
 	}
-	if ((all->type == 'd' || all->type == 'i') && all->zero && all->prec_set)
-		all->zero = 0;
 	if (all->type == 's')
-	{
 		all->space = 0;
-		// all->precision = 0;	
-	}
+	if ((all->type == 'x' || all->type == 'X' || all->type == 'o') && all->prec_set && !all->precision)
+		all->hex_o_zero = 1;
+	if ((all->type == 'd' || all->type == 'i') && all->prec_set)
+		all->zero = 0;
+	if (all->type == 'f' && all->prec_set == 0)
+		all->precision = 6;
+	if (all->type == 'f' && all->precision > 7)
+		all->long_float = 1;
 	if (all->type == 'f' && all->precision > 15)
 		all->float_multi = 15;
 	else if (all->type == 'f' && all->precision < 16)
 		all->float_multi = all->precision;
-	if (all->type == '%')
-		all->precision = 0;
+
+	// if (all->width)
+	// 	all->wildcard = 0;
 	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
 	// 	all->type != 's' && all->type != 'S' && all->type != 'f' &&
 	// 	all->type != 'p' && all->precision != -6)
 	// 	all->width = all->precision;
 }
-
-// void	ft_print_struct(t_print *all)//
-// {//
-// 	printf("\tprinted: %d\n", all->printed);
-// 	printf("\tlen: %d\n", all->len);
-// 	printf("\tform: %s\n", all->form);
-// 	printf("\ttype: %c\n", all->type);
-// 	printf("\thh: %d\n", all->hh);
-// 	printf("\th: %d\n", all->h);
-// 	printf("\tj: %d\n", all->j);
-// 	printf("\tll: %d\n", all->ll);
-// 	printf("\tl: %d\n", all->l);
-// 	printf("\tL: %d\n", all->L);
-// 	printf("\tz: %d\n", all->z);
-// 	printf("\tsharp: %d\n", all->sharp);
-// 	printf("\tzero: %d\n", all->zero);
-// 	printf("\tminus: %d\n", all->minus);
-// 	printf("\tplus: %d\n", all->plus);
-// 	printf("\tspace: %d\n", all->space);
-// 	printf("\twidth: %d\n", all->width);
-// 	printf("\tprecision: %d\n", all->precision);
-// 	printf("\tsign: %d\n", all->sign);
-// }//
 
 /*int	main(void)
 {
