@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/13 17:57:46 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 11:36:44 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	ft_parse(t_print *all)
 		ft_update_precision(all);
 		ft_update_length(all);
 	}
-	ft_update_DOUF(all);
 	ft_update_type(all);
+	ft_update_DOUF(all);
 	ft_update_conflicts(all);
 }

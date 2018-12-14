@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 21:20:30 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 11:33:25 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@
 
 int 	main(void)
 {
-	// unsigned long long int a = 1000;
- // 	unsigned long long int b = 5500;
- // 	long double	nld = -1444565444646.6465424242242454654;
-	// long double	ld = 1444565444646.6465424242242;
-	// float		f = -8.569;
- // 	int			i = -12345;
-	// char		c;
-	char		*str;
-	// int	o;
+//	unsigned long long int a = 1000;
+// 	unsigned long long int b = 5500;
+// 	long double	nld = -1444565444646.6465424242242454654;
+//	long double	ld = 1444565444646.6465424242242;
+//	float		f = -8.569;
+// 	int			i = -12345;
+//	char		c;
+//	char		*str;
+//	int	o;
 
-	// o = 1;
+//	o = 1;
 
- // // 	c = 0;
-  	str = "42";
+// 	c = 0;
+//  str = "42";
 //	double j = 92.6600951;
 //	char *p = ft_strdup("abc");
 //	int n[] = {0, 1, 2};
@@ -55,14 +55,18 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-//4.
-	printf("rl. %4.s\n", str);
-	ft_printf("ft. %4.s\n", str);
-	// printf("rl. %05.s\n", str);
-	// ft_printf("ft. %05.s\n", str);
+	printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
+	ft_printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
+
+	printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
+	ft_printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
+//	printf("rl. %4.s\n", str);
+//	ft_printf("ft. %4.s\n", str);
+//	printf("rl. %05.s\n", str);
+//	ft_printf("ft. %05.s\n", str);
 // 	ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 // 	printf("r%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 
 // 	printf("rl: a%Ob%Oc%Od\n", 0, 55555, 100000);
 // 	ft_printf("ft: a%Ob%Oc%Od\n", 0, 55555, 100000);
- }
+}
