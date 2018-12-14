@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:16 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 14:41:57 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 19:42:53 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		ft_int_octal(t_print *all, va_list ap)
 		num = (uintmax_t)va_arg(ap, unsigned int);
 	if (num == 0)
 		all->num_zero = 1;
-	if (!all->hex_o_zero || all->sharp)
+	if (!all->hex_o_zero || all->sharp || !all->num_zero)
 		num_str = ft_itoa_base(num, 8, all->type);
 			//ft_error
 	else
@@ -123,7 +123,7 @@ void		ft_int_hex(t_print *all, va_list ap)
 		num = (uintmax_t)va_arg(ap, unsigned int);
 	if (num == 0)
 		all->num_zero = 1;
-	if (!all->hex_o_zero)
+	if (!all->hex_o_zero || !all->num_zero)
 		num_str = ft_itoa_base(num, 16, all->type);
 			//ft_error
 	else

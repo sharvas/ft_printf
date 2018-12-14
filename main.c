@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 11:33:25 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 20:42:11 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,52 +91,38 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-	printf("rl: %-5d\n", 42);
-	ft_printf("ft: %-5d\n", 42);
+//	printf("rl: %-5d\n", 42);
+//	ft_printf("ft: %-5d\n", 42);
 
-	printf("wild rl: %*d\n", -5, 42);
-	ft_printf("wild ft: %*d\n", -5, 42);
+//	printf("wild rl: %*d\n", -5, 42);
+//	ft_printf("wild ft: %*d\n", -5, 42);
 
-	printf("wild rl: %*c\n", -15, 0);
-	ft_printf("wild ft: %*c\n", -15, 0);
+//	printf("wild rl: %*c\n", -15, 0);
+//	ft_printf("wild ft: %*c\n", -15, 0);
 
-	printf("rl: %-15c\n", 0);
-	ft_printf("ft: %-15c\n", 0);
+	ft_printf("f.{%*3d}\n", 5, 0);
+	printf("r.{%*3d}\n", 5, 0);
+
+//	printf("rl: %-15c\n", 0);
+//	ft_printf("ft: %-15c\n", 0);
+
+//	printf("rl. test%#.4o et %02o >%0#14.0o!!\n", 012, 036, 12587499);
+//	ft_printf("ft. test%#.4o et %02o >%0#14.0o!!\n", 012, 036, 12587499);
+
+//	ft_printf("ft. cc%#.4X et %#0012x %#04hX !!\n", 0xaef, 0xe, (unsigned short)0);
+//	printf("rl. cc%#.4X et %#0012x %#04hX !!\n", 0xaef, 0xe, (unsigned short)0);
+//	printf("r %#7.5X<>%0006.2x et %lX!\n", 0xab, 0x876, 0xff11ff11ff1);
+//	ft_printf("f %#7.5X<>%0006.2x et %lX!\n", 0xab, 0x876, 0xff11ff11ff1);
+//	printf("rl. %024hho et%#5.3o %001.2O\n", (unsigned char)12, 0, 123654789);
+//	ft_printf("ft. %024hho et%#5.3o %001.2O\n", (unsigned char)12, 0, 123654789);
+//	printf("rl. coco et %-#-#--24O titi %#012o\n", 12, -874);
+//	ft_printf("ft. coco et %-#-#--24O titi %#012o\n", 12, -874);
 	// printf("rl: %*3d\n", 0, 0);
 	// ft_printf("ft: %*3d\n", 0, 0);
 
 	// printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 	// ft_printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 
-	// printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
-	// ft_printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
-//	printf("rl. %4.s\n", str);
-//	ft_printf("ft. %4.s\n", str);
-//	printf("rl. %05.s\n", str);
-//	ft_printf("ft. %05.s\n", str);
-// 	ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
-// 	printf("r%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
-
 // 	printf("rl: a%Ob%Oc%Od\n", 0, 55555, 100000);
 // 	ft_printf("ft: a%Ob%Oc%Od\n", 0, 55555, 100000);
 }
-
-// int	main(void)
-// {
-// 	char	*form;
-// 	t_print	all;
-// 	int		i;
-
-// 	i = 0;
-// 	form = "+5.7ld. string";
-// 	ft_init(&all);
-// 	all.form = form;
-// 	all.len = i;
-// 	printf("Before Parse:\n");
-// 	ft_print_struct(&all);
-// 	ft_parse(&all);
-// 	printf("\nAfter Parse:\n");
-// 	ft_print_struct(&all);
-// 	return (0);
-// }
-

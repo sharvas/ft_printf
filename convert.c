@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/13 21:01:24 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 20:18:29 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void		ft_justify(char *num_str, t_print *all)
 {
 	if (all->precision)
 		num_str = ft_precision(num_str, all);
-	if (!all->minus && (all->plus || all->sharp || all->space) && !all->zero && all->type != 'c')
+	if (!all->minus && (all->plus || all->sharp || all->space) && (!all->zero || 
+				all->type == 'o' || ((all->type == 'x' || all->type == 'X') && 
+					!all->zero)) && all->type != 'c')
 		num_str = ft_int_plus(num_str, all);
 	if (all->type == 'c' && all->char_zero == 1)
 		all->width--;
@@ -26,7 +28,7 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_fill_width(num_str, all, '0');
 	if ((all->minus || all->zero || all->prec_set || all->precision) && (!all->width || all->zero))
 		num_str = ft_negative(num_str, all);
-	if ((all->minus && (all->plus || all->sharp || all->space)) || all->zero)
+	if ((all->minus && (all->plus || all->sharp || all->space)) || (all->zero && all->type != 'o'))
 		num_str = ft_int_plus(num_str, all);
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);

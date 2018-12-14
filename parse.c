@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/14 11:36:44 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 20:43:59 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_update_width(t_print *all, va_list ap)
 	unsigned int	n;
 	unsigned int	count;
 	unsigned int	multi;
+//	int				wild_num;
 
 	multi = 1;
 	n = all->len;
@@ -60,7 +61,8 @@ void	ft_update_width(t_print *all, va_list ap)
 			all->width *= -1;
 			all->minus = 1;
 		}
-		all->wild_width = 1;
+		if (all->width)
+			all->wild_width = 1;
 		all->len++;
 		n++;
 	}
