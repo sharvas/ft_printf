@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   numbers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/14 11:07:16 by svaskeli          #+#    #+#             */
+/*   Updated: 2018/12/14 11:09:43 by svaskeli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -20,8 +31,6 @@ void		ft_int(t_print *all, va_list ap)
 		num = (intmax_t)(signed char)va_arg(ap, int);
 	else
 		num = va_arg(ap, int);
-//	if (num == 0)
-//		all->num_zero = 1;
 	if (num < 0)
 	{
 		all->sign = 1;
@@ -53,8 +62,6 @@ void		ft_unsigned(t_print *all, va_list ap)
 		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
 	else
 		num = (uintmax_t)va_arg(ap, unsigned int);
-//	if (num == 0)
-//		all->num_zero = 1;
 	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
 		num_str = ft_strdup("");
 	else
@@ -89,6 +96,8 @@ void		ft_int_octal(t_print *all, va_list ap)
 	else
 		num_str = ft_strdup("");
 			//ft_error
+	if (all->sharp && all->precision)
+		all->precision--;
 	ft_justify(num_str, all);
 	free(num_str);
 }
