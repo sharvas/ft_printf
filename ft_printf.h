@@ -63,7 +63,7 @@ int					ft_istype(char c);
 void				ft_update_type(t_print *all);
 void				ft_update_conflicts(t_print *all);
 
-void				ft_update_DOUF(t_print *all);
+void				ft_update_upcase(t_print *all);
 
 // build_str.c //
 char				*ft_negative(char *num_str, t_print *all);

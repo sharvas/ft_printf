@@ -18,7 +18,7 @@ void	ft_string(t_print *all, va_list ap)
 
 	if (!(str = va_arg(ap, char*)))
 		str = ft_strdup("(null)");
-	if ((all->width && all->zero) || (all->width && all->prec_set && !all->precision))//
+	if (/*(all->width && all->zero) || */(all->width && all->prec_set && !all->precision))//
 		str = ft_strdup("\0");//
 	ft_justify(str, all);
 }
