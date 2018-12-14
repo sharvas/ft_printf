@@ -35,10 +35,13 @@ int 	main(void)
 	// float		f = -8.569;
  // 	int			i = -12345;
 	// char		c;
-	// char		*str;
+	char		*str;
+	// int	o;
 
- // 	c = 0;
- // 	str = "test me";
+	// o = 1;
+
+ // // 	c = 0;
+  	str = "42";
 //	double j = 92.6600951;
 //	char *p = ft_strdup("abc");
 //	int n[] = {0, 1, 2};
@@ -52,8 +55,14 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-	printf("rl. %.3%\n");
-	ft_printf("ft. %.3%\n");
-	// ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
-	// printf("r%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
-}
+//4.
+	printf("rl. %15.4s\n", str);
+	ft_printf("ft. %15.4s\n", str);
+	// printf("rl. %05.s\n", str);
+	// ft_printf("ft. %05.s\n", str);
+// 	ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
+// 	printf("r%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
+
+// 	printf("rl: a%Ob%Oc%Od\n", 0, 55555, 100000);
+// 	ft_printf("ft: a%Ob%Oc%Od\n", 0, 55555, 100000);
+ }
