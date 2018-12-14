@@ -37,7 +37,7 @@ void	ft_update_flags(t_print *all)
 	}
 }
 
-void	ft_update_width(t_print *all)
+void	ft_update_width(t_print *all, va_list ap)
 {
 	unsigned int	n;
 	unsigned int	count;
@@ -45,18 +45,30 @@ void	ft_update_width(t_print *all)
 
 	multi = 1;
 	n = all->len;
-	while (ft_isdigit(all->form[n]))
-		n++;
-	count = n - all->len;
-	while (n-- > all->len)
+	while (ft_isdigit(all->form[n])/* || all->form[n] == '*'*/)
 	{
-		all->width = all->width + (all->form[n] - 48) * multi;
-		multi *= 10;
+		// if (all->form[n] == '*')
+		// 	all->form[n] = va_arg(ap, int);
+		n++;
+	}
+	count = n - all->len;
+	if (all->form[n] == '*')
+	{
+		all->width = va_arg(ap, int);
+		all->len++;
+	}
+	else
+	{
+		while (n-- > all->len)
+		{
+			all->width = all->width + (all->form[n] - 48) * multi;
+			multi *= 10;
+		}
 	}
 	all->len += count;
 }
 
-void	ft_update_precision(t_print *all)
+void	ft_update_precision(t_print *all, va_list ap)
 {
 	unsigned int	n;
 	unsigned int	count;
@@ -71,13 +83,25 @@ void	ft_update_precision(t_print *all)
 	else
 		return ;
 	n = all->len;
-	while (ft_isdigit(all->form[n]))
-		n++;
-	count = n - all->len;
-	while (n-- > all->len)
+	while (ft_isdigit(all->form[n]) /*|| all->form[n] == '*'*/)
 	{
-		all->precision = all->precision + (all->form[n] - 48) * multi;
-		multi *= 10;
+		// if (all->form[n] == '*')
+		// 	all->form[n] = va_arg(ap, int);
+		n++;
+	}
+	count = n - all->len;
+	if (all->form[n] == '*')
+	{
+		all->precision = va_arg(ap, int);
+		all->len++;
+	}
+	else
+	{
+		while (n-- > all->len)
+		{
+			all->precision = all->precision + (all->form[n] - 48) * multi;
+			multi *= 10;
+		}
 	}
 	all->len += count;
 }
@@ -109,14 +133,14 @@ void	ft_update_upcase(t_print *all)
 	}
 }
 
-void	ft_parse(t_print *all)
+void	ft_parse(t_print *all, va_list ap)
 {
 	while (all->form[all->len] &&
-		ft_strchr("+- #0123456789.hlLjz", all->form[all->len]))
+		ft_strchr("+- #0123456789.hlLjz*", all->form[all->len]))
 	{
 		ft_update_flags(all);
-		ft_update_width(all);
-		ft_update_precision(all);
+		ft_update_width(all, ap);
+		ft_update_precision(all, ap);
 		ft_update_length(all);
 	}
 	ft_update_type(all);

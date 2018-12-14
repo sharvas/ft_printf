@@ -55,8 +55,8 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-	printf("rl: %d\n", 42);
-	ft_printf("ft: %d\n", 42);
+	printf("rl: %3d\n", 0);
+	ft_printf("ft: %3d\n", 0);
 
 	// printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 	// ft_printf("%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);

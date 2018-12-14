@@ -52,9 +52,9 @@ typedef struct		s_print
 // parse.c //
 int					ft_isflag(char c);
 void				ft_update_flags(t_print *all);
-void				ft_update_width(t_print *all);
-void				ft_update_precision(t_print *all);
-void				ft_parse(t_print *all);
+void				ft_update_width(t_print *all, va_list ap);
+void				ft_update_precision(t_print *all, va_list ap);
+void				ft_parse(t_print *all, va_list ap);
 
 // parse_2.c //
 int					ft_islength(char c);
