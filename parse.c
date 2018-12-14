@@ -55,6 +55,11 @@ void	ft_update_width(t_print *all, va_list ap)
 	if (all->form[n] == '*')
 	{
 		all->width = va_arg(ap, int);
+		if (all->width < 0)
+		{
+			all->width *= -1;
+			all->minus = 1;
+		}
 		all->wild_width = 1;
 		all->len++;
 		n++;
