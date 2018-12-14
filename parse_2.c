@@ -94,6 +94,8 @@ void	ft_update_conflicts(t_print *all)
 		all->float_multi = 15;
 	else if (all->type == 'f' && all->precision < 16)
 		all->float_multi = all->precision;
+	if (all->type == '%')
+		all->precision = 0;
 	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
 	// 	all->type != 's' && all->type != 'S' && all->type != 'f' &&
 	// 	all->type != 'p' && all->precision != -6)

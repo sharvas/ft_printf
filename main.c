@@ -28,17 +28,17 @@
 
 int 	main(void)
 {
-	unsigned long long int a = 1000;
- 	unsigned long long int b = 5500;
- 	long double	nld = -1444565444646.6465424242242454654;
-	long double	ld = 1444565444646.6465424242242;
-	float		f = -8.569;
- 	int			i = -12345;
-	char		c;
-	char		*str;
+	// unsigned long long int a = 1000;
+ // 	unsigned long long int b = 5500;
+ // 	long double	nld = -1444565444646.6465424242242454654;
+	// long double	ld = 1444565444646.6465424242242;
+	// float		f = -8.569;
+ // 	int			i = -12345;
+	// char		c;
+	// char		*str;
 
- 	c = 0;
- 	str = "test me";
+ // 	c = 0;
+ // 	str = "test me";
 //	double j = 92.6600951;
 //	char *p = ft_strdup("abc");
 //	int n[] = {0, 1, 2};
@@ -52,6 +52,8 @@ int 	main(void)
 //	printf("rl. %ho\n", i);
 //	ft_printf("ft. %ho\n", i);
 
-	ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
-	printf("r%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
+	printf("rl. %.3%\n");
+	ft_printf("ft. %.3%\n");
+	// ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
+	// printf("r%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
 }
