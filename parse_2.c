@@ -89,7 +89,10 @@ void	ft_update_conflicts(t_print *all)
 	if ((all->type == 'd' || all->type == 'i') && all->zero && all->prec_set)
 		all->zero = 0;
 	if (all->type == 's')
+	{
 		all->space = 0;
+		// all->precision = 0;	
+	}
 	if (all->type == 'f' && all->precision > 15)
 		all->float_multi = 15;
 	else if (all->type == 'f' && all->precision < 16)
