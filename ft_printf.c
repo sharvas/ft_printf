@@ -82,7 +82,7 @@ int 	ft_printf(char const *format, ...)
 		if (all.form[all.len] == '%')
 		{
 			all.len++;
-			ft_parse(&all);
+			ft_parse(&all, ap);
 			ft_print(&all, ap);
 			ft_init_partial(&all);
 		}
