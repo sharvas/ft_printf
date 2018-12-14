@@ -56,8 +56,8 @@ int 	main(void)
 //	ft_printf("ft. %ho\n", i);
 
 //4.
-	printf("rl. %15.4s\n", str);
-	ft_printf("ft. %15.4s\n", str);
+	printf("rl. %4.s\n", str);
+	ft_printf("ft. %4.s\n", str);
 	// printf("rl. %05.s\n", str);
 	// ft_printf("ft. %05.s\n", str);
 // 	ft_printf("m%O %O %O %O %O\n", 1, 100, 999, 42, 999988888);
