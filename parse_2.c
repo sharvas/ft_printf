@@ -14,9 +14,7 @@
 
 int		ft_islength(char c)
 {
-	if (c == 'h' || c == 'j' || c == 'l' || c == 'L' || c == 'z')
-		return (1);
-	return (0);
+	return (c == 'h' || c == 'j' || c == 'l' || c == 'L' || c == 'z');
 }
 
 void	ft_hh(t_print *all)
@@ -61,12 +59,10 @@ void	ft_update_length(t_print *all)
 
 int		ft_istype(char c)
 {
-	if (c == 'c' || c == 'C' || c == 'd' || c == 'e' || c == 'f' ||
-		c == 'g' || c == 'i' || c == 'o' || c == 'p' || c == 'S' ||
-		c == 's' || c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
-}// R and Z??
+	return (c == 'c' || c == 'd' || c == 'e' || c == 'f' || c == 'g' ||
+		c == 'i' || c == 'o' || c == 'p' ||  c == 's' || c == 'u' ||
+		c == 'x' || c == 'X' || c == '%');
+}// S, C, R and Z??
 
 void	ft_update_type(t_print *all)
 {
