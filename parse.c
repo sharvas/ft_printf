@@ -88,12 +88,8 @@ void	ft_update_precision(t_print *all, va_list ap)
 	else
 		return ;
 	n = all->len;
-	while (ft_isdigit(all->form[n]) /*|| all->form[n] == '*'*/)
-	{
-		// if (all->form[n] == '*')
-		// 	all->form[n] = va_arg(ap, int);
+	while (ft_isdigit(all->form[n]))
 		n++;
-	}
 	count = n - all->len;
 	if (all->form[n] == '*')
 	{
