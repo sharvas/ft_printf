@@ -82,7 +82,7 @@ void	ft_update_conflicts(t_print *all)
 		all->space = 0;
 	if ((all->type == 'x' || all->type == 'X' || all->type == 'o') && all->prec_set && !all->precision)
 		all->hex_o_zero = 1;
-	if ((all->type == 'd' || all->type == 'i') && all->prec_set)
+	if ((all->type == 'd' || all->type == 'i') && all->prec_set && !all->wild_prec)
 		all->zero = 0;
 	if (all->type == 'f' && all->prec_set == 0)
 		all->precision = 6;

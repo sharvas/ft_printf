@@ -42,16 +42,11 @@ void	ft_update_width(t_print *all, va_list ap)
 	unsigned int	n;
 	unsigned int	count;
 	unsigned int	multi;
-//	int				wild_num;
 
 	multi = 1;
 	n = all->len;
-	while (ft_isdigit(all->form[n])/* || all->form[n] == '*'*/)
-	{
-		// if (all->form[n] == '*')
-		// 	all->form[n] = va_arg(ap, int);
+	while (ft_isdigit(all->form[n]))
 		n++;
-	}
 	count = n - all->len;
 	if (all->form[n] == '*')
 	{

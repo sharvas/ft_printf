@@ -99,8 +99,8 @@ int 	main(void)
 //	printf("wild rl: %*c\n", -15, 0);
 //	ft_printf("wild ft: %*c\n", -15, 0);
 
-	ft_printf("f.{%*3d}\n", 5, 0);
-	printf("r.{%*3d}\n", 5, 0);
+	// ft_printf("f.{%*3d}\n", 5, 0);
+	// printf("r.{%*3d}\n", 5, 0);
 
 //	printf("rl: %-15c\n", 0);
 //	ft_printf("ft: %-15c\n", 0);
@@ -117,14 +117,14 @@ int 	main(void)
 //	printf("rl. coco et %-#-#--24O titi %#012o\n", 12, -874);
 //	ft_printf("ft. coco et %-#-#--24O titi %#012o\n", 12, -874);
 	
-	printf("rl: %*3d\n", 0, 0);
-	ft_printf("ft: %*3d\n", 0, 0);
+	// printf("1rl: %*3d\n", 0, 0);
+	// ft_printf("1ft: %*3d\n", 0, 0);
 
-	printf("rl: %*3d\n", 5, 0);
-	ft_printf("ft: %*3d\n", 5, 0);
+	printf("2rl: %*3d\n", 5, 0);
+	ft_printf("2ft: %*3d\n", 5, 0);
 	
-	printf("rl: %05.*d\n", -15, 42);
-	ft_printf("ft: %05.*d\n", -15, 42);
+	printf("3rl: %05.*d\n", -15, 42);
+	ft_printf("3ft: %05.*d\n", -15, 42);
 	// printf("rl: %*3d\n", 0, 0);
 	// ft_printf("ft: %*3d\n", 0, 0);
 
