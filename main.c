@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 17:59:07 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 19:34:36 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,26 @@ void	ft_print_struct(t_print *all)
 
 int 	main(void)
 {
-	printf("rl. b'%#.2o\\n'\n", 0);
-	ft_printf("ft. b'%#.2o\\n'\n", 0);
+	ft_printf("ft. b'% 0+-#10.5llx\\n'\n", 42);
+	printf("rl. b'% 0+-#10.5llx\\n'\n", 42);
+	ft_printf("ft. b'%+-0#2x\\\\n'\n", 0);
+	printf("rl. b'%+-0#2x\\\\n'\n", 0);
+//	printf("rl. b'% 0+-#10.5llU\\n'\n", 42);
+//	ft_printf("ft. b'% 0+-#10.5llU\\n'\n", 42);
+//	printf("rl. b'%#3%\\n'\n");
+//	ft_printf("ft. b'%#3%\\n'\n");
+//	printf("rl. b'%#.2o\\n'\n", 0);
+//	ft_printf("ft. b'%#.2o\\n'\n", 0);
+//	ft_printf("ft. b'%-+0# 10hh%\\n'\n");
+//	printf("rl. b'%-+0# 10hh%\\n'\n");
+//	printf("rl. b'% 010u\\n'\n", 0);
+//	ft_printf("ft. b'% 010u\\n'\n", 0);
+//	printf("rl. b'% 02u\\n'\n", 0);
+//	ft_printf("ft. b'% 02u\\n'\n", 0);
+//	printf("rl. b'%+-0#2u\\n'\n", 0);
+//	ft_printf("ft. b'%+-0#2u\\n'\n", 0);
+//	printf("rl. b'% 0+-#10.5llu\\n'\n", 42);
+//	ft_printf("ft. b'% 0+-#10.5llu\\n'\n", 42);
 }
 
 /*int	main(void) // testing parsing into struct

@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:16 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 19:42:53 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 18:19:05 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void		ft_int_octal(t_print *all, va_list ap)
 	else
 		num_str = ft_strdup("");
 			//ft_error
-	if (all->sharp && all->precision)
+	if (all->sharp && all->precision && (!all->num_zero || all->width))
 		all->precision--;
 	ft_justify(num_str, all);
 	free(num_str);
