@@ -60,7 +60,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 			all->width += 2;
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
-		if (all->minus)
+		if (all->minus || (all->type == 'p' && all->zero))
 			num_str = ft_strjoin(num_str, str);
 		else
 			num_str = ft_strjoin(str, num_str);

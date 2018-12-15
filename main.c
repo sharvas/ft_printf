@@ -64,6 +64,9 @@ void	ft_print_struct(t_print *all)//
 
 int 	main(void)
 {
+	printf("rl:%05p\n", 0);
+	ft_printf("ft:%05p\n", 0);
+
 //	unsigned long long int a = 1000;
 // 	unsigned long long int b = 5500;
 // 	long double	nld = -1444565444646.6465424242242454654;
@@ -117,14 +120,14 @@ int 	main(void)
 //	printf("rl. coco et %-#-#--24O titi %#012o\n", 12, -874);
 //	ft_printf("ft. coco et %-#-#--24O titi %#012o\n", 12, -874);
 	
-	printf("1rl: %*3d\n", 0, 0);
-	ft_printf("1ft: %*3d\n", 0, 0);
+	// printf("1rl: %*3d\n", 0, 0);
+	// ft_printf("1ft: %*3d\n", 0, 0);
 
-	printf("2rl: %*3d\n", 5, 0);
-	ft_printf("2ft: %*3d\n", 5, 0);
+	// printf("2rl: %*3d\n", 5, 0);
+	// ft_printf("2ft: %*3d\n", 5, 0);
 	
-	printf("3rl: %05.*d\n", -15, 42);
-	ft_printf("3ft: %05.*d\n", -15, 42);
+	// printf("3rl: %05.*d\n", -15, 42);
+	// ft_printf("3ft: %05.*d\n", -15, 42);
 	// printf("rl: %*3d\n", 0, 0);
 	// ft_printf("ft: %*3d\n", 0, 0);
 
