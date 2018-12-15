@@ -75,7 +75,7 @@ void	ft_init_partial(t_print *all)
 	all->wild_prec = 0;
 }
 
-int 	ft_printf(char const *format, ...)
+int		ft_printf(char const *format, ...)
 {
 	va_list			ap;
 	t_print			all;
@@ -100,6 +100,5 @@ int 	ft_printf(char const *format, ...)
 		}
 	}
 	va_end(ap);
-//	printf("%i\n", all.printed);
 	return (all.printed);
 }

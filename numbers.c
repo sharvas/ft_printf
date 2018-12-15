@@ -33,6 +33,25 @@ intmax_t	ft_int_len(t_print *all, va_list ap)
 	return (num);
 }
 
+uintmax_t	ft_unsigned_len(t_print *all, va_list ap)
+{
+	uintmax_t	num;
+
+	if (all->j || all->z)
+		num = va_arg(ap, uintmax_t);
+	else if (all->l)
+		num = (uintmax_t)va_arg(ap, unsigned long);
+	else if (all->ll)
+		num = (uintmax_t)va_arg(ap, unsigned long long);
+	else if (all->h)
+		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
+	else if (all->hh)
+		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
+	else
+		num = (uintmax_t)va_arg(ap, unsigned int);
+	return (num);
+}
+
 void		ft_int(t_print *all, va_list ap)
 {
 	intmax_t	num;
@@ -69,25 +88,6 @@ void		ft_unsigned(t_print *all, va_list ap)
 			//ft_error
 	ft_justify(num_str, all);
 	free(num_str);
-}
-
-uintmax_t	ft_unsigned_len(t_print *all, va_list ap)
-{
-	uintmax_t	num;
-
-	if (all->j || all->z)
-		num = va_arg(ap, uintmax_t);
-	else if (all->l)
-		num = (uintmax_t)va_arg(ap, unsigned long);
-	else if (all->ll)
-		num = (uintmax_t)va_arg(ap, unsigned long long);
-	else if (all->h)
-		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
-	else if (all->hh)
-		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
-	else
-		num = (uintmax_t)va_arg(ap, unsigned int);
-	return (num);
 }
 
 void		ft_int_octal(t_print *all, va_list ap)

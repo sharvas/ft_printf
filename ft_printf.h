@@ -52,6 +52,13 @@ typedef struct		s_print
 	int				wild_prec;
 }					t_print;
 
+// ft_printf.c //
+
+void				ft_init(t_print *all);
+void				ft_init_partial(t_print *all);
+
+int					ft_printf(char const *format, ...);
+
 // parse.c //
 int					ft_isflag(char c);
 void				ft_update_flags(t_print *all);
@@ -77,8 +84,13 @@ void				ft_update_conflicts(t_print *all);
 // build_str.c //
 char				*ft_negative(char *num_str, t_print *all);
 char				*ft_build_width(t_print *all, char c);
+void				ft_calc_width(t_print *all);
 char				*ft_fill_width(char *num_str, t_print *all, char c);
+int					ft_0x_condition(t_print *all);
 char				*ft_int_plus(char *num_str, t_print *all);
+char				*ft_prec_a(char *num_str, t_print *all, char* str, int i);
+char				*ft_prec_b(char *num_str, t_print *all, char* str, int i);
+char				*ft_prec_c(char *num_str, t_print *all, char* str, int i);
 char				*ft_precision(char *num_str, t_print *all);
 
 // numbers.c //
@@ -97,17 +109,21 @@ void				ft_float(t_print *all, va_list ap);
 void				ft_long_double(t_print *all, va_list ap);
 void				ft_floating(t_print *all, va_list ap);
 
+// string.c /
+
+void				ft_string(t_print *all, va_list ap);
+void				ft_char(t_print *all, va_list ap);
+
 
 void				ft_justify(char *num_str, t_print *all);
 void				ft_print(t_print *all, va_list ap);
-int					ft_printf(char const *format, ...);
 
-void				ft_init(t_print *all);
-void				ft_init_partial(t_print *all);
+
+
 
 void				ft_pointer(t_print *all, va_list ap);
-void				ft_string(t_print *all, va_list ap);
-void				ft_char(t_print *all, va_list ap);
+
+
 
 long long			ft_pow(int a, int b);
 
