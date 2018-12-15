@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 15:11:14 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 17:59:07 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	ft_print_struct(t_print *all)
 
 int 	main(void)
 {
-	printf("rl. test %#5.3x %#024X\n", 0x25, 0);
-	ft_printf("ft. test %#5.3x %#024X\n", 0x25, 0);
+	printf("rl. b'%#.2o\\n'\n", 0);
+	ft_printf("ft. b'%#.2o\\n'\n", 0);
 }
 
 /*int	main(void) // testing parsing into struct

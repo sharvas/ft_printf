@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 15:14:26 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 17:36:51 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_calc_width(t_print *all)
 	if ((all->sign || ((all->sharp || all->plus || all->space) &&
 		(all->minus || all->zero)) || all->type == '%'))
 	{
-		if (all->sharp &&
+		if (all->sharp && all->type != '%' &&
 			!(all->type == 'o' || all->type == 'd' || all->type == 'i'))
 			all->width--;
 		all->width--;
