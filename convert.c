@@ -64,7 +64,7 @@ void		ft_pointer(t_print *all, va_list ap)
 		//ft_error
 	if (num == 0)
 		all->num_zero = 1;
-	if (!all->precision || (all->num_zero))
+	if (!all->precision || all->num_zero)
 		num_str = ft_strjoin("0x", num_str);
 	ft_justify(num_str, all);
 	free(num_str);

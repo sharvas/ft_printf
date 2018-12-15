@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 11:34:51 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/14 20:24:58 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		if (all->sign && !all->minus && !all->zero)
 			num_str = ft_negative(num_str, all);
 		if ((all->sign || ((all->sharp || all->plus || all->space) && (all->minus ||
-							all->zero) && !all->prec_set && (!all->width || all->type == 'd' ||
-								all->type == 'o'))))
+							all->zero)/* && !all->prec_set*/)))
 		{
 			if (all->sharp && !(all->type == 'o' || all->type == 'd' || all->type == 'i'))
 				all->width--;
