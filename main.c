@@ -63,3 +63,23 @@ int 	main(void)
 	printf("rl. test %#5.3x %#024X\n", 0x25, 0);
 	ft_printf("ft. test %#5.3x %#024X\n", 0x25, 0);
 }
+
+/*int	main(void) // testing parsing into struct
+{
+	char	*form;
+	t_print	all;
+	int		i;
+
+	i = 0;
+	form = "+5.7ld. string";
+	ft_init(&all);
+	all.form = form;
+	all.len = i;
+	printf("Before Parse:\n");
+	ft_print_struct(&all);
+	ft_parse(&all);
+	printf("\nAfter Parse:\n");
+	ft_print_struct(&all);
+	return (0);
+}*/
+

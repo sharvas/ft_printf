@@ -55,18 +55,24 @@ typedef struct		s_print
 // parse.c //
 int					ft_isflag(char c);
 void				ft_update_flags(t_print *all);
+void				ft_wild_width(t_print *all, va_list ap);
 void				ft_update_width(t_print *all, va_list ap);
+void				ft_wild_prec(t_print *all, va_list ap);
+void				ft_read_prec(t_print *all, unsigned int n);//
 void				ft_update_precision(t_print *all, va_list ap);
+
+void				ft_update_upcase(t_print *all);
 void				ft_parse(t_print *all, va_list ap);
 
 // parse_2.c //
 int					ft_islength(char c);
+void				ft_hh(t_print *all);
+void				ft_ll(t_print *all);
 void				ft_update_length(t_print *all);
 int					ft_istype(char c);
 void				ft_update_type(t_print *all);
 void				ft_update_conflicts(t_print *all);
 
-void				ft_update_upcase(t_print *all);
 
 // build_str.c //
 char				*ft_negative(char *num_str, t_print *all);
