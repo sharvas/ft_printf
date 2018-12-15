@@ -12,10 +12,9 @@
 
 #include "ft_printf.h"
 
-void		ft_int(t_print *all, va_list ap)
+intmax_t	ft_int_len(t_print *all, va_list ap)
 {
 	intmax_t	num;
-	char		*num_str;
 
 	if (all->z)
 		num = (intmax_t)va_arg(ap, size_t);
@@ -31,6 +30,15 @@ void		ft_int(t_print *all, va_list ap)
 		num = (intmax_t)(signed char)va_arg(ap, int);
 	else
 		num = va_arg(ap, int);
+	return (num);
+}
+
+void		ft_int(t_print *all, va_list ap)
+{
+	intmax_t	num;
+	char		*num_str;
+
+	num = ft_int_len(all, ap);
 	if (num < 0)
 	{
 		all->sign = 1;
@@ -51,18 +59,7 @@ void		ft_unsigned(t_print *all, va_list ap)
 	uintmax_t	num;
 	char		*num_str;
 
-	if (all->j || all->z)
-		num = va_arg(ap, uintmax_t);
-	else if (all->l)
-		num = (uintmax_t)va_arg(ap, unsigned long);
-	else if (all->ll)
-		num = (uintmax_t)va_arg(ap, unsigned long long);
-	else if (all->h)
-		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
-	else if (all ->hh)
-		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
-	else
-		num = (uintmax_t)va_arg(ap, unsigned int);
+	num = ft_unsigned_len(all, ap);
 	if (num == 0)
 		all->num_zero = 1;
 	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
@@ -74,10 +71,9 @@ void		ft_unsigned(t_print *all, va_list ap)
 	free(num_str);
 }
 
-void		ft_int_octal(t_print *all, va_list ap)
+uintmax_t	ft_unsigned_len(t_print *all, va_list ap)
 {
 	uintmax_t	num;
-	char		*num_str;
 
 	if (all->j || all->z)
 		num = va_arg(ap, uintmax_t);
@@ -91,6 +87,15 @@ void		ft_int_octal(t_print *all, va_list ap)
 		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
 	else
 		num = (uintmax_t)va_arg(ap, unsigned int);
+	return (num);
+}
+
+void		ft_int_octal(t_print *all, va_list ap)
+{
+	uintmax_t	num;
+	char		*num_str;
+
+	num = ft_unsigned_len(all, ap);
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->hex_o_zero || all->sharp || !all->num_zero)
@@ -110,18 +115,7 @@ void		ft_int_hex(t_print *all, va_list ap)
 	uintmax_t	num;
 	char		*num_str;
 
-	if (all->j || all->z)
-		num = va_arg(ap, uintmax_t);
-	else if (all->l)
-		num = (uintmax_t)va_arg(ap, unsigned long);
-	else if (all->ll)
-		num = (uintmax_t)va_arg(ap, unsigned long long);
-	else if (all->h)
-		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
-	else if (all->hh)
-		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
-	else
-		num = (uintmax_t)va_arg(ap, unsigned int);
+	num = ft_unsigned_len(all, ap);
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->hex_o_zero || !all->num_zero)

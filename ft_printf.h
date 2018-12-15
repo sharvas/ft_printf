@@ -81,6 +81,9 @@ char				*ft_int_plus(char *num_str, t_print *all);
 char				*ft_precision(char *num_str, t_print *all);
 
 // numbers.c //
+intmax_t			ft_int_len(t_print *all, va_list ap);
+uintmax_t			ft_unsigned_len(t_print *all, va_list ap);
+
 void				ft_int(t_print *all, va_list ap);
 void				ft_unsigned(t_print *all, va_list ap);
 void				ft_int_octal(t_print *all, va_list ap);
