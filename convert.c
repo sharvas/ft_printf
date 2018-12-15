@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 12:46:01 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:25:23 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		ft_justify(char *num_str, t_print *all)
 				all->type == 'o' || ((all->type == 'x' || all->type == 'X') && 
 					!all->zero && !all->width)) && all->type != 'c')
 	{
-		printf("\n-->?\n");
 		num_str = ft_int_plus(num_str, all);
 	}
 	if (all->type == 'c' && all->char_zero == 1)
