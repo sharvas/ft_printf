@@ -2,3 +2,4 @@ a.out
 *.gch
 .DS_Store
 *.a
+main.c
