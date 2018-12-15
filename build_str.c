@@ -110,7 +110,7 @@ char		*ft_int_plus(char *num_str, t_print *all)
 	return (num_str);
 }
 
-char		*ft_prec_a(char *num_str, t_print *all, char* str, int i)
+char		*ft_prec_a(char *num_str, t_print *all, char *str, int i)
 {
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 		return (str); //ft_error
@@ -123,7 +123,7 @@ char		*ft_prec_a(char *num_str, t_print *all, char* str, int i)
 	return (num_str);
 }
 
-char		*ft_prec_b(char *num_str, t_print *all, char* str, int i)
+char		*ft_prec_b(char *num_str, t_print *all, char *str, int i)
 {
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 		return (str); //ft_error
@@ -135,7 +135,7 @@ char		*ft_prec_b(char *num_str, t_print *all, char* str, int i)
 	return (num_str);
 }
 
-char		*ft_prec_c(char *num_str, t_print *all, char* str, int i)
+char		*ft_prec_c(char *num_str, t_print *all, char *str, int i)
 {
 	int	len;
 
