@@ -117,8 +117,8 @@ int 	main(void)
 //	printf("rl. coco et %-#-#--24O titi %#012o\n", 12, -874);
 //	ft_printf("ft. coco et %-#-#--24O titi %#012o\n", 12, -874);
 	
-	// printf("1rl: %*3d\n", 0, 0);
-	// ft_printf("1ft: %*3d\n", 0, 0);
+	printf("1rl: %*3d\n", 0, 0);
+	ft_printf("1ft: %*3d\n", 0, 0);
 
 	printf("2rl: %*3d\n", 5, 0);
 	ft_printf("2ft: %*3d\n", 5, 0);
