@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/14 13:27:00 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 14:23:01 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_print
 	int				num_zero;
 	int				char_zero;
 	int				print_negative;
+	int				print_plus;
 	int				wild_width;
 	int				wild_prec;
 }					t_print;
