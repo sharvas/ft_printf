@@ -37,6 +37,19 @@ void	ft_update_flags(t_print *all)
 	}
 }
 
+void	ft_wild_width(t_print *all, va_list ap)
+{
+	all->width = va_arg(ap, int);
+	if (all->width < 0)
+	{
+		all->width *= -1;
+		all->minus = 1;
+	}
+	if (all->width)
+		all->wild_width = 1;
+	all->len++;
+}
+
 void	ft_update_width(t_print *all, va_list ap)
 {
 	unsigned int	n;
@@ -49,17 +62,7 @@ void	ft_update_width(t_print *all, va_list ap)
 		n++;
 	count = n - all->len;
 	if (all->form[n] == '*')
-	{
-		all->width = va_arg(ap, int);
-		if (all->width < 0)
-		{
-			all->width *= -1;
-			all->minus = 1;
-		}
-		if (all->width)
-			all->wild_width = 1;
-		all->len++;
-	}
+		ft_wild_width(all, ap);
 	else
 	{
 		if (all->wild_width)
@@ -73,13 +76,30 @@ void	ft_update_width(t_print *all, va_list ap)
 	all->len += count;
 }
 
+void	ft_wild_prec(t_print *all, va_list ap)
+{
+	all->precision = va_arg(ap, int);
+	all->wild_prec = 1;
+	all->len++;
+}
+
+void	ft_read_prec(t_print *all, unsigned int n)
+{
+	unsigned int	multi;
+
+	multi = 1;
+	while (n-- > all->len)
+	{
+		all->precision = all->precision + (all->form[n] - 48) * multi;
+		multi *= 10;
+	}
+}
+
 void	ft_update_precision(t_print *all, va_list ap)
 {
 	unsigned int	n;
 	unsigned int	count;
-	unsigned int	multi;
 
-	multi = 1;
 	if (all->form[all->len] == '.')
 	{
 		all->len++;
@@ -93,20 +113,9 @@ void	ft_update_precision(t_print *all, va_list ap)
 		n++;
 	count = n - all->len;
 	if (all->form[n] == '*')
-	{
-		all->precision = va_arg(ap, int);
-		all->wild_prec = 1;
-		all->len++;
-		n++;
-	}
+		ft_wild_prec(all, ap);
 	if (!all->wild_prec)
-	{
-		while (n-- > all->len)
-		{
-			all->precision = all->precision + (all->form[n] - 48) * multi;
-			multi *= 10;
-		}
-	}
+		ft_read_prec(all, n);
 	all->len += count;
 }
 

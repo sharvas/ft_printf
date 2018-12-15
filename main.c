@@ -137,3 +137,23 @@ int 	main(void)
 // 	printf("rl: a%Ob%Oc%Od\n", 0, 55555, 100000);
 // 	ft_printf("ft: a%Ob%Oc%Od\n", 0, 55555, 100000);
 }
+
+/*int	main(void) // testing parsing into struct
+{
+	char	*form;
+	t_print	all;
+	int		i;
+
+	i = 0;
+	form = "+5.7ld. string";
+	ft_init(&all);
+	all.form = form;
+	all.len = i;
+	printf("Before Parse:\n");
+	ft_print_struct(&all);
+	ft_parse(&all);
+	printf("\nAfter Parse:\n");
+	ft_print_struct(&all);
+	return (0);
+}*/
+

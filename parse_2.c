@@ -19,6 +19,18 @@ int		ft_islength(char c)
 	return (0);
 }
 
+void	ft_hh(t_print *all)
+{
+	all->hh = 1;
+	all->len++;
+}
+
+void	ft_ll(t_print *all)
+{
+	all->ll = 1;
+	all->len++;
+}
+
 void	ft_update_length(t_print *all)
 {
 	if (ft_islength(all->form[all->len]))
@@ -26,10 +38,7 @@ void	ft_update_length(t_print *all)
 		if (all->form[all->len] == 'h')
 		{
 			if (all->form[all->len + 1] == 'h')
-			{
-				all->hh = 1;
-				all->len++;
-			}
+				ft_hh(all);
 			else
 				all->h = 1;
 		}
@@ -38,10 +47,7 @@ void	ft_update_length(t_print *all)
 		if (all->form[all->len] == 'l')
 		{
 			if (all->form[all->len + 1] == 'l')
-			{
-				all->ll = 1;
-				all->len++;
-			}
+				ft_ll(all);
 			else
 				all->l = 1;
 		}
@@ -60,8 +66,7 @@ int		ft_istype(char c)
 		c == 's' || c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
-}
-// R and Z??
+}// R and Z??
 
 void	ft_update_type(t_print *all)
 {
@@ -80,9 +85,11 @@ void	ft_update_conflicts(t_print *all)
 	}
 	if (all->type == 's')
 		all->space = 0;
-	if ((all->type == 'x' || all->type == 'X' || all->type == 'o') && all->prec_set && !all->precision)
+	if ((all->type == 'x' || all->type == 'X' || all->type == 'o')
+		&& all->prec_set && !all->precision)
 		all->hex_o_zero = 1;
-	if ((all->type == 'd' || all->type == 'i') && all->prec_set && !all->wild_prec)
+	if ((all->type == 'd' || all->type == 'i')
+		&& all->prec_set && !all->wild_prec)
 		all->zero = 0;
 	if (all->type == 'f' && all->prec_set == 0)
 		all->precision = 6;
@@ -92,30 +99,4 @@ void	ft_update_conflicts(t_print *all)
 		all->float_multi = 15;
 	else if (all->type == 'f' && all->precision < 16)
 		all->float_multi = all->precision;
-
-	// if (all->width)
-	// 	all->wildcard = 0;
-	// if (ft_istype(all->type) && all->type != 'c' && all->type != 'C' &&
-	// 	all->type != 's' && all->type != 'S' && all->type != 'f' &&
-	// 	all->type != 'p' && all->precision != -6)
-	// 	all->width = all->precision;
 }
-
-/*int	main(void)
-{
-	char	*form;
-	t_print	all;
-	int		i;
-
-	i = 0;
-	form = "+5.7ld. string";
-	ft_init(&all);
-	all.form = form;
-	all.len = i;
-	printf("Before Parse:\n");
-	ft_print_struct(&all);
-	ft_parse(&all);
-	printf("\nAfter Parse:\n");
-	ft_print_struct(&all);
-	return (0);
-}*/

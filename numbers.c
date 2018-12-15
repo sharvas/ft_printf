@@ -36,7 +36,8 @@ void		ft_int(t_print *all, va_list ap)
 		all->sign = 1;
 		num = -num;
 	}
-	if ((all->type == 'd' || all->type == 'i') && !all->precision && all->prec_set && num == 0)
+	if ((all->type == 'd' || all->type == 'i')
+		&& !all->precision && all->prec_set && num == 0)
 		num_str = ft_strdup("");
 	else
 		num_str = ft_itoa_mod(num);
