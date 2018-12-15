@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 13:21:19 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 15:14:26 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		if (all->sign && !all->minus && !all->zero)
 			num_str = ft_negative(num_str, all);
 		if ((all->sign || ((all->sharp || all->plus || all->space) && (all->minus ||
-							all->zero)/* && !all->prec_set && (!all->width || all->type == 'd' ||
-								all->type == 'o')*/)))
+							all->zero)) || all->type == '%'))
 		{
 			if (all->sharp && !(all->type == 'o' || all->type == 'd' || all->type == 'i'))
 				all->width--;
 			all->width--;
 		}
-		else if (all->type == 'o' && all->minus && all->width && all->precision && all->num_zero)//%#-8.3o
+		else if (all->type == 'o' && all->minus && all->width && all->precision && all->num_zero)
 			all->width--;
-		if ((all->type == 'x' || all->type == 'X') && all->zero && all->width && all->sharp && all->h)//%#04hX
+		if ((all->type == 'x' || all->type == 'X') && all->zero && all->width && all->sharp &&
+				(all->h || all->prec_set || all->num_zero))
 			all->width += 2;
+		if ((all->type == 'o' && all->sharp && all->width && all->prec_set && 
+					!all->num_zero && all->zero) || (all->type == '%' && all->width))
+			all->width++;
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
 		if (all->minus || (all->type == 'p' && all->zero))
@@ -81,10 +84,10 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		else if (all->space && !all->plus)
 			num_str = ft_strjoin(" ", num_str);
 	}
-	if (all->sharp && all->type == 'x' && ((!all->hex_o_zero && !all->num_zero) ||
-				(all->width && all->prec_set && !all->precision && !all->num_zero)))//%0#10.0x
+	if (!all->print_plus && all->sharp && all->type == 'x' && ((!all->hex_o_zero && !all->num_zero) ||
+				(all->width && all->prec_set && !all->precision && !all->num_zero)))
 		num_str = ft_strjoin("0x", num_str);
-	else if (all->sharp && all->type == 'X' && ((!all->hex_o_zero && !all->num_zero) ||
+	else if (!all->print_plus && all->sharp && all->type == 'X' && ((!all->hex_o_zero && !all->num_zero) ||
 				(all->width && all->prec_set && !all->precision && !all->num_zero)))
 		num_str = ft_strjoin("0X", num_str);
 	else if (all->sharp && all->type == 'o' && ((!all->hex_o_zero && !all->num_zero) || 
@@ -92,6 +95,7 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		num_str = ft_strjoin("0", num_str);
 	else if (all->sharp && all->type == 'o' && !all->precision && all->prec_set && !all->num_zero)
 		num_str = ft_strjoin("0", num_str);
+	all->print_plus = 1;
 	return (num_str);
 }
 
