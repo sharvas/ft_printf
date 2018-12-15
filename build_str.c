@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 12:26:50 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:21:19 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		if (all->sign && !all->minus && !all->zero)
 			num_str = ft_negative(num_str, all);
 		if ((all->sign || ((all->sharp || all->plus || all->space) && (all->minus ||
-							all->zero) && !all->prec_set && (!all->width || all->type == 'd' ||
-								all->type == 'o' || all->type == 'x' || all->type == 'X'))))
+							all->zero)/* && !all->prec_set && (!all->width || all->type == 'd' ||
+								all->type == 'o')*/)))
 		{
 			if (all->sharp && !(all->type == 'o' || all->type == 'd' || all->type == 'i'))
 				all->width--;
@@ -61,7 +61,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 			all->width += 2;
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
-		if (all->minus)
+		if (all->minus || (all->type == 'p' && all->zero))
 			num_str = ft_strjoin(num_str, str);
 		else
 			num_str = ft_strjoin(str, num_str);
