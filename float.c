@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/14 14:34:42 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 13:44:38 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,13 @@ char	*ft_round_float(char *num_str, t_print *all, int i, int len)
 char	*ft_precision_float(char *num_str, t_print *all)
 {
 	int		i;
+	int		l;
 	char	*tmp;
 	int		len;
 	
 	i = 0;
 	len = 0;
-	if (all->precision == 0)
+	if (all->precision == 0 && all->prec_set)
 	{
 		tmp = ft_strchr(num_str, '.');
 		if (*(tmp + 1) > '4')
@@ -139,11 +140,11 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	}
 	else
 	{
-		if (ft_strlen(ft_strchr(num_str, '.')) > (size_t)all->precision)
+		if ((l = ft_strlen(ft_strchr(num_str, '.'))) > all->precision)
 			num_str = ft_round_float(num_str, all, i, len);
 		else
 		{
-			tmp = ft_strnew(len = all->precision - all->float_multi - 1);
+			tmp = ft_strnew(len = (all->precision - l + 1));
 			i = 0;
 			while (i < len)
 				tmp[i++] = '0';

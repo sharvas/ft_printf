@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/16 13:11:15 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 13:33:04 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ char		*ft_precision(char *num_str, t_print *all)
 
 	str = NULL;
 	if ((i = ft_strlen(num_str)) < all->precision &&
-		all->type != 's' && all->type != 'p')
+		all->type != 's' && all->type != 'p' && all->type != 'f')
 		num_str = ft_prec_a(num_str, all, str, i);
 	else if (all->type == 's' && all->precision)
 	{
