@@ -53,7 +53,7 @@ void		ft_calc_width(t_print *all)
 {
 	if ((all->sign || (((all->sharp && /*all->type != 'u' && all->type != 'U'*/ !ft_is_unsigned_wo(all)) ||
 		((all->plus || all->space) && (!ft_is_unsigned(all)))) &&
-		(all->minus || all->zero)) || all->type == '%'))
+		(all->minus || all->zero)) || all->type == '%') && all->type != 's')
 	{
 		if (all->sharp && all->type != '%' &&
 			!(all->type == 'o' || all->type == 'd' || all->type == 'i'))
