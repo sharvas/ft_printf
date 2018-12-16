@@ -91,6 +91,36 @@ char		*ft_build_fl_width(int len)
 	return (str);
 }
 
+char	*ft_round_float(char *num_str, t_print *all, int i, int len)
+{
+	while (num_str[i] && num_str[i] != '.')
+		i++;
+	if (num_str[i + all->precision + 1] > '4')
+	{
+		if (num_str[i + all->precision] < '9')
+			num_str[i + all->precision]++;
+		else
+		{
+			len = i + 1;
+			while (num_str[i + all->precision] == '9' || num_str[i + all->precision] == '.')
+				i--;
+			while (i < len)
+			{
+				if (num_str[i + all->precision] == '.')
+					i++;
+				if (num_str[i + all->precision] == '9')
+					num_str[i + all->precision] = '0';
+				else
+					num_str[i + all->precision]++;
+				i++;
+			}
+			i--;
+		}
+	}
+	num_str[i + all->precision + 1] = '\0';
+	return (num_str);
+}
+
 char	*ft_precision_float(char *num_str, t_print *all)
 {
 	int		i;
@@ -110,33 +140,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	else
 	{
 		if (ft_strlen(ft_strchr(num_str, '.')) > (size_t)all->precision)
-		{
-			while (num_str[i] && num_str[i] != '.')
-				i++;
-			if (num_str[i + all->precision + 1] > '4')
-			{
-				if (num_str[i + all->precision] < '9')
-					num_str[i + all->precision]++;
-				else
-				{
-					len = i + 1;
-					while (num_str[i + all->precision] == '9' || num_str[i + all->precision] == '.')
-						i--;
-					while (i < len)
-					{
-						if (num_str[i + all->precision] == '.')
-							i++;
-						if (num_str[i + all->precision] == '9')
-							num_str[i + all->precision] = '0';
-						else
-							num_str[i + all->precision]++;
-						i++;
-					}
-					i--;
-				}
-			}
-			num_str[i + all->precision + 1] = '\0';
-		}
+			num_str = ft_round_float(num_str, all, i, len);
 		else
 		{
 			tmp = ft_strnew(len = all->precision - all->float_multi - 1);
