@@ -130,6 +130,7 @@ long long			ft_pow(int a, int b);
 double				ft_modulus(long double a, long double b);
 unsigned int		ft_len(long double n);
 int					ft_len_int(long long n);
+char				*ft_round_float(char *num_str, t_print *all, int i, int len);
 char				*ft_precision_float(char *num_str, t_print *all);
 long long			ft_multiply_float(long double n, t_print *all);
 
