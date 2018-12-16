@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:16 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 18:19:05 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 15:06:23 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,15 @@ void		ft_int(t_print *all, va_list ap)
 	}
 	if ((all->type == 'd' || all->type == 'i')
 		&& !all->precision && all->prec_set && num == 0)
-		num_str = ft_strdup("");
+	{
+		if (!(num_str = ft_strdup("")))
+			ft_error(NULL);
+	}
 	else
-		num_str = ft_itoa_mod(num);
-		//ft_error
+	{
+		if (!(num_str = ft_itoa_mod(num)))
+			ft_error(NULL);
+	}
 	ft_justify(num_str, all);
 	free(num_str);
 }
@@ -82,13 +87,19 @@ void		ft_unsigned(t_print *all, va_list ap)
 	if (num == 0)
 		all->num_zero = 1;
 	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
-		num_str = ft_strdup("");
+	{
+		if (!(num_str = ft_strdup("")))
+			ft_error(NULL);
+	}
 	else
-		num_str = ft_itoa_unsigned(num);
-			//ft_error
+	{
+		if (!(num_str = ft_itoa_unsigned(num)))
+			ft_error(NULL);
+	}
 	ft_justify(num_str, all);
 	free(num_str);
 }
+
 
 void		ft_int_octal(t_print *all, va_list ap)
 {
@@ -99,11 +110,15 @@ void		ft_int_octal(t_print *all, va_list ap)
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->hex_o_zero || all->sharp || !all->num_zero)
-		num_str = ft_itoa_base(num, 8, all->type);
-			//ft_error
+	{
+		if (!(num_str = ft_itoa_base(num, 8, all->type)))
+			ft_error(NULL);
+	}
 	else
-		num_str = ft_strdup("");
-			//ft_error
+	{
+		if (!(num_str = ft_strdup("")))
+			ft_error(NULL);
+	}
 	if (all->sharp && all->precision && (!all->num_zero || all->width))
 		all->precision--;
 	ft_justify(num_str, all);
@@ -119,10 +134,15 @@ void		ft_int_hex(t_print *all, va_list ap)
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->hex_o_zero || !all->num_zero)
-		num_str = ft_itoa_base(num, 16, all->type);
-			//ft_error
+	{
+		if (!(num_str = ft_itoa_base(num, 16, all->type)))
+			ft_error(NULL);
+	}
 	else
-		num_str = ft_strdup("");
+	{
+		if (!(num_str = ft_strdup("")))
+			ft_error(NULL);
+	}
 	ft_justify(num_str, all);
 	free(num_str);
 }

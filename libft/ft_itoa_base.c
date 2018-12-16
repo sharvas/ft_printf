@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/13 16:44:46 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 15:12:44 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 		fresh[--len] = base[n % b];
 		n = n / b;
 	}
+	free(base);
 	return (fresh);
 }

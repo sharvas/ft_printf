@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/15 14:23:01 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 14:30:28 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,7 @@ long long			ft_multiply_float(long double n, t_print *all);
 
 char				*ft_itoa_double(long double n, t_print *all);
 char				*ft_itoa_float(float n, t_print *all);
+
+void				ft_error(char *str);
 
 #endif

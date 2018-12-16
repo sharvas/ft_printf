@@ -6,11 +6,18 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 14:22:12 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 15:05:27 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void		ft_error(char *str)
+{
+	if (str)
+		free(str);
+	exit(1);
+}
 
 void		ft_justify(char *num_str, t_print *all)
 {
@@ -50,6 +57,7 @@ void		ft_justify(char *num_str, t_print *all)
 	else
 		ft_putstr(num_str);
 	all->printed = all->printed + ft_strlen(num_str);
+//	free (num_str);
 }
 
 void		ft_pointer(t_print *all, va_list ap)
@@ -59,14 +67,22 @@ void		ft_pointer(t_print *all, va_list ap)
 
 	num = (uintmax_t)va_arg(ap, void*);
 	if (all->type == 'p' && all->prec_set && !all->precision && num == 0)
-		num_str = ft_strdup("");
+	{
+		if (!(num_str = ft_strdup("")))
+			ft_error(NULL);
+	}
 	else
-		num_str = ft_itoa_base(num, 16, 'x');
-		//ft_error
+	{
+		if (!(num_str = ft_itoa_base(num, 16, 'x')))
+			ft_error(NULL);
+	}
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->precision || all->num_zero)
-		num_str = ft_strjoin("0x", num_str);
+	{
+		if (!(num_str = ft_strjoinfree_s2("0x", num_str)))
+			ft_error(NULL);
+	}
 	ft_justify(num_str, all);
 	free(num_str);
 }
