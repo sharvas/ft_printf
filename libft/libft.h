@@ -90,6 +90,8 @@ void				ft_swap(char *a, char *b);
 char				*ft_strrev(char *str);
 char				*ft_strndup(const char *s1, size_t n);
 char				*ft_strjoinfree(char *s1, char *s2);
+char				*ft_strjoinfree_s1(char *s1, char *s2);
+char				*ft_strjoinfree_s2(char *s1, char *s2);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 int					ft_sqrt(int num);
 int					ft_listlen_int(int **array);
