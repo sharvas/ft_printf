@@ -77,6 +77,8 @@ SRCS = ft_atoi.c \
 		ft_strrev.c \
 		ft_strndup.c \
 		ft_strjoinfree.c \
+		ft_strjoinfree_s1.c \
+		ft_strjoinfree_s2.c \
 		ft_strlcpy.c \
 		ft_sqrt.c \
 		ft_listlen_int.c \
