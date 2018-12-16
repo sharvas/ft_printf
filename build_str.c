@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/16 11:34:06 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 13:11:15 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,13 @@ int			ft_is_unsigned(t_print *all)
 
 int			ft_is_unsigned_wo(t_print *all)
 {
-	return (all->type == 'u' || all->type == 'U' || ((all->type == 'x' ||
-			all->type == 'X') && all->plus));
+	return (all->type == 'u' || all->type == 'U' ||
+			(all->type == 'x' && all->plus));
 }
 
 void		ft_calc_width(t_print *all)
 {
-	if ((((all->type = 'X' || all->type = 'o') && all->ll) ||
-		all->sign || (((all->sharp && !ft_is_unsigned_wo(all)) ||
+	if ((all->sign || (((all->sharp && !ft_is_unsigned_wo(all)) ||
 		((all->plus || all->space) && (!ft_is_unsigned(all)))) &&
 		(all->minus || all->zero)) || all->type == '%') && all->type != 's')
 	{

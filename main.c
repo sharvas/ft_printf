@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/15 19:34:36 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 13:10:24 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	ft_print_struct(t_print *all)
 
 int 	main(void)
 {
-	printf("rl: b'% 0+-#10.5llX\\n'\n", 42);
-	ft_printf("ft: b'% 0+-#10.5llX\\n'\n", 42);
+	printf("rl: b'% 0+-#10.5llU\\n'\n", 42);
+	ft_printf("ft: b'% 0+-#10.5llU\\n'\n", 42);
 
 
 	// int a, b;
