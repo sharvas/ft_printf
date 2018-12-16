@@ -36,7 +36,10 @@ LIBO = libft/ft_isdigit.o \
 		libft/ft_strcpy.o \
 		libft/ft_strnew.o \
 		libft/ft_bzero.o \
-		libft/ft_memset.o
+		libft/ft_memset.o \
+		libft/ft_strjoinfree.o \
+		libft/ft_strjoinfree_s1.o \
+		libft/ft_strjoinfree_s2.o
 
 OBJ = $(SRCS:.c=.o)
 
