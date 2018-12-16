@@ -60,15 +60,20 @@ void	ft_print_struct(t_print *all)
 
 int 	main(void)
 {
-	int a, b;
+	printf("rl: b'% 0+-#10.5llX\\n'\n", 42);
+	ft_printf("ft: b'% 0+-#10.5llX\\n'\n", 42);
+
+
+	// int a, b;
+	// a = printf("rl: b'% +0#-4.5hhs'\n", "foo");
+	// b = ft_printf("ft: b'% +0#-4.5hhs'\n", "foo");
+	// printf("rl:%d ft:%d\n", a, b);
+
 	// ft_printf("1ft. b'% 0+-#10.5llx\\n'\n", 42);
 	// printf("1rl. b'% 0+-#10.5llx\\n'\n", 42);
 	// ft_printf("2ft. b'%+-0#2x\\\\n'\n", 0);
 	// printf("2rl. b'%+-0#2x\\\\n'\n", 0);
 
-	a = printf("rl: b'% +0#-4.5hhs'\n", "foo");
-	b = ft_printf("ft: b'% +0#-4.5hhs'\n", "foo");
-	printf("rl:%d ft:%d\n", a, b);
 //	printf("rl. b'% 0+-#10.5llU\\n'\n", 42);
 //	ft_printf("ft. b'% 0+-#10.5llU\\n'\n", 42);
 //	printf("rl. b'%#3%\\n'\n");

@@ -51,7 +51,8 @@ int			ft_is_unsigned_wo(t_print *all)
 
 void		ft_calc_width(t_print *all)
 {
-	if ((all->sign || (((all->sharp && !ft_is_unsigned_wo(all)) ||
+	if ((((all->type = 'X' || all->type = 'o') && all->ll) ||
+		all->sign || (((all->sharp && !ft_is_unsigned_wo(all)) ||
 		((all->plus || all->space) && (!ft_is_unsigned(all)))) &&
 		(all->minus || all->zero)) || all->type == '%') && all->type != 's')
 	{
