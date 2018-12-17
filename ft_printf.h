@@ -41,7 +41,6 @@ typedef struct		s_print
 	int				width;
 	int				precision;
 	int				prec_set;
-	int				float_multi;
 	int				sign;
 	int				long_float;
 	int				hex_o_zero;

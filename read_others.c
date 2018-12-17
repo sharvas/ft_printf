@@ -56,18 +56,17 @@ void		ft_string(t_print *all, va_list ap)
 {
 	char	*str;
 
-//	str = va_arg(ap, char*);
 	if (!(str = va_arg(ap, char*)))
 	{
-		if (!(str = ft_strdup("(null)")))//??
+		if (!(str = ft_strdup("(null)")))
 			ft_error(NULL);
 	}
 	else if (all->prec_set && !all->precision)
 	{
-		if (!(str = ft_strdup("\0")))//??
+		if (!(str = ft_strdup("\0")))
 			ft_error(NULL);
 	}
-	else if (!(str = ft_strdup(str)))//?
+	else if (!(str = ft_strdup(str)))
 		ft_error(NULL);
 	ft_justify(str, all);
 }
