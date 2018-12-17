@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/16 15:12:44 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 09:29:13 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 	char	*fresh;
 	int		len;
 
+	if (n == 0)
+		return (ft_strdup("0"));
 	if (type == 'X')
 	{
 		if (!(base = ft_strdup("0123456789ABCDEF")))
@@ -41,8 +43,6 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 	len = ft_find_len(n, b);
 	if (!(fresh = ft_strnew(len)))
 		return (NULL);
-	if (n == 0)
-		fresh[0] = '0';
 	fresh[len + 1] = '\0';
 	while (n > 0)
 	{
@@ -50,5 +50,6 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 		n = n / b;
 	}
 	free(base);
+	base = NULL;
 	return (fresh);
 }

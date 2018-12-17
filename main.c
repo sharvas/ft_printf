@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:15:30 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/16 14:02:43 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/16 16:12:44 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,39 @@ void	ft_print_struct(t_print *all)
 
 int 	main(void)
 {
-	printf("rl. b'{%.18f}{%.18F}'\n", 1.4199999570846558, 1.4199999570846558);
-	ft_printf("ft. b'{%.18f}{%.18F}'\n", 1.4199999570846558, 1.4199999570846558);
-	printf("rl. b'{%f}{%F}'\n", -1.4199999570846558, -1.4199999570846558);
-	ft_printf("ft. b'{%f}{%F}'\n", -1.4199999570846558, -1.4199999570846558);
-	printf("rl. b'{%f}{%F}'\n", 1444565483520.0, 1444565483520.0);
-	ft_printf("ft. b'{%f}{%F}'\n", 1444565483520.0, 1444565483520.0);
-	printf("rl. b'{%f}{%F}'\n", -1444565483520.0, -1444565483520.0);
-	ft_printf("ft. b'{%f}{%F}'\n", -1444565483520.0, -1444565483520.0);
+	ft_printf("\n");
+	ft_printf("%%\n");
+	ft_printf("%d\n", 42);
+	ft_printf("%d%d\n", 42, 41);
+	ft_printf("%d%d%d\n", 42, 43, 44);
+	ft_printf("%ld\n", 2147483647);
+	ft_printf("%lld\n", 9223372036854775807);
+	ft_printf("%x\n", 505);
+	ft_printf("%X\n", 505);
+	ft_printf("%p\n", &ft_printf);
+	ft_printf("%20.15d\n", 54321);
+	ft_printf("%-10d\n", 3);
+	ft_printf("% d\n", 3);
+	ft_printf("%+d\n", 3);
+	ft_printf("%010d\n", 1);
+	ft_printf("%hhd\n", 0);
+	ft_printf("%jd\n", 9223372036854775807);
+	ft_printf("%zd\n", 4294967295);
+	ft_printf("%\n");
+	ft_printf("%U\n", 4294967295);
+	ft_printf("%u\n", 4294967295);
+	ft_printf("%o\n", 40);
+	ft_printf("%%#08x\n", 42);
+	ft_printf("%x\n", 1000);
+	ft_printf("%#X\n", 1000);
+	ft_printf("%s\n", NULL);
+	ft_printf("%S\n", L"ݗݜशব");
+	ft_printf("%s%s\n", "test", "test");
+	ft_printf("%s%s%s\n", "test", "test", "test");
+	ft_printf("%C\n", 15000);
 
-//	printf("rl: b'% 0+-#10.5llU\\n'\n", 42);
-//	ft_printf("ft: b'% 0+-#10.5llU\\n'\n", 42);
+	//	printf("rl: b'% 0+-#10.5llU\\n'\n", 42);
+	//	ft_printf("ft: b'% 0+-#10.5llU\\n'\n", 42);
 
 
 	// int a, b;
@@ -83,40 +105,40 @@ int 	main(void)
 	// ft_printf("2ft. b'%+-0#2x\\\\n'\n", 0);
 	// printf("2rl. b'%+-0#2x\\\\n'\n", 0);
 
-//	printf("rl. b'% 0+-#10.5llU\\n'\n", 42);
-//	ft_printf("ft. b'% 0+-#10.5llU\\n'\n", 42);
-//	printf("rl. b'%#3%\\n'\n");
-//	ft_printf("ft. b'%#3%\\n'\n");
-//	printf("rl. b'%#.2o\\n'\n", 0);
-//	ft_printf("ft. b'%#.2o\\n'\n", 0);
-//	ft_printf("ft. b'%-+0# 10hh%\\n'\n");
-//	printf("rl. b'%-+0# 10hh%\\n'\n");
-//	printf("rl. b'% 010u\\n'\n", 0);
-//	ft_printf("ft. b'% 010u\\n'\n", 0);
-//	printf("rl. b'% 02u\\n'\n", 0);
-//	ft_printf("ft. b'% 02u\\n'\n", 0);
-//	printf("rl. b'%+-0#2u\\n'\n", 0);
-//	ft_printf("ft. b'%+-0#2u\\n'\n", 0);
-//	printf("rl. b'% 0+-#10.5llu\\n'\n", 42);
-//	ft_printf("ft. b'% 0+-#10.5llu\\n'\n", 42);
+	//	printf("rl. b'% 0+-#10.5llU\\n'\n", 42);
+	//	ft_printf("ft. b'% 0+-#10.5llU\\n'\n", 42);
+	//	printf("rl. b'%#3%\\n'\n");
+	//	ft_printf("ft. b'%#3%\\n'\n");
+	//	printf("rl. b'%#.2o\\n'\n", 0);
+	//	ft_printf("ft. b'%#.2o\\n'\n", 0);
+	//	ft_printf("ft. b'%-+0# 10hh%\\n'\n");
+	//	printf("rl. b'%-+0# 10hh%\\n'\n");
+	//	printf("rl. b'% 010u\\n'\n", 0);
+	//	ft_printf("ft. b'% 010u\\n'\n", 0);
+	//	printf("rl. b'% 02u\\n'\n", 0);
+	//	ft_printf("ft. b'% 02u\\n'\n", 0);
+	//	printf("rl. b'%+-0#2u\\n'\n", 0);
+	//	ft_printf("ft. b'%+-0#2u\\n'\n", 0);
+	//	printf("rl. b'% 0+-#10.5llu\\n'\n", 42);
+	//	ft_printf("ft. b'% 0+-#10.5llu\\n'\n", 42);
 }
 
 /*int	main(void) // testing parsing into struct
-{
-	char	*form;
-	t_print	all;
-	int		i;
+  {
+  char	*form;
+  t_print	all;
+  int		i;
 
-	i = 0;
-	form = "+5.7ld. string";
-	ft_init(&all);
-	all.form = form;
-	all.len = i;
-	printf("Before Parse:\n");
-	ft_print_struct(&all);
-	ft_parse(&all);
-	printf("\nAfter Parse:\n");
-	ft_print_struct(&all);
-	return (0);
-}*/
+  i = 0;
+  form = "+5.7ld. string";
+  ft_init(&all);
+  all.form = form;
+  all.len = i;
+  printf("Before Parse:\n");
+  ft_print_struct(&all);
+  ft_parse(&all);
+  printf("\nAfter Parse:\n");
+  ft_print_struct(&all);
+  return (0);
+  }*/
 
