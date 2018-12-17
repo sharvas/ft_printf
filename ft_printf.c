@@ -30,7 +30,7 @@ void	ft_init_partial(t_print *all)
 	all->l = 0;
 	all->L = 0;
 	all->z = 0;
-	all->sharp = 0;
+	all->hash = 0;
 	all->zero = 0;
 	all->minus = 0;
 	all->plus = 0;
@@ -102,9 +102,8 @@ int		ft_printf(char const *format, ...)
 		}
 		else
 		{
-			ft_putchar(all.form[all.len]);
+			ft_putchar(all.form[all.len++]);
 			all.printed++;
-			all.len++;
 		}
 	}
 	free(all.form);

@@ -61,14 +61,14 @@ void		ft_int_octal(t_print *all, va_list ap)
 	num = ft_unsigned_len(all, ap);
 	if (num == 0)
 		all->num_zero = 1;
-	if (!all->hex_o_zero || all->sharp || !all->num_zero)
+	if (!all->hex_o_zero || all->hash || !all->num_zero)
 	{
 		if (!(num_str = ft_itoa_base(num, 8, all->type)))
 			ft_error(NULL);
 	}
 	else
 		num_str = ft_strdup_empty();
-	if (all->sharp && all->precision && (!all->num_zero || all->width))
+	if (all->hash && all->precision && (!all->num_zero || all->width))
 		all->precision--;
 	ft_justify(num_str, all);
 }

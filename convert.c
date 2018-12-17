@@ -64,10 +64,10 @@ void		ft_justify(char *num_str, t_print *all)
 {
 	if (all->precision)
 		num_str = ft_precision(num_str, all);
-	if ((!all->minus && (all->plus || all->sharp || all->space) && (!all->zero || 
+	if ((!all->minus && (all->plus || all->hash || all->space) && (!all->zero || 
 				all->type == 'o' || ((all->type == 'x' || all->type == 'X') && 
 					(!all->zero) && !all->width)) && all->type != 'c') || (all->type == 'x' &&
-				all->sharp && all->prec_set && all->width && !all->num_zero))
+				all->hash && all->prec_set && all->width && !all->num_zero))
 		num_str = ft_build_prefix(num_str, all);
 	if (all->type == 'c' && all->char_zero == 1)
 		all->width--;
@@ -77,7 +77,7 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_fill_width(num_str, all, '0');
 	if ((all->minus || all->zero || all->prec_set || all->precision) && (!all->width || all->zero))
 		num_str = ft_negative(num_str, all);
-	if ((all->minus && (all->plus || all->sharp || all->space)) || (all->zero && all->type != 'o'))
+	if ((all->minus && (all->plus || all->hash || all->space)) || (all->zero && all->type != 'o'))
 		num_str = ft_build_prefix(num_str, all);
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);

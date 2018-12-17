@@ -33,7 +33,7 @@ typedef struct		s_print
 	int				l;
 	int				L;
 	int				z;
-	int				sharp;
+	int				hash;
 	int				zero;
 	int				minus;
 	int				plus;

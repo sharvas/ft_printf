@@ -26,11 +26,11 @@ int			ft_is_unsigned_wo(t_print *all)
 
 void		ft_calc_width(t_print *all)
 {
-	if ((all->sign || (((all->sharp && !ft_is_unsigned_wo(all)) ||
+	if ((all->sign || (((all->hash && !ft_is_unsigned_wo(all)) ||
 		((all->plus || all->space) && (!ft_is_unsigned(all)))) &&
 		(all->minus || all->zero)) || all->type == '%') && all->type != 's')
 	{
-		if (all->sharp && all->type != '%' &&
+		if (all->hash && all->type != '%' &&
 			!(all->type == 'o' || all->type == 'd' || all->type == 'i'))
 			all->width--;
 		all->width--;
@@ -39,9 +39,9 @@ void		ft_calc_width(t_print *all)
 		all->minus && all->width && all->precision && all->num_zero)
 		all->width--;
 	if ((all->type == 'x' || all->type == 'X') && all->zero && all->width
-		&& all->sharp && (all->h || all->prec_set || all->num_zero))
+		&& all->hash && (all->h || all->prec_set || all->num_zero))
 		all->width += 2;
-	if ((all->type == 'o' && all->sharp && all->width && all->prec_set &&
+	if ((all->type == 'o' && all->hash && all->width && all->prec_set &&
 		!all->num_zero && all->zero) || (all->type == '%' && all->width))
 		all->width++;
 }
