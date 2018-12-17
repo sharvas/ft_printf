@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 10:18:36 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 11:17:14 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,18 @@
 
 char		*ft_negative(char *num_str, t_print *all)
 {
+//	char *str;
+
+//	str = NULL;
 	if (all->sign && !all->print_negative)
+	{
 		num_str = ft_strjoin_error("-", num_str); //free???
+//		free(num_str);
+	}
+//	else
+//		str = num_str;
 	all->print_negative = 1;
+//	free(num_str);
 	return (num_str);
 }
 
@@ -75,10 +84,10 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 {
 	int		i;
 	char	*str;
-	char	*tmp;
+//	char	*tmp;
 
 	str = NULL;
-	tmp = num_str;
+//	tmp = NULL;
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
 		if (all->sign && !all->minus && !all->zero)
@@ -93,8 +102,10 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	}
 	else if (all->type == 'f')
 		num_str = ft_negative(num_str, all); //free??
+//	else
+//		tmp = num_str;
 	free(str);
-	free(tmp);
+//	free(tmp);
 	return (num_str);
 }
 
@@ -117,9 +128,9 @@ char		*ft_strjoin_error(char *s1, char *s2)
 
 char		*ft_int_plus(char *num_str, t_print *all)
 {
-	char	*tmp;
+//	char	*tmp;
 
-	tmp = num_str;
+//	tmp = num_str;
 	if (!all->sign && (all->type == 'i' || all->type == 'd'))
 	{
 		if (all->plus)
@@ -136,15 +147,18 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		(!all->precision && all->prec_set && !all->num_zero)))
 		num_str = ft_strjoin_error("0", num_str);
 	all->print_plus = 1;
-	free(tmp);
+//	free(tmp);
+//	tmp = NULL;
 	return (num_str);
 }
 
 char		*ft_prec_a(char *num_str, t_print *all, /*char *str,*/ int i)
 {
 	char *str;
+//	char *tmp;
 
 	str = NULL;
+//	tmp = num_str;
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 		ft_error(NULL);
 	all->precision = all->precision - i;
@@ -154,7 +168,8 @@ char		*ft_prec_a(char *num_str, t_print *all, /*char *str,*/ int i)
 	str[i] = '\0';
 	if (!(num_str = ft_strjoinfree_s1(str, num_str)))
 		ft_error(NULL);
-	free(str);
+//	free(str);
+//	free(tmp);
 	return (num_str);
 }
 
@@ -194,7 +209,7 @@ char		*ft_prec_c(char *num_str, t_print *all, /*char *str,*/ int i)
 			ft_error(NULL);
 	}
 	num_str = ft_strjoin_error("0x", num_str);
-	free(str);
+//	free(str);
 	return (num_str);
 }
 
@@ -202,8 +217,10 @@ char		*ft_precision(char *num_str, t_print *all)
 {
 //	char	*str;
 	int		i;
+	char *tmp;
 
 //	str = NULL;
+	tmp = num_str;
 	if ((i = ft_strlen(num_str)) < all->precision &&
 		all->type != 's' && all->type != 'p' && all->type != 'f')
 		num_str = ft_prec_a(num_str, all, /*str,*/ i);
@@ -219,5 +236,6 @@ char		*ft_precision(char *num_str, t_print *all)
 	else if (all->type == 'p' && all->precision && !all->num_zero)
 		num_str = ft_prec_c(num_str, all, /*str,*/ i);
 //	free(str);
+//	free(tmp);
 	return (num_str);
 }
