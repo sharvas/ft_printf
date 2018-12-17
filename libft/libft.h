@@ -24,7 +24,7 @@ int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
-char				*ft_itoa_mod(intmax_t n);
+char				*ft_itoa_intmax(intmax_t n);
 char				*ft_itoa_unsigned(uintmax_t n);
 char				*ft_itoa_base(uintmax_t n, int b, char type);
 void				*ft_memalloc(size_t size);

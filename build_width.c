@@ -15,7 +15,7 @@
 int			ft_is_unsigned(t_print *all)
 {
 	return (all->type == 'u' || all->type == 'U' || all->type == 'x' ||
-			all->type == 'X' ||	all->type == 'o');
+		all->type == 'X' || all->type == 'o');
 }
 
 int			ft_is_unsigned_wo(t_print *all)
@@ -56,7 +56,7 @@ char		*ft_build_width(t_print *all, char c)
 		all->type == 'X') && all->prec_set && all->width)
 		c = ' ';
 	if (!(str = (char*)malloc(sizeof(char) * (all->width + 1))))
-		ft_error(NULL); //need to free num_str, others?
+		ft_error(NULL);
 	while (i < all->width)
 		str[i++] = c;
 	str[i] = '\0';
@@ -67,7 +67,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 {
 	int		i;
 	char	*str;
-	char 	*tmp;
+	char	*tmp;
 
 	str = NULL;
 	tmp = NULL;
@@ -78,16 +78,11 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		ft_calc_width(all);
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
+		tmp = num_str;
 		if (all->minus || (all->type == 'p' && all->zero))
-		{
-			tmp = num_str;
 			num_str = ft_strjoinfree_s2(num_str, str);
-		}
 		else
-		{
-			tmp = num_str;
 			num_str = ft_strjoinfree_s1(str, num_str);
-		}
 		if (all->type != 's')
 			free(tmp);
 	}

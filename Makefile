@@ -28,12 +28,13 @@ SRCS = ft_printf.c \
 
 LIBO = libft/ft_isdigit.o \
 		libft/ft_itoa_base.o \
-		libft/ft_itoa_mod.o \
+		libft/ft_itoa_intmax.o \
 		libft/ft_itoa_unsigned.o \
 		libft/ft_putchar.o \
 		libft/ft_putstr.o \
 		libft/ft_strchr.o \
 		libft/ft_strdup.o \
+		libft/ft_strndup.o \
 		libft/ft_strjoin.o \
 		libft/ft_strlen.o \
 		libft/ft_strcat.o \

@@ -108,7 +108,7 @@ void				ft_pointer(t_print *all, va_list ap);
 
 // convert.c //
 
-char				*ft_strdup_empty();
+char				*ft_strdup_empty(void);
 void				ft_error(char *str);
 char				*ft_strjoin_error(char *s1, char *s2);
 void				ft_print(char *num_str, t_print *all);

@@ -46,7 +46,7 @@ char		*ft_prec_b(char *num_str, t_print *all, int i)
 
 char		*ft_prec_c(char *num_str, t_print *all, int i)
 {
-	int	len;
+	int		len;
 	char	*str;
 
 	str = NULL;
@@ -77,7 +77,7 @@ char		*ft_precision(char *num_str, t_print *all)
 	else if (all->type == 's' && all->precision)
 	{
 		if (!(num_str = ft_strdup(num_str)))
-			ft_error(NULL); //strndup??
+			ft_error(NULL);
 		num_str[all->precision] = '\0';
 	}
 	else if (all->type == 'p' && all->precision && all->num_zero)

@@ -28,7 +28,7 @@ void		ft_int(t_print *all, va_list ap)
 		num_str = ft_strdup_empty();
 	else
 	{
-		if (!(num_str = ft_itoa_mod(num)))
+		if (!(num_str = ft_itoa_intmax(num)))
 			ft_error(NULL);
 	}
 	ft_justify(num_str, all);
@@ -51,7 +51,6 @@ void		ft_unsigned(t_print *all, va_list ap)
 	}
 	ft_justify(num_str, all);
 }
-
 
 void		ft_int_octal(t_print *all, va_list ap)
 {
