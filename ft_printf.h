@@ -41,7 +41,6 @@ typedef struct		s_print
 	int				width;
 	int				precision;
 	int				prec_set;
-	int				float_multi;
 	int				sign;
 	int				long_float;
 	int				hex_o_zero;
@@ -103,6 +102,14 @@ void				ft_int_hex(t_print *all, va_list ap);
 void				ft_number(t_print *all, va_list ap);
 
 /*
+**		read_floats.c
+*/
+void				ft_double(t_print *all, va_list ap);
+void				ft_float(t_print *all, va_list ap);
+void				ft_long_double(t_print *all, va_list ap);
+void				ft_float_type(t_print *all, va_list ap);
+
+/*
 **		read_others.c
 */
 intmax_t			ft_int_len(t_print *all, va_list ap);
@@ -110,8 +117,6 @@ uintmax_t			ft_unsigned_len(t_print *all, va_list ap);
 void				ft_string(t_print *all, va_list ap);
 void				ft_char(t_print *all, va_list ap);
 void				ft_pointer(t_print *all, va_list ap);
-
-// read_floats /////////////////////////////////////////////////
 
 /*
 **		convert.c
@@ -148,21 +153,17 @@ int					ft_o_condition(t_print *all);
 char				*ft_build_prefix(char *num_str, t_print *all);
 
 /*
-**		float_types.c
+**		build_float.c
 */
-void				ft_double(t_print *all, va_list ap);
-void				ft_float(t_print *all, va_list ap);
-void				ft_long_double(t_print *all, va_list ap);
-void				ft_floating(t_print *all, va_list ap);
-
-uintmax_t			ft_pow(int a, int b);
-double				ft_modulus(long double a, long double b);
-unsigned int		ft_len(long double n);
-int					ft_len_int(long long n);
 char				*ft_round_float(char *num_str, t_print *all, int i, int len);
 char				*ft_precision_float(char *num_str, t_print *all);
 long long			ft_multiply_float(long double n, t_print *all);
 
+/*
+**		float_support.c
+*/
+uintmax_t			ft_pow(int a, int b);
+int					ft_len_int(long long n);
 char				*ft_itoa_double(long double n, t_print *all);
 char				*ft_itoa_float(float n, t_print *all);
 

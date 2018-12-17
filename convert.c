@@ -84,6 +84,5 @@ void		ft_justify(char *num_str, t_print *all)
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);
 	ft_print(num_str, all);
-//	if (all->type != 's')
-		free(num_str);
+	free(num_str);
 }

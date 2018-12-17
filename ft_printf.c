@@ -38,7 +38,6 @@ void	ft_init_partial(t_print *all)
 	all->width = 0;
 	all->precision = 0;
 	all->prec_set = 0;
-	all->float_multi = 0;
 	all->sign = 0;
 	all->long_float = 0;
 	all->hex_o_zero = 0;
@@ -79,7 +78,7 @@ void	ft_type_switch(t_print *all, va_list ap)
 	else if (all->type == 'p')
 		ft_pointer(all, ap);
 	else if (all->type == 'f')
-		ft_floating(all, ap);
+		ft_float_type(all, ap);
 }
 
 int		ft_printf(char const *format, ...)

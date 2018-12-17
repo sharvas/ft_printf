@@ -18,13 +18,14 @@ SRCS = ft_printf.c \
 		parse_length.c \
 		parse_type.c \
 		read_numbers.c \
+		read_floats.c \
 		read_others.c \
 		convert.c \
 		build_precision.c \
 		build_width.c \
 		build_prefix.c \
-		float.c \
-		float_types.c \
+		build_float.c \
+		float_support.c
 
 LIBO = libft/ft_isdigit.o \
 		libft/ft_itoa_base.o \

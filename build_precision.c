@@ -75,16 +75,7 @@ char		*ft_precision(char *num_str, t_print *all)
 		all->type != 's' && all->type != 'p' && all->type != 'f')
 		num_str = ft_prec_a(num_str, all, i);
 	else if (all->type == 's' && all->precision)
-	{
-//		if (!(num_str = ft_strdup(num_str)))
-//			ft_error(NULL);
 		num_str[all->precision] = '\0';
-	}
-//	else if (all->type == 's' && !all->precision)
-//	{
-//		if (!(num_str = ft_strdup(num_str)))
-//			ft_error(NULL);
-//	}
 	else if (all->type == 'p' && all->precision && all->num_zero)
 		num_str = ft_prec_b(num_str, all, i);
 	else if (all->type == 'p' && all->precision && !all->num_zero)

@@ -73,8 +73,4 @@ void	ft_update_conflicts(t_print *all)
 		all->precision = 6;
 	if (all->type == 'f' && all->precision > 7)
 		all->long_float = 1;
-//	if (all->type == 'f' && all->precision > 15)
-//		all->float_multi = 18;
-//	else if (all->type == 'f' && all->precision < 16)
-//		all->float_multi = all->precision;
 }

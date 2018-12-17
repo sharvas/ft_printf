@@ -67,10 +67,8 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 {
 	int		i;
 	char	*str;
-//	char	*tmp;
 
 	str = NULL;
-//	tmp = NULL;
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
 		if (all->sign && !all->minus && !all->zero)
@@ -78,13 +76,10 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		ft_calc_width(all);
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
-//		tmp = num_str;
 		if (all->minus || (all->type == 'p' && all->zero))
-			num_str = ft_strjoinfree/*_s2*/(num_str, str);
+			num_str = ft_strjoinfree(num_str, str);
 		else
-			num_str = ft_strjoinfree/*_s1*/(str, num_str);
-//		if (all->type != 's')
-//			free(tmp);
+			num_str = ft_strjoinfree(str, num_str);
 	}
 	else if (all->type == 'f')
 		num_str = ft_negative(num_str, all);
