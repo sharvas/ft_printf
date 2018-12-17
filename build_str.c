@@ -15,10 +15,11 @@
 char		*ft_negative(char *num_str, t_print *all)
 {
 	if (all->sign && !all->print_negative)
-	{
-		if (!(num_str = ft_strjoin("-", num_str))) //free???
-			ft_error(NULL);
-	}
+		num_str = ft_strjoin_error("-", num_str); //free???
+	// {
+	// 	if (!(num_str = ft_strjoin("-", num_str))) //free???
+	// 		ft_error(NULL);
+	// }
 	all->print_negative = 1;
 	return (num_str);
 }
@@ -88,15 +89,9 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
 		if (all->minus || (all->type == 'p' && all->zero))
-		{
-			if (!(num_str = ft_strjoin(num_str, str)))
-				ft_error(NULL);
-		}
+			num_str = ft_strjoin_error(num_str, str);
 		else
-		{
-			if (!(num_str = ft_strjoin(str, num_str)))
-				ft_error(NULL);
-		}
+			num_str = ft_strjoin_error(str, num_str);
 	}
 	else if (all->type == 'f')
 		num_str = ft_negative(num_str, all); //free??
@@ -111,38 +106,33 @@ int			ft_0x_condition(t_print *all)
 		(all->width && all->prec_set && !all->precision && !all->num_zero)));
 }
 
+char		*ft_strjoin_error(char *s1, char *s2)
+{
+	char	*num_str;
+
+	num_str = NULL;
+	if (!(num_str = ft_strjoin(s1, s2)))
+		ft_error(NULL);
+	return (num_str);
+}
+
 char		*ft_int_plus(char *num_str, t_print *all)
 {
 	if (!all->sign && (all->type == 'i' || all->type == 'd'))
 	{
 		if (all->plus)
-		{
-			if (!(num_str = ft_strjoin("+", num_str)))
-				ft_error(NULL);
-		}
+			num_str = ft_strjoin_error("+", num_str);
 		else if (all->space && !all->plus)
-		{
-			if (!(num_str = ft_strjoin(" ", num_str)))
-				ft_error(NULL);
-		}
+			num_str = ft_strjoin_error(" ", num_str);
 	}
 	if (all->type == 'x' && ft_0x_condition(all))
-	{
-		if (!(num_str = ft_strjoin("0x", num_str)))
-			ft_error(NULL);
-	}
+		num_str = ft_strjoin_error("0x", num_str);
 	else if (all->type == 'X' && ft_0x_condition(all))
-	{
-		if (!(num_str = ft_strjoin("0X", num_str)))
-			ft_error(NULL);
-	}
+		num_str = ft_strjoin_error("0X", num_str);
 	else if (all->type == 'o' && all->sharp && (((!all->hex_o_zero &&
 		!all->num_zero) || (all->width && all->precision)) ||
 		(!all->precision && all->prec_set && !all->num_zero)))
-	{
-		if (!(num_str = ft_strjoin("0", num_str)))
-			ft_error(NULL);
-	}
+		num_str = ft_strjoin_error("0", num_str);
 	all->print_plus = 1;
 	return (num_str);
 }
@@ -169,8 +159,7 @@ char		*ft_prec_b(char *num_str, t_print *all, char *str, int i)
 	while (i < all->precision - 1)
 		str[i++] = '0';
 	str[i] = '\0';
-	if (!(num_str = ft_strjoinfree_s2(num_str, str)))
-		ft_error(NULL);
+	num_str = ft_strjoin_error(num_str, str);
 	return (num_str);
 }
 
@@ -191,8 +180,7 @@ char		*ft_prec_c(char *num_str, t_print *all, char *str, int i)
 		if (!(num_str = ft_strjoinfree_s1(str, num_str)))
 			ft_error(NULL);
 	}
-	if (!(num_str = ft_strjoin("0x", num_str)))
-		ft_error(NULL);
+	num_str = ft_strjoin_error("0x", num_str);
 	return (num_str);
 }
 

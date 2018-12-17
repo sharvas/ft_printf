@@ -87,6 +87,9 @@ char				*ft_build_width(t_print *all, char c);
 void				ft_calc_width(t_print *all);
 char				*ft_fill_width(char *num_str, t_print *all, char c);
 int					ft_0x_condition(t_print *all);
+
+char				*ft_strjoin_error(char *s1, char *s2);
+
 char				*ft_int_plus(char *num_str, t_print *all);
 char				*ft_prec_a(char *num_str, t_print *all, char* str, int i);
 char				*ft_prec_b(char *num_str, t_print *all, char* str, int i);
