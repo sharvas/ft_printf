@@ -16,10 +16,6 @@ char		*ft_negative(char *num_str, t_print *all)
 {
 	if (all->sign && !all->print_negative)
 		num_str = ft_strjoin_error("-", num_str); //free???
-	// {
-	// 	if (!(num_str = ft_strjoin("-", num_str))) //free???
-	// 		ft_error(NULL);
-	// }
 	all->print_negative = 1;
 	return (num_str);
 }
