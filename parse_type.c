@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:03:46 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 14:03:47 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/17 16:39:52 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	ft_update_conflicts(t_print *all)
 		all->precision = 6;
 	if (all->type == 'f' && all->precision > 7)
 		all->long_float = 1;
-	if (all->type == 'f' && all->precision > 15)
-		all->float_multi = 15;
-	else if (all->type == 'f' && all->precision < 16)
-		all->float_multi = all->precision;
+//	if (all->type == 'f' && all->precision > 15)
+//		all->float_multi = 18;
+//	else if (all->type == 'f' && all->precision < 16)
+//		all->float_multi = all->precision;
 }

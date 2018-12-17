@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:44:59 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 15:22:15 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 17:45:18 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,26 @@ void		ft_double(t_print *all, va_list ap)
 
 void		ft_float(t_print *all, va_list ap)
 {
-//	float		num;
-	long double long_num;
-	char		*num_str;
+	float	num;
+	double	long_num;
+	char	*num_str;
 
 	long_num = va_arg(ap, double);
-/*	if (!all->long_float)
+	if ((intmax_t)long_num > 1000 || (intmax_t)long_num < -1000)
+		all->long_float = 1;
+	if (!all->long_float)
 	{
 		num = (float)long_num;
 		num_str = ft_itoa_float(num, all);
-			//error
 		num_str = ft_precision_float(num_str, all);
 		ft_justify(num_str, all);
-		free(num_str);
 	}
 	else if (all->long_float)
-	{*/
+	{
 		num_str = ft_itoa_double(long_num, all);
 		num_str = ft_precision_float(num_str, all);
 		ft_justify(num_str, all);
-//	}
+	}
 }
 
 void		ft_long_double(t_print *all, va_list ap)
@@ -52,7 +52,6 @@ void		ft_long_double(t_print *all, va_list ap)
 	long double	num;
 	char		*num_str;
 
-	num = 0;
 	num = va_arg(ap, long double);
 	num_str = ft_itoa_double(num, all);
 	num_str = ft_precision_float(num_str, all);

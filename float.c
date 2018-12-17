@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 15:21:07 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 18:04:09 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	ft_len_int(long long n)
 	return (len);
 }
 
-long long	ft_pow(int a, int b)
+uintmax_t	ft_pow(int a, int b)
 {
-	long long	res;
+	uintmax_t	res;
 
 	res = a;
 	while (b--)
@@ -37,23 +37,23 @@ long long	ft_pow(int a, int b)
 
 char	*ft_itoa_float(float n, t_print *all)
 {
-	char	*num;
-	char	*num_end;
-	intmax_t	n_int;
+	char		*num;
+	char		*num_end;
+	uintmax_t	n_int;
 
 	if (n == 0)
-		return (ft_strdup("0"));
+		return (ft_strdup("0."));
 	if (n < 0)
 	{
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (intmax_t)((n - (intmax_t)n) * (long double)ft_pow(10, all->float_multi));
+	n_int = (uintmax_t)((n - (uintmax_t)n) * ft_pow(10, all->precision));
 	if (!(num = ft_itoa_mod((intmax_t)n)))
 		ft_error(NULL);
 	if (!(num = ft_strjoinfree_s1(num, ".")))
 		ft_error(NULL);
-	if (!(num_end = ft_itoa_mod(n_int)))
+	if (!(num_end = ft_itoa_unsigned(n_int)))
 		ft_error(NULL);
 	if (!(num = ft_strjoinfree(num, num_end)))
 		ft_error(NULL);
@@ -64,21 +64,21 @@ char	*ft_itoa_double(long double n, t_print *all)
 {
 	char		*num;
 	char		*num_end;
-	intmax_t	n_int;
+	uintmax_t	n_int;
 
 	if (n == 0)
-		return (ft_strdup("0"));
+		return (ft_strdup("0."));
 	if (n < 0)
 	{
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (intmax_t)((n - (intmax_t)n) * (long double)ft_pow(10, all->float_multi));
+	n_int = (uintmax_t)((n - (uintmax_t)n) * ft_pow(10, all->precision));
 	if (!(num = ft_itoa_mod((intmax_t)n)))
 		ft_error(NULL);
 	if (!(num = ft_strjoinfree_s1(num, ".")))
 		ft_error(NULL);
-	if (!(num_end = ft_itoa_mod(n_int)))
+	if (!(num_end = ft_itoa_unsigned(n_int)))
 		ft_error(NULL);
 	if (!(num = ft_strjoinfree(num, num_end)))
 		ft_error(NULL);

@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 13:48:58 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 16:52:38 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void				ft_justify(char *num_str, t_print *all);
 
 
 
-long long			ft_pow(int a, int b);
+uintmax_t			ft_pow(int a, int b);
 
 double				ft_modulus(long double a, long double b);
 unsigned int		ft_len(long double n);
