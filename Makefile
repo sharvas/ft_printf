@@ -12,14 +12,16 @@
 
 NAME = libftprintf.a
 
-SRCS = build_str.c \
+SRCS = ft_printf.c \
+		parse_flags_width.c \
+		parse_precision.c \
+		parse_length.c \
+		parse_type.c \
+		build_str.c \
 		convert.c \
 		float.c \
 		float_types.c \
-		ft_printf.c \
 		numbers.c \
-		parse.c \
-		parse_2.c \
 		string.c
 
 LIBO = libft/ft_isdigit.o \

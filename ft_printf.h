@@ -56,29 +56,52 @@ typedef struct		s_print
 
 void				ft_init(t_print *all);
 void				ft_init_partial(t_print *all);
-
+void				ft_parse(t_print *all, va_list ap);
+void				ft_print(t_print *all, va_list ap);
 int					ft_printf(char const *format, ...);
 
-// parse.c //
+// parse_flags_width.c //
+
 int					ft_isflag(char c);
 void				ft_update_flags(t_print *all);
 void				ft_wild_width(t_print *all, va_list ap);
 void				ft_update_width(t_print *all, va_list ap);
+
+// parse_precision.c //
+
 void				ft_wild_prec(t_print *all, va_list ap);
-void				ft_read_prec(t_print *all, unsigned int n);//
+void				ft_read_prec(t_print *all, unsigned int n);
 void				ft_update_precision(t_print *all, va_list ap);
 
-void				ft_update_upcase(t_print *all);
-void				ft_parse(t_print *all, va_list ap);
+// parse_length.c //
 
-// parse_2.c //
 int					ft_islength(char c);
 void				ft_hh(t_print *all);
 void				ft_ll(t_print *all);
 void				ft_update_length(t_print *all);
+
+// parse_type.c //
+
 int					ft_istype(char c);
 void				ft_update_type(t_print *all);
+void				ft_update_upcase(t_print *all);
 void				ft_update_conflicts(t_print *all);
+
+// numbers.c //
+
+void				ft_int(t_print *all, va_list ap);
+void				ft_unsigned(t_print *all, va_list ap);
+void				ft_int_octal(t_print *all, va_list ap);
+void				ft_int_hex(t_print *all, va_list ap);
+void				ft_number(t_print *all, va_list ap);
+
+// string.c /
+
+intmax_t			ft_int_len(t_print *all, va_list ap);
+uintmax_t			ft_unsigned_len(t_print *all, va_list ap);
+void				ft_string(t_print *all, va_list ap);
+void				ft_char(t_print *all, va_list ap);
+void				ft_pointer(t_print *all, va_list ap);
 
 
 // build_str.c //
@@ -96,15 +119,6 @@ char				*ft_prec_b(char *num_str, t_print *all, /*char* str,*/ int i);
 char				*ft_prec_c(char *num_str, t_print *all, /*char* str,*/ int i);
 char				*ft_precision(char *num_str, t_print *all);
 
-// numbers.c //
-intmax_t			ft_int_len(t_print *all, va_list ap);
-uintmax_t			ft_unsigned_len(t_print *all, va_list ap);
-
-void				ft_int(t_print *all, va_list ap);
-void				ft_unsigned(t_print *all, va_list ap);
-void				ft_int_octal(t_print *all, va_list ap);
-void				ft_int_hex(t_print *all, va_list ap);
-void				ft_number(t_print *all, va_list ap);
 
 // float_types.c //
 void				ft_double(t_print *all, va_list ap);
@@ -112,19 +126,16 @@ void				ft_float(t_print *all, va_list ap);
 void				ft_long_double(t_print *all, va_list ap);
 void				ft_floating(t_print *all, va_list ap);
 
-// string.c /
 
-void				ft_string(t_print *all, va_list ap);
-void				ft_char(t_print *all, va_list ap);
 
 
 void				ft_justify(char *num_str, t_print *all);
-void				ft_print(t_print *all, va_list ap);
 
 
 
 
-void				ft_pointer(t_print *all, va_list ap);
+
+
 
 
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_flags_width.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 15:04:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/14 20:43:59 by svaskeli         ###   ########.fr       */
+/*   Created: 2018/12/17 14:00:50 by dfinnis           #+#    #+#             */
+/*   Updated: 2018/12/17 14:00:52 by dfinnis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,89 +74,4 @@ void	ft_update_width(t_print *all, va_list ap)
 		}
 	}
 	all->len += count;
-}
-
-void	ft_wild_prec(t_print *all, va_list ap)
-{
-	all->precision = va_arg(ap, int);
-	all->wild_prec = 1;
-	all->len++;
-}
-
-void	ft_read_prec(t_print *all, unsigned int n)
-{
-	unsigned int	multi;
-
-	multi = 1;
-	while (n-- > all->len)
-	{
-		all->precision = all->precision + (all->form[n] - 48) * multi;
-		multi *= 10;
-	}
-}
-
-void	ft_update_precision(t_print *all, va_list ap)
-{
-	unsigned int	n;
-	unsigned int	count;
-
-	if (all->form[all->len] == '.')
-	{
-		all->len++;
-		all->prec_set = 1;
-		all->precision = 0;
-	}
-	else
-		return ;
-	n = all->len;
-	while (ft_isdigit(all->form[n]))
-		n++;
-	count = n - all->len;
-	if (all->form[n] == '*')
-		ft_wild_prec(all, ap);
-	if (!all->wild_prec)
-		ft_read_prec(all, n);
-	all->len += count;
-}
-
-void	ft_update_upcase(t_print *all)
-{
-	if (all->form[all->len] == 'D')
-	{
-		all->type = 'd';
-		all->l = 1;
-		all->len++;
-	}
-	if (all->form[all->len] == 'O')
-	{
-		all->type = 'o';
-		all->l = 1;
-		all->len++;
-	}
-	if (all->form[all->len] == 'U')
-	{
-		all->type = 'u';
-		all->l = 1;
-		all->len++;
-	}
-	if (all->form[all->len] == 'F')
-	{
-		all->type = 'f';
-		all->len++;
-	}
-}
-
-void	ft_parse(t_print *all, va_list ap)
-{
-	while (all->form[all->len] &&
-		ft_strchr("+- #0123456789.hlLjz*", all->form[all->len]))
-	{
-		ft_update_flags(all);
-		ft_update_width(all, ap);
-		ft_update_precision(all, ap);
-		ft_update_length(all);
-	}
-	ft_update_type(all);
-	ft_update_upcase(all);
-	ft_update_conflicts(all);
 }

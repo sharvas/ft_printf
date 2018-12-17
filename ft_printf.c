@@ -50,6 +50,38 @@ void	ft_init_partial(t_print *all)
 	all->wild_prec = 0;
 }
 
+void	ft_parse(t_print *all, va_list ap)
+{
+	while (all->form[all->len] &&
+		ft_strchr("+- #0123456789.hlLjz*", all->form[all->len]))
+	{
+		ft_update_flags(all);
+		ft_update_width(all, ap);
+		ft_update_precision(all, ap);
+		ft_update_length(all);
+	}
+	ft_update_type(all);
+	ft_update_upcase(all);
+	ft_update_conflicts(all);
+}
+
+void	ft_print(t_print *all, va_list ap)
+{
+	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
+			all->type == 'o' || all->type == 'x' || all->type == 'X')
+		ft_number(all, ap);
+	else if (all->type == 's')
+		ft_string(all, ap);
+	else if (all->type == 'c')
+		ft_char(all, ap);
+	else if (all->type == '%')
+		ft_char(all, ap);
+	else if (all->type == 'f')
+		ft_floating(all, ap);
+	else if (all->type == 'p')
+		ft_pointer(all, ap);
+}
+
 int		ft_printf(char const *format, ...)
 {
 	va_list			ap;

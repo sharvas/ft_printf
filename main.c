@@ -91,6 +91,9 @@ int 	main(void)
 	ft_printf("%s%s%s\n", "test", "test", "test");
 	ft_printf("%C\n", 15000);
 
+	printf("rl: --%'d\n", -4242424242);
+	ft_printf("ft: --%'d\n", -4242424242);
+
 	//	printf("rl: b'% 0+-#10.5llU\\n'\n", 42);
 	//	ft_printf("ft: b'% 0+-#10.5llU\\n'\n", 42);
 

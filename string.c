@@ -12,6 +12,46 @@
 
 #include "ft_printf.h"
 
+intmax_t	ft_int_len(t_print *all, va_list ap)
+{
+	intmax_t	num;
+
+	if (all->z)
+		num = (intmax_t)va_arg(ap, size_t);
+	else if (all->j)
+		num = va_arg(ap, intmax_t);
+	else if (all->l)
+		num = (intmax_t)va_arg(ap, long);
+	else if (all->ll)
+		num = (intmax_t)va_arg(ap, long long);
+	else if (all->h)
+		num = (intmax_t)(short)va_arg(ap, int);
+	else if (all->hh)
+		num = (intmax_t)(signed char)va_arg(ap, int);
+	else
+		num = va_arg(ap, int);
+	return (num);
+}
+
+uintmax_t	ft_unsigned_len(t_print *all, va_list ap)
+{
+	uintmax_t	num;
+
+	if (all->j || all->z)
+		num = va_arg(ap, uintmax_t);
+	else if (all->l)
+		num = (uintmax_t)va_arg(ap, unsigned long);
+	else if (all->ll)
+		num = (uintmax_t)va_arg(ap, unsigned long long);
+	else if (all->h)
+		num = (uintmax_t)(unsigned short)va_arg(ap, unsigned int);
+	else if (all->hh)
+		num = (uintmax_t)(unsigned char)va_arg(ap, unsigned int);
+	else
+		num = (uintmax_t)va_arg(ap, unsigned int);
+	return (num);
+}
+
 void	ft_string(t_print *all, va_list ap)
 {
 	char	*str;
@@ -47,4 +87,31 @@ void	ft_char(t_print *all, va_list ap)
 	str[1] = '\0';
 	ft_justify(str, all);
 //	free(str);
+}
+
+void		ft_pointer(t_print *all, va_list ap)
+{
+	uintmax_t	num;
+	char		*num_str;
+
+	num = (uintmax_t)va_arg(ap, void*);
+	if (all->type == 'p' && all->prec_set && !all->precision && num == 0)
+	{
+		if (!(num_str = ft_strdup("")))
+			ft_error(NULL);
+	}
+	else
+	{
+		if (!(num_str = ft_itoa_base(num, 16, 'x')))
+			ft_error(NULL);
+	}
+	if (num == 0)
+		all->num_zero = 1;
+	if (!all->precision || all->num_zero)
+	{
+		if (!(num_str = ft_strjoinfree_s2("0x", num_str)))
+			ft_error(NULL);
+	}
+	ft_justify(num_str, all);
+//	free(num_str);
 }
