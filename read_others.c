@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:54:54 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 19:35:24 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 19:40:13 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,16 @@ void		ft_string(t_print *all, va_list ap)
 
 	if (!(str = va_arg(ap, char*)))
 	{
-		if (!(str = ft_strdup("(null)")))
-			ft_error(NULL);
+		if (all->prec_set && !all->precision)
+		{
+			if (!(str = ft_strdup("\0")))
+				ft_error(NULL);
+		}
+		else
+		{
+			if (!(str = ft_strdup("(null)")))
+				ft_error(NULL);
+		}
 	}
 	else if (all->prec_set && !all->precision)
 	{
