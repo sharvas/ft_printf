@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string.c                                           :+:      :+:    :+:   */
+/*   read_others.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 16:19:18 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 13:19:19 by svaskeli         ###   ########.fr       */
+/*   Created: 2018/12/17 14:54:54 by dfinnis           #+#    #+#             */
+/*   Updated: 2018/12/17 14:55:25 by dfinnis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,18 @@ uintmax_t	ft_unsigned_len(t_print *all, va_list ap)
 	return (num);
 }
 
-void	ft_string(t_print *all, va_list ap)
+void		ft_string(t_print *all, va_list ap)
 {
 	char	*str;
 
 	if (!(str = va_arg(ap, char*)))
-	{
 		str = "(null)";
-//			ft_error(NULL);
-	}
 	if (all->prec_set && !all->precision)
-	{
 		str = "\0";
-//			ft_error(NULL);
-	}
 	ft_justify(str, all);
-//	free(str);
 }
 
-void	ft_char(t_print *all, va_list ap)
+void		ft_char(t_print *all, va_list ap)
 {
 	char	c;
 	char	*str;
@@ -86,7 +79,6 @@ void	ft_char(t_print *all, va_list ap)
 	str[0] = c;
 	str[1] = '\0';
 	ft_justify(str, all);
-//	free(str);
 }
 
 void		ft_pointer(t_print *all, va_list ap)
@@ -113,5 +105,4 @@ void		ft_pointer(t_print *all, va_list ap)
 			ft_error(NULL);
 	}
 	ft_justify(num_str, all);
-//	free(num_str);
 }

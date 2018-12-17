@@ -32,7 +32,7 @@ void	ft_update_flags(t_print *all)
 		if (all->form[all->len] == '0')
 			all->zero = 1;
 		if (all->form[all->len] == '#')
-			all->sharp = 1;
+			all->hash = 1;
 		all->len++;
 	}
 }

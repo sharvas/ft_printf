@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_intmax.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 14:25:54 by svaskeli         ###   ########.fr       */
+/*   Created: 2018/12/17 17:06:40 by dfinnis           #+#    #+#             */
+/*   Updated: 2018/12/17 17:06:45 by dfinnis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_find_len(intmax_t n)
 	return ((neg) ? len + 1 : len);
 }
 
-char		*ft_itoa_mod(intmax_t n)
+char		*ft_itoa_intmax(intmax_t n)
 {
 	char	*fresh;
 	int		len;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 14:26:54 by svaskeli         ###   ########.fr       */
+/*   Created: 2018/12/17 17:06:26 by dfinnis           #+#    #+#             */
+/*   Updated: 2018/12/17 17:06:31 by dfinnis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ static int	ft_find_len(uintmax_t n, int b)
 	return (len);
 }
 
+char		*ft_strdup_null(char *str)
+{
+	char	*base;
+
+	base = NULL;
+	if (!(base = ft_strdup(str)))
+		return (NULL);
+	return (base);
+}
+
 char		*ft_itoa_base(uintmax_t n, int b, char type)
 {
 	char	*base;
@@ -31,15 +41,9 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 	if (n == 0)
 		return (ft_strdup("0"));
 	if (type == 'X')
-	{
-		if (!(base = ft_strdup("0123456789ABCDEF")))
-			return (NULL);
-	}
+		base = ft_strdup_null("0123456789ABCDEF");
 	else
-	{
-		if (!(base = ft_strdup("0123456789abcdef")))
-			return (NULL);
-	}
+		base = ft_strdup_null("0123456789abcdef");
 	len = ft_find_len(n, b);
 	if (!(fresh = ft_strnew(len + 1)))
 		return (NULL);

@@ -20,7 +20,7 @@ SRCS = ft_atoi.c \
 		ft_isdigit.c \
 		ft_isprint.c \
 		ft_itoa.c \
-		ft_itoa_mod.c \
+		ft_itoa_intmax.c \
 		ft_itoa_unsigned.c \
 		ft_itoa_base.c \
 		ft_memalloc.c \

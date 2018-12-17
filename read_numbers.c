@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   numbers.c                                          :+:      :+:    :+:   */
+/*   read_numbers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 11:07:16 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 11:54:44 by svaskeli         ###   ########.fr       */
+/*   Created: 2018/12/17 14:54:39 by dfinnis           #+#    #+#             */
+/*   Updated: 2018/12/17 14:54:45 by dfinnis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,13 @@ void		ft_int(t_print *all, va_list ap)
 	}
 	if ((all->type == 'd' || all->type == 'i')
 		&& !all->precision && all->prec_set && num == 0)
-	{
-		if (!(num_str = ft_strdup("")))
-			ft_error(NULL);
-	}
+		num_str = ft_strdup_empty();
 	else
 	{
-		if (!(num_str = ft_itoa_mod(num)))
+		if (!(num_str = ft_itoa_intmax(num)))
 			ft_error(NULL);
 	}
 	ft_justify(num_str, all);
-//	if (num_str)
-//		free(num_str);
 }
 
 void		ft_unsigned(t_print *all, va_list ap)
@@ -48,20 +43,14 @@ void		ft_unsigned(t_print *all, va_list ap)
 	if (num == 0)
 		all->num_zero = 1;
 	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
-	{
-		if (!(num_str = ft_strdup("")))
-			ft_error(NULL);
-	}
+		num_str = ft_strdup_empty();
 	else
 	{
 		if (!(num_str = ft_itoa_unsigned(num)))
 			ft_error(NULL);
 	}
 	ft_justify(num_str, all);
-//	if (num_str)
-//		free(num_str);
 }
-
 
 void		ft_int_octal(t_print *all, va_list ap)
 {
@@ -71,21 +60,16 @@ void		ft_int_octal(t_print *all, va_list ap)
 	num = ft_unsigned_len(all, ap);
 	if (num == 0)
 		all->num_zero = 1;
-	if (!all->hex_o_zero || all->sharp || !all->num_zero)
+	if (!all->hex_o_zero || all->hash || !all->num_zero)
 	{
 		if (!(num_str = ft_itoa_base(num, 8, all->type)))
 			ft_error(NULL);
 	}
 	else
-	{
-		if (!(num_str = ft_strdup("")))
-			ft_error(NULL);
-	}
-	if (all->sharp && all->precision && (!all->num_zero || all->width))
+		num_str = ft_strdup_empty();
+	if (all->hash && all->precision && (!all->num_zero || all->width))
 		all->precision--;
 	ft_justify(num_str, all);
-//	if (num_str)
-//		free(num_str);
 }
 
 void		ft_int_hex(t_print *all, va_list ap)
@@ -102,13 +86,8 @@ void		ft_int_hex(t_print *all, va_list ap)
 			ft_error(NULL);
 	}
 	else
-	{
-		if (!(num_str = ft_strdup("")))
-			ft_error(NULL);
-	}
+		num_str = ft_strdup_empty();
 	ft_justify(num_str, all);
-//	if (num_str)
-//		free(num_str);
 }
 
 void		ft_number(t_print *all, va_list ap)

@@ -39,7 +39,7 @@ void	ft_print_struct(t_print *all)
 	printf("\tl: %d\n", all->l);
 	printf("\tL: %d\n", all->L);
 	printf("\tz: %d\n", all->z);
-	printf("\tsharp: %d\n", all->sharp);
+	printf("\thash: %d\n", all->hash);
 	printf("\tzero: %d\n", all->zero);
 	printf("\tminus: %d\n", all->minus);
 	printf("\tplus: %d\n", all->plus);

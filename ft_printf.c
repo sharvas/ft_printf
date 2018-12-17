@@ -30,7 +30,7 @@ void	ft_init_partial(t_print *all)
 	all->l = 0;
 	all->L = 0;
 	all->z = 0;
-	all->sharp = 0;
+	all->hash = 0;
 	all->zero = 0;
 	all->minus = 0;
 	all->plus = 0;
@@ -65,7 +65,7 @@ void	ft_parse(t_print *all, va_list ap)
 	ft_update_conflicts(all);
 }
 
-void	ft_print(t_print *all, va_list ap)
+void	ft_type_switch(t_print *all, va_list ap)
 {
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
 			all->type == 'o' || all->type == 'x' || all->type == 'X')
@@ -76,10 +76,10 @@ void	ft_print(t_print *all, va_list ap)
 		ft_char(all, ap);
 	else if (all->type == '%')
 		ft_char(all, ap);
-	else if (all->type == 'f')
-		ft_floating(all, ap);
 	else if (all->type == 'p')
 		ft_pointer(all, ap);
+	else if (all->type == 'f')
+		ft_floating(all, ap);
 }
 
 int		ft_printf(char const *format, ...)
@@ -97,14 +97,13 @@ int		ft_printf(char const *format, ...)
 		{
 			all.len++;
 			ft_parse(&all, ap);
-			ft_print(&all, ap);
+			ft_type_switch(&all, ap);
 			ft_init_partial(&all);
 		}
 		else
 		{
-			ft_putchar(all.form[all.len]);
+			ft_putchar(all.form[all.len++]);
 			all.printed++;
-			all.len++;
 		}
 	}
 	free(all.form);
