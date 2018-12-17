@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 13:12:15 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 13:37:25 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,30 +123,30 @@ char		*ft_strjoin_error(char *s1, char *s2)
 
 char		*ft_int_plus(char *num_str, t_print *all)
 {
-	if (!all->sign && (all->type == 'i' || all->type == 'd'))
+	if (!all->print_plus && !all->sign && (all->type == 'i' || all->type == 'd'))
 	{
 		if (all->plus)
 			num_str = ft_strjoinfree_s2("+", num_str);
 		else if (all->space && !all->plus)
 			num_str = ft_strjoinfree_s2(" ", num_str);
-		return (num_str);
+//		return (num_str);
 	}
 	else if (all->type == 'x' && ft_0x_condition(all))
 	{
 		num_str = ft_strjoinfree_s2("0x", num_str);
-		return (num_str);
+//		return (num_str);
 	}
 	else if (all->type == 'X' && ft_0x_condition(all))
 	{
 		num_str = ft_strjoinfree_s2("0X", num_str);
-		return (num_str);
+//		return (num_str);
 	}
-	else if (all->type == 'o' && all->sharp && (((!all->hex_o_zero &&
+	else if (!all->print_plus && all->type == 'o' && all->sharp && (((!all->hex_o_zero &&
 		!all->num_zero) || (all->width && all->precision)) ||
 		(!all->precision && all->prec_set && !all->num_zero)))
 	{
 		num_str = ft_strjoinfree_s2("0", num_str);
-		return (num_str);
+//		return (num_str);
 	}
 	all->print_plus = 1;
 	return (num_str);
