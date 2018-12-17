@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 09:26:02 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:25:54 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char		*ft_itoa_mod(intmax_t n)
 		return (ft_strdup("9223372036854775808"));
 	else if (n > 9223372036854775806)
 		return (ft_strdup("9223372036854775807"));
-	if (!(fresh = ft_strnew(len)))
+	if (!(fresh = ft_strnew(len + 1)))
 		return (NULL);
 	if (n < 0)
 	{

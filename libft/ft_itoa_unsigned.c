@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 09:31:26 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:27:06 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char		*ft_itoa_unsigned(uintmax_t n)
 	if (n == 0)
 		return (ft_strdup("0"));
 	len = ft_find_len(n);
-	if (!(fresh = ft_strnew(len)))
+	if (!(fresh = ft_strnew(len + 1)))
 		return (NULL);
 	fresh[len + 1] = '\0';
 	while (n > 0)
