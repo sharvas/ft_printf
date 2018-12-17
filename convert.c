@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 11:04:04 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 13:22:26 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void		ft_error(char *str)
 
 void		ft_justify(char *num_str, t_print *all)
 {
-//	char *tmp;
-
-//	tmp = num_str;
 	if (all->precision)
 		num_str = ft_precision(num_str, all);
 	if ((!all->minus && (all->plus || all->sharp || all->space) && (!all->zero || 
@@ -60,7 +57,8 @@ void		ft_justify(char *num_str, t_print *all)
 	else
 		ft_putstr(num_str);
 	all->printed = all->printed + ft_strlen(num_str);
-//	free (tmp);
+	if (all->type != 's')
+		free(num_str);
 }
 
 void		ft_pointer(t_print *all, va_list ap)
@@ -87,7 +85,7 @@ void		ft_pointer(t_print *all, va_list ap)
 			ft_error(NULL);
 	}
 	ft_justify(num_str, all);
-	free(num_str);
+//	free(num_str);
 }
 
 void		ft_print(t_print *all, va_list ap)

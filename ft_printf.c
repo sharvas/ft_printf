@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:57:46 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/16 14:12:06 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 12:57:55 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_printf(char const *format, ...)
 	va_start(ap, format);
 	ft_init(&all);
 	if (!(all.form = ft_strdup(format)))
-		return (0); //ft_error
+		ft_error(NULL);
 	while (all.form[all.len] != '\0')
 	{
 		if (all.form[all.len] == '%')

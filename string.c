@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 16:19:18 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/16 15:28:38 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 13:19:19 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ void	ft_string(t_print *all, va_list ap)
 
 	if (!(str = va_arg(ap, char*)))
 	{
-		if (!(str = "(null)"))
-			ft_error(NULL);
+		str = "(null)";
+//			ft_error(NULL);
 	}
 	if (all->prec_set && !all->precision)
 	{
-		if (!(str = "\0"))
-			ft_error(NULL);
+		str = "\0";
+//			ft_error(NULL);
 	}
 	ft_justify(str, all);
-//	if (str)
-//		free(str);
+//	free(str);
 }
 
 void	ft_char(t_print *all, va_list ap)
@@ -47,5 +46,5 @@ void	ft_char(t_print *all, va_list ap)
 	str[0] = c;
 	str[1] = '\0';
 	ft_justify(str, all);
-	free(str);
+//	free(str);
 }
