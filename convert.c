@@ -12,6 +12,16 @@
 
 #include "ft_printf.h"
 
+char		*ft_strdup_empty()
+{
+	char	*num_str;
+
+	num_str = NULL;
+	if (!(num_str = ft_strdup("")))
+		ft_error(NULL);
+	return (num_str);
+}
+
 void		ft_error(char *str)
 {
 	if (str)
@@ -19,7 +29,17 @@ void		ft_error(char *str)
 	exit(1);
 }
 
-void		ft_just_put(char *num_str, t_print *all)
+char		*ft_strjoin_error(char *s1, char *s2)
+{
+	char	*num_str;
+
+	num_str = NULL;
+	if (!(num_str = ft_strjoin(s1, s2)))
+		ft_error(NULL);
+	return (num_str);
+}
+
+void		ft_print(char *num_str, t_print *all)
 {
 	if (all->type == 'c' && all->char_zero == 1)
 	{
@@ -48,7 +68,7 @@ void		ft_justify(char *num_str, t_print *all)
 				all->type == 'o' || ((all->type == 'x' || all->type == 'X') && 
 					(!all->zero) && !all->width)) && all->type != 'c') || (all->type == 'x' &&
 				all->sharp && all->prec_set && all->width && !all->num_zero))
-		num_str = ft_int_plus(num_str, all);
+		num_str = ft_build_prefix(num_str, all);
 	if (all->type == 'c' && all->char_zero == 1)
 		all->width--;
 	if (all->width && !all->zero)
@@ -58,10 +78,10 @@ void		ft_justify(char *num_str, t_print *all)
 	if ((all->minus || all->zero || all->prec_set || all->precision) && (!all->width || all->zero))
 		num_str = ft_negative(num_str, all);
 	if ((all->minus && (all->plus || all->sharp || all->space)) || (all->zero && all->type != 'o'))
-		num_str = ft_int_plus(num_str, all);
+		num_str = ft_build_prefix(num_str, all);
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);
-	ft_just_put(num_str, all);
+	ft_print(num_str, all);
 	if (all->type != 's')
 		free(num_str);
 }
