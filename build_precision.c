@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:20:24 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 15:20:26 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/17 18:36:59 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,15 @@ char		*ft_precision(char *num_str, t_print *all)
 		num_str = ft_prec_a(num_str, all, i);
 	else if (all->type == 's' && all->precision)
 	{
-		if (!(num_str = ft_strdup(num_str)))
-			ft_error(NULL);
+//		if (!(num_str = ft_strdup(num_str)))
+//			ft_error(NULL);
 		num_str[all->precision] = '\0';
 	}
+//	else if (all->type == 's' && !all->precision)
+//	{
+//		if (!(num_str = ft_strdup(num_str)))
+//			ft_error(NULL);
+//	}
 	else if (all->type == 'p' && all->precision && all->num_zero)
 		num_str = ft_prec_b(num_str, all, i);
 	else if (all->type == 'p' && all->precision && !all->num_zero)

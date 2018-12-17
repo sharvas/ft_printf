@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 14:23:18 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 18:37:50 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void		ft_justify(char *num_str, t_print *all)
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);
 	ft_print(num_str, all);
-	if (all->type != 's')
+//	if (all->type != 's')
 		free(num_str);
 }
