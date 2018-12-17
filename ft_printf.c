@@ -78,7 +78,7 @@ void	ft_type_switch(t_print *all, va_list ap)
 	else if (all->type == 'p')
 		ft_pointer(all, ap);
 	else if (all->type == 'f')
-		ft_floating(all, ap);
+		ft_float_type(all, ap);
 }
 
 int		ft_printf(char const *format, ...)

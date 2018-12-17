@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   float_types.c                                      :+:      :+:    :+:   */
+/*   read_floats.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 12:44:59 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 17:45:18 by svaskeli         ###   ########.fr       */
+/*   Created: 2018/12/17 18:56:11 by dfinnis           #+#    #+#             */
+/*   Updated: 2018/12/17 18:56:15 by dfinnis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_long_double(t_print *all, va_list ap)
 	ft_justify(num_str, all);
 }
 
-void		ft_floating(t_print *all, va_list ap)
+void		ft_float_type(t_print *all, va_list ap)
 {
 	if (all->l)
 		ft_double(all, ap);
