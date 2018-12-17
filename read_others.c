@@ -104,10 +104,7 @@ void		ft_pointer(t_print *all, va_list ap)
 
 	num = (uintmax_t)va_arg(ap, void*);
 	if (all->type == 'p' && all->prec_set && !all->precision && num == 0)
-	{
-		if (!(num_str = ft_strdup("")))
-			ft_error(NULL);
-	}
+		num_str = ft_strdup_empty();
 	else
 	{
 		if (!(num_str = ft_itoa_base(num, 16, 'x')))
