@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/16 14:30:28 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 10:15:51 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ int					ft_0x_condition(t_print *all);
 char				*ft_strjoin_error(char *s1, char *s2);
 
 char				*ft_int_plus(char *num_str, t_print *all);
-char				*ft_prec_a(char *num_str, t_print *all, char* str, int i);
-char				*ft_prec_b(char *num_str, t_print *all, char* str, int i);
-char				*ft_prec_c(char *num_str, t_print *all, char* str, int i);
+char				*ft_prec_a(char *num_str, t_print *all, /*char* str,*/ int i);
+char				*ft_prec_b(char *num_str, t_print *all, /*char* str,*/ int i);
+char				*ft_prec_c(char *num_str, t_print *all, /*char* str,*/ int i);
 char				*ft_precision(char *num_str, t_print *all);
 
 // numbers.c //
