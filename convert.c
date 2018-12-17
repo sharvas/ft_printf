@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 18:51:39 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 13:29:16 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:23:18 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void		ft_pointer(t_print *all, va_list ap)
 			ft_error(NULL);
 	}
 	ft_justify(num_str, all);
-//	free(num_str);
 }
 
 void		ft_print(t_print *all, va_list ap)
