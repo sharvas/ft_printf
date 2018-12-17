@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/16 14:57:15 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 10:18:36 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 {
 	int		i;
 	char	*str;
+	char	*tmp;
 
 	str = NULL;
+	tmp = num_str;
 	if ((i = ft_strlen(num_str)) < all->width)
 	{
 		if (all->sign && !all->minus && !all->zero)
@@ -96,6 +98,7 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 	else if (all->type == 'f')
 		num_str = ft_negative(num_str, all); //free??
 	free(str);
+	free(tmp);
 	return (num_str);
 }
 
@@ -118,6 +121,9 @@ char		*ft_strjoin_error(char *s1, char *s2)
 
 char		*ft_int_plus(char *num_str, t_print *all)
 {
+	char	*tmp;
+
+	tmp = num_str;
 	if (!all->sign && (all->type == 'i' || all->type == 'd'))
 	{
 		if (all->plus)
@@ -125,7 +131,7 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		else if (all->space && !all->plus)
 			num_str = ft_strjoin_error(" ", num_str);
 	}
-	if (all->type == 'x' && ft_0x_condition(all))
+	else if (all->type == 'x' && ft_0x_condition(all))
 		num_str = ft_strjoin_error("0x", num_str);
 	else if (all->type == 'X' && ft_0x_condition(all))
 		num_str = ft_strjoin_error("0X", num_str);
@@ -134,11 +140,15 @@ char		*ft_int_plus(char *num_str, t_print *all)
 		(!all->precision && all->prec_set && !all->num_zero)))
 		num_str = ft_strjoin_error("0", num_str);
 	all->print_plus = 1;
+	free(tmp);
 	return (num_str);
 }
 
-char		*ft_prec_a(char *num_str, t_print *all, char *str, int i)
+char		*ft_prec_a(char *num_str, t_print *all, /*char *str,*/ int i)
 {
+	char *str;
+
+	str = NULL;
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 		ft_error(NULL);
 	all->precision = all->precision - i;
@@ -148,11 +158,15 @@ char		*ft_prec_a(char *num_str, t_print *all, char *str, int i)
 	str[i] = '\0';
 	if (!(num_str = ft_strjoinfree_s1(str, num_str)))
 		ft_error(NULL);
+	free(str);
 	return (num_str);
 }
 
-char		*ft_prec_b(char *num_str, t_print *all, char *str, int i)
+char		*ft_prec_b(char *num_str, t_print *all, /*char *str,*/ int i)
 {
+	char *str;
+
+	str = NULL;
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
 		ft_error(NULL);
 	i = 0;
@@ -160,13 +174,16 @@ char		*ft_prec_b(char *num_str, t_print *all, char *str, int i)
 		str[i++] = '0';
 	str[i] = '\0';
 	num_str = ft_strjoin_error(num_str, str);
+	free(str);
 	return (num_str);
 }
 
-char		*ft_prec_c(char *num_str, t_print *all, char *str, int i)
+char		*ft_prec_c(char *num_str, t_print *all, /*char *str,*/ int i)
 {
 	int	len;
+	char	*str;
 
+	str = NULL;
 	if ((size_t)all->precision > ft_strlen(num_str))
 	{
 		len = ft_strlen(num_str);
@@ -181,29 +198,30 @@ char		*ft_prec_c(char *num_str, t_print *all, char *str, int i)
 			ft_error(NULL);
 	}
 	num_str = ft_strjoin_error("0x", num_str);
+	free(str);
 	return (num_str);
 }
 
 char		*ft_precision(char *num_str, t_print *all)
 {
-	char	*str;
+//	char	*str;
 	int		i;
 
-	str = NULL;
+//	str = NULL;
 	if ((i = ft_strlen(num_str)) < all->precision &&
 		all->type != 's' && all->type != 'p' && all->type != 'f')
-		num_str = ft_prec_a(num_str, all, str, i);
+		num_str = ft_prec_a(num_str, all, /*str,*/ i);
 	else if (all->type == 's' && all->precision)
 	{
-		if (!(str = ft_strdup(num_str)))
+		if (!(/*str*/num_str = ft_strdup(num_str)))
 			ft_error(NULL); //strndup??
-		str[all->precision] = '\0';
-		num_str = str;
+		/*str*/num_str[all->precision] = '\0';
+//		num_str = str;
 	}
 	else if (all->type == 'p' && all->precision && all->num_zero)
-		num_str = ft_prec_b(num_str, all, str, i);
+		num_str = ft_prec_b(num_str, all, /*str,*/ i);
 	else if (all->type == 'p' && all->precision && !all->num_zero)
-		num_str = ft_prec_c(num_str, all, str, i);
+		num_str = ft_prec_c(num_str, all, /*str,*/ i);
 //	free(str);
 	return (num_str);
 }
