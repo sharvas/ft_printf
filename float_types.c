@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 12:44:59 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 13:25:05 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 15:22:15 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void		ft_double(t_print *all, va_list ap)
 
 	num = (long double)va_arg(ap, double);
 	num_str = ft_itoa_double(num, all);
-		//error
 	num_str = ft_precision_float(num_str, all);
 	ft_justify(num_str, all);
-//	free(num_str);
 }
 
 void		ft_float(t_print *all, va_list ap)
@@ -44,10 +42,8 @@ void		ft_float(t_print *all, va_list ap)
 	else if (all->long_float)
 	{*/
 		num_str = ft_itoa_double(long_num, all);
-			//error
 		num_str = ft_precision_float(num_str, all);
 		ft_justify(num_str, all);
-//		free(num_str);
 //	}
 }
 
@@ -59,10 +55,8 @@ void		ft_long_double(t_print *all, va_list ap)
 	num = 0;
 	num = va_arg(ap, long double);
 	num_str = ft_itoa_double(num, all);
-		//error
 	num_str = ft_precision_float(num_str, all);
 	ft_justify(num_str, all);
-//	free(num_str);
 }
 
 void		ft_floating(t_print *all, va_list ap)

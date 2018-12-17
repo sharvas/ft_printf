@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:09:17 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/16 15:01:49 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 15:21:07 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,14 @@ char	*ft_itoa_float(float n, t_print *all)
 		n = -n;
 	}
 	n_int = (intmax_t)((n - (intmax_t)n) * (long double)ft_pow(10, all->float_multi));
-	num = ft_itoa_mod((intmax_t)n);
-	num = ft_strjoin(num, ".");
-	num_end = ft_itoa_mod(n_int);
-	num = ft_strjoin(num, num_end);
+	if (!(num = ft_itoa_mod((intmax_t)n)))
+		ft_error(NULL);
+	if (!(num = ft_strjoinfree_s1(num, ".")))
+		ft_error(NULL);
+	if (!(num_end = ft_itoa_mod(n_int)))
+		ft_error(NULL);
+	if (!(num = ft_strjoinfree(num, num_end)))
+		ft_error(NULL);
 	return (num);
 }
 
@@ -70,10 +74,14 @@ char	*ft_itoa_double(long double n, t_print *all)
 		n = -n;
 	}
 	n_int = (intmax_t)((n - (intmax_t)n) * (long double)ft_pow(10, all->float_multi));
-	num = ft_itoa_mod((intmax_t)n);
-	num = ft_strjoin(num, ".");
-	num_end = ft_itoa_mod(n_int);
-	num = ft_strjoin(num, num_end);
+	if (!(num = ft_itoa_mod((intmax_t)n)))
+		ft_error(NULL);
+	if (!(num = ft_strjoinfree_s1(num, ".")))
+		ft_error(NULL);
+	if (!(num_end = ft_itoa_mod(n_int)))
+		ft_error(NULL);
+	if (!(num = ft_strjoinfree(num, num_end)))
+		ft_error(NULL);
 	return (num);
 }
 
@@ -84,7 +92,7 @@ char		*ft_build_fl_width(int len)
 
 	i = 0;
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-		return (str); //ft_error
+		ft_error(NULL);
 	while (i < len)
 		str[i++] = '0';
 	str[i] = '\0';
@@ -144,12 +152,13 @@ char	*ft_precision_float(char *num_str, t_print *all)
 			num_str = ft_round_float(num_str, all, i, len);
 		else
 		{
-			tmp = ft_strnew(len = (all->precision - l + 1));
+			if (!(tmp = ft_strnew(len = (all->precision - l + 1))))
+				ft_error(NULL);
 			i = 0;
 			while (i < len)
 				tmp[i++] = '0';
 			tmp[i] = '\0';
-			num_str = ft_strjoin(num_str, tmp);
+			num_str = ft_strjoinfree(num_str, tmp);
 		}
 	}
 	return (num_str);
