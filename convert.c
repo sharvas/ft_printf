@@ -19,6 +19,27 @@ void		ft_error(char *str)
 	exit(1);
 }
 
+void		ft_just_put(char *num_str, t_print *all)
+{
+	if (all->type == 'c' && all->char_zero == 1)
+	{
+		if (all->minus)
+		{
+			ft_putchar('\0');
+			ft_putstr(num_str);
+		}
+		else
+		{
+			ft_putstr(num_str);
+			ft_putchar('\0');
+		}
+		all->printed++;
+	}
+	else
+		ft_putstr(num_str);
+	all->printed = all->printed + ft_strlen(num_str);
+}
+
 void		ft_justify(char *num_str, t_print *all)
 {
 //	char *tmp;
@@ -43,23 +64,7 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_int_plus(num_str, all);
 	if (all->sign && !all->print_negative)
 		num_str = ft_negative(num_str, all);
-	if (all->type == 'c' && all->char_zero == 1)
-	{
-		if (all->minus)
-		{
-			ft_putchar('\0');
-			ft_putstr(num_str);
-		}
-		else
-		{
-			ft_putstr(num_str);
-			ft_putchar('\0');
-		}
-		all->printed++;// wrong number??
-	}
-	else
-		ft_putstr(num_str);
-	all->printed = all->printed + ft_strlen(num_str);
+	ft_just_put(num_str, all);
 //	free (tmp);
 }
 
