@@ -6,7 +6,7 @@
 /*   By: svaskeli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 11:07:04 by svaskeli          #+#    #+#             */
-/*   Updated: 2018/12/17 13:37:25 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:23:01 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,30 +129,20 @@ char		*ft_int_plus(char *num_str, t_print *all)
 			num_str = ft_strjoinfree_s2("+", num_str);
 		else if (all->space && !all->plus)
 			num_str = ft_strjoinfree_s2(" ", num_str);
-//		return (num_str);
 	}
 	else if (all->type == 'x' && ft_0x_condition(all))
-	{
 		num_str = ft_strjoinfree_s2("0x", num_str);
-//		return (num_str);
-	}
 	else if (all->type == 'X' && ft_0x_condition(all))
-	{
 		num_str = ft_strjoinfree_s2("0X", num_str);
-//		return (num_str);
-	}
 	else if (!all->print_plus && all->type == 'o' && all->sharp && (((!all->hex_o_zero &&
 		!all->num_zero) || (all->width && all->precision)) ||
 		(!all->precision && all->prec_set && !all->num_zero)))
-	{
 		num_str = ft_strjoinfree_s2("0", num_str);
-//		return (num_str);
-	}
 	all->print_plus = 1;
 	return (num_str);
 }
 
-char		*ft_prec_a(char *num_str, t_print *all, /*char *str,*/ int i)
+char		*ft_prec_a(char *num_str, t_print *all, int i)
 {
 	char *str;
 
@@ -169,7 +159,7 @@ char		*ft_prec_a(char *num_str, t_print *all, /*char *str,*/ int i)
 	return (num_str);
 }
 
-char		*ft_prec_b(char *num_str, t_print *all, /*char *str,*/ int i)
+char		*ft_prec_b(char *num_str, t_print *all, int i)
 {
 	char *str;
 
@@ -184,7 +174,7 @@ char		*ft_prec_b(char *num_str, t_print *all, /*char *str,*/ int i)
 	return (num_str);
 }
 
-char		*ft_prec_c(char *num_str, t_print *all, /*char *str,*/ int i)
+char		*ft_prec_c(char *num_str, t_print *all, int i)
 {
 	int	len;
 	char	*str;
@@ -213,16 +203,16 @@ char		*ft_precision(char *num_str, t_print *all)
 
 	if ((i = ft_strlen(num_str)) < all->precision &&
 		all->type != 's' && all->type != 'p' && all->type != 'f')
-		num_str = ft_prec_a(num_str, all, /*str,*/ i);
+		num_str = ft_prec_a(num_str, all, i);
 	else if (all->type == 's' && all->precision)
 	{
-		if (!(/*str*/num_str = ft_strdup(num_str)))
+		if (!(num_str = ft_strdup(num_str)))
 			ft_error(NULL); //strndup??
-		/*str*/num_str[all->precision] = '\0';
+		num_str[all->precision] = '\0';
 	}
 	else if (all->type == 'p' && all->precision && all->num_zero)
-		num_str = ft_prec_b(num_str, all, /*str,*/ i);
+		num_str = ft_prec_b(num_str, all, i);
 	else if (all->type == 'p' && all->precision && !all->num_zero)
-		num_str = ft_prec_c(num_str, all, /*str,*/ i);
+		num_str = ft_prec_c(num_str, all, i);
 	return (num_str);
 }

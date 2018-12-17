@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 10:02:28 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 09:29:13 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:26:54 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 			return (NULL);
 	}
 	len = ft_find_len(n, b);
-	if (!(fresh = ft_strnew(len)))
+	if (!(fresh = ft_strnew(len + 1)))
 		return (NULL);
 	fresh[len + 1] = '\0';
 	while (n > 0)
