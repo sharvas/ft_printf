@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 14:03:46 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/18 14:27:21 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 18:15:55 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_update_upcase(t_print *all)
 	if (all->form[all->len] == 'F')
 	{
 		all->type = 'f';
-//		all->L = 1;
 		all->len++;
 	}
 }
@@ -72,6 +71,4 @@ void	ft_update_conflicts(t_print *all)
 		all->zero = 0;
 	if (all->type == 'f' && all->prec_set == 0)
 		all->precision = 6;
-//	if (all->type == 'f' && all->precision > 7)
-//		all->long_float = 1;
 }

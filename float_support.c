@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 19:00:32 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/18 18:05:22 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 18:10:58 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ char		*ft_itoa_double(long double n, t_print *all)
 	}
 	if (!(num = ft_itoa_intmax((intmax_t)n)))
 		ft_error(all->form, NULL);
-	num = ft_strjoinfree_s1_error(num, ".");
+	num = ft_strjoinfree_s1_error(num, ".", all->form);
 	if (!(num_end = ft_itoa_float(n, all)))
 		ft_error(all->form, NULL);
-	num = ft_strjoinfree_error(num, num_end);
+	num = ft_strjoinfree_error(num, num_end, all->form);
 	return (num);
 }
