@@ -19,6 +19,6 @@ void	ft_binary(t_print *all, va_list ap)
 
 	num = ft_unsigned_len(all, ap);
 	if (!(num_str = ft_itoa_base(num, 2, all->type)))
-		ft_error(NULL);
+		ft_error(NULL, all->form);
 	ft_justify(num_str, all);
 }

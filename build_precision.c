@@ -18,13 +18,13 @@ char		*ft_prec_a(char *num_str, t_print *all, int i)
 
 	str = NULL;
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
-		ft_error(NULL);
+		ft_error(NULL, all->form);
 	all->precision = all->precision - i;
 	i = 0;
 	while (i < all->precision)
 		str[i++] = '0';
 	str[i] = '\0';
-	num_str = ft_strjoinfree_error(str, num_str);
+	num_str = ft_strjoinfree_error(str, num_str, all->form);
 	return (num_str);
 }
 
@@ -34,12 +34,12 @@ char		*ft_prec_b(char *num_str, t_print *all, int i)
 
 	str = NULL;
 	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
-		ft_error(NULL);
+		ft_error(NULL, all->form);
 	i = 0;
 	while (i < all->precision - 1)
 		str[i++] = '0';
 	str[i] = '\0';
-	num_str = ft_strjoinfree_error(num_str, str);
+	num_str = ft_strjoinfree_error(num_str, str, all->form);
 	return (num_str);
 }
 
@@ -54,14 +54,14 @@ char		*ft_prec_c(char *num_str, t_print *all, int i)
 		len = ft_strlen(num_str);
 		if (!(str = (char*)malloc(sizeof(char) *
 			(all->precision - (len + 1)))))
-			ft_error(NULL);
+			ft_error(NULL, all->form);
 		i = 0;
 		while (i < all->precision - len)
 			str[i++] = '0';
 		str[i] = '\0';
-		num_str = ft_strjoinfree_error(str, num_str);
+		num_str = ft_strjoinfree_error(str, num_str, all->form);
 	}
-	num_str = ft_strjoinfree_s2_error("0x", num_str);
+	num_str = ft_strjoinfree_s2_error("0x", num_str, all->form);
 	return (num_str);
 }
 

@@ -91,7 +91,7 @@ int		ft_printf(char const *format, ...)
 	va_start(ap, format);
 	ft_init(&all);
 	if (!(all.form = ft_strdup(format)))
-		ft_error(NULL);
+		ft_error(NULL, all.form);
 	while (all.form[all.len] != '\0')
 	{
 		if (all.form[all.len] == '%')

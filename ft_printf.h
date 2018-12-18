@@ -150,7 +150,6 @@ char				*ft_build_prefix(char *num_str, t_print *all);
 /*
 **		build_float.c
 */
-char				*ft_build_fl_width(int len);
 char				*ft_9_float(char *num_str, t_print *all, int i, int len);
 char				*ft_0_float(char *num_str, t_print *all, int l, int len);
 char				*ft_precision_float(char *num_str, t_print *all);
@@ -166,11 +165,11 @@ char				*ft_itoa_float(float n, t_print *all);
 /*
 **		error_protection.c
 */
-void				ft_error(char *str);
-char				*ft_strdup_empty(void);
-char				*ft_strjoinfree_error(char *s1, char *s2);
-char				*ft_strjoinfree_s1_error(char *s1, char *s2);
-char				*ft_strjoinfree_s2_error(char *s1, char *s2);
+void				ft_error(char *s1, char *s2);
+char				*ft_strdup_empty(char *form);
+char				*ft_strjoinfree_error(char *s1, char *s2, char *form);
+char				*ft_strjoinfree_s1_error(char *s1, char *s2, char *form);
+char				*ft_strjoinfree_s2_error(char *s1, char *s2, char *form);
 
 /*
 **		binary.c

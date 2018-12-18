@@ -12,20 +12,6 @@
 
 #include "ft_printf.h"
 
-char	*ft_build_fl_width(int len)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-		ft_error(NULL);
-	while (i < len)
-		str[i++] = '0';
-	str[i] = '\0';
-	return (str);
-}
-
 char	*ft_9_float(char *num_str, t_print *all, int i, int len)
 {
 	while (num_str[i] && num_str[i] != '.')
@@ -64,12 +50,12 @@ char	*ft_0_float(char *num_str, t_print *all, int l, int len)
 
 	len = (all->precision - l + 1);
 	if (!(tmp = ft_strnew(len)))
-		ft_error(NULL);
+		ft_error(NULL, all->form);
 	i = 0;
 	while (i < len)
 		tmp[i++] = '0';
 	tmp[i] = '\0';
-	num_str = ft_strjoinfree_error(num_str, tmp);
+	num_str = ft_strjoinfree_error(num_str, tmp, all->form);
 	return (num_str);
 }
 
