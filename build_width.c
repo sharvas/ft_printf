@@ -20,8 +20,9 @@ int			ft_is_unsigned(t_print *all)
 
 int			ft_is_unsigned_wo(t_print *all)
 {
-	return (all->type == 'u' || all->type == 'U' || (all->type == 'o' && all->zero && all->num_zero) ||
-			(all->type == 'x' && all->plus));
+	return (all->type == 'u' || all->type == 'U' ||
+		(all->type == 'o' && all->zero && all->num_zero) ||
+		(all->type == 'x' && all->plus));
 }
 
 void		ft_calc_width(t_print *all)

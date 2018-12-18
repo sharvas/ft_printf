@@ -66,10 +66,6 @@ $(NAME): $(OBJ)
 $(OBJ): $(SRCS)
 	@gcc -c $(FLAGS) $(SRCS) -I $(INC)
 
-##$(NAME): lib
-##	gcc $(FLAGS) $(HEADER) -c $(SRCS) -g
-##	gcc $(OBJ) $(HEADER) $(LIB) -g -o $(NAME)
-
 lib: 
 	@make -C libft/ all
 
