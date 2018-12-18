@@ -35,7 +35,7 @@ void		ft_print(char *num_str, t_print *all)
 
 void		ft_justify(char *num_str, t_print *all)
 {
-	if (all->precision)
+	if (all->prec)
 		num_str = ft_precision(num_str, all);
 	if ((!all->minus && (all->plus || all->hash || all->space) && (!all->zero
 		|| all->type == 'o' || ((all->type == 'x' || all->type == 'X') &&
@@ -48,7 +48,7 @@ void		ft_justify(char *num_str, t_print *all)
 		num_str = ft_fill_width(num_str, all, ' ');
 	else if (all->width && all->zero)
 		num_str = ft_fill_width(num_str, all, '0');
-	if ((all->minus || all->zero || all->prec_set || all->precision) &&
+	if ((all->minus || all->zero || all->prec_set || all->prec) &&
 		(!all->width || all->zero))
 		num_str = ft_negative(num_str, all);
 	if ((all->minus && (all->plus || all->hash || all->space)) ||

@@ -37,7 +37,7 @@ typedef struct		s_print
 	int				plus;
 	int				space;
 	int				width;
-	int				precision;
+	int				prec;
 	int				prec_set;
 	int				sign;
 	int				hex_o_zero;

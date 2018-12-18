@@ -37,7 +37,7 @@ void		ft_calc_width(t_print *all)
 		all->width--;
 	}
 	else if (all->type == 'o' &&
-		all->minus && all->width && all->precision && all->num_zero)
+		all->minus && all->width && all->prec && all->num_zero)
 		all->width--;
 	if ((all->type == 'x' || all->type == 'X') && all->zero && all->width
 		&& all->hash && (all->h || all->prec_set || all->num_zero))

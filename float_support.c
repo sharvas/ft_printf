@@ -17,11 +17,11 @@ char		*ft_itoa_float(long double n, t_print *all)
 	char	*number;
 	int		i;
 
-	if (!(number = ft_strnew(all->precision + 1)))
+	if (!(number = ft_strnew(all->prec + 1)))
 		ft_error(all->form, NULL);
 	i = 0;
 	n = n - (intmax_t)n;
-	while (i < (all->precision + 1))
+	while (i < (all->prec + 1))
 	{
 		n = n * 10;
 		number[i] = ((intmax_t)n) + '0';

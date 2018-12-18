@@ -24,14 +24,14 @@ int			ft_0x_condition(t_print *all)
 {
 	return (!all->print_plus && all->hash &&
 		((!all->hex_o_zero && !all->num_zero) ||
-		(all->width && all->prec_set && !all->precision && !all->num_zero)));
+		(all->width && all->prec_set && !all->prec && !all->num_zero)));
 }
 
 int			ft_o_condition(t_print *all)
 {
 	return (!all->print_plus && all->hash && (((!all->hex_o_zero &&
-		!all->num_zero) || (all->width && all->precision)) ||
-		(!all->precision && all->prec_set && !all->num_zero)));
+		!all->num_zero) || (all->width && all->prec)) ||
+		(!all->prec && all->prec_set && !all->num_zero)));
 }
 
 char		*ft_build_prefix(char *num_str, t_print *all)

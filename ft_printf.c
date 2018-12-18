@@ -36,7 +36,7 @@ void	ft_init_partial(t_print *all)
 	all->plus = 0;
 	all->space = 0;
 	all->width = 0;
-	all->precision = 0;
+	all->prec = 0;
 	all->prec_set = 0;
 	all->sign = 0;
 	all->hex_o_zero = 0;

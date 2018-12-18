@@ -14,7 +14,7 @@
 
 void	ft_wild_prec(t_print *all, va_list ap)
 {
-	all->precision = va_arg(ap, int);
+	all->prec = va_arg(ap, int);
 	all->wild_prec = 1;
 	all->len++;
 }
@@ -26,7 +26,7 @@ void	ft_read_prec(t_print *all, unsigned int n)
 	multi = 1;
 	while (n-- > all->len)
 	{
-		all->precision = all->precision + (all->form[n] - 48) * multi;
+		all->prec = all->prec + (all->form[n] - 48) * multi;
 		multi *= 10;
 	}
 }
@@ -40,7 +40,7 @@ void	ft_update_precision(t_print *all, va_list ap)
 	{
 		all->len++;
 		all->prec_set = 1;
-		all->precision = 0;
+		all->prec = 0;
 	}
 	else
 		return ;

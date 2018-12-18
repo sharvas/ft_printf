@@ -17,11 +17,11 @@ char		*ft_prec_a(char *num_str, t_print *all, int i)
 	char *str;
 
 	str = NULL;
-	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
+	if (!(str = (char*)malloc(sizeof(char) * (all->prec + 1))))
 		ft_error(NULL, all->form);
-	all->precision = all->precision - i;
+	all->prec = all->prec - i;
 	i = 0;
-	while (i < all->precision)
+	while (i < all->prec)
 		str[i++] = '0';
 	str[i] = '\0';
 	num_str = ft_strjoinfree_error(str, num_str, all->form);
@@ -33,10 +33,10 @@ char		*ft_prec_b(char *num_str, t_print *all, int i)
 	char *str;
 
 	str = NULL;
-	if (!(str = (char*)malloc(sizeof(char) * (all->precision + 1))))
+	if (!(str = (char*)malloc(sizeof(char) * (all->prec + 1))))
 		ft_error(NULL, all->form);
 	i = 0;
-	while (i < all->precision - 1)
+	while (i < all->prec - 1)
 		str[i++] = '0';
 	str[i] = '\0';
 	num_str = ft_strjoinfree_error(num_str, str, all->form);
@@ -49,14 +49,14 @@ char		*ft_prec_c(char *num_str, t_print *all, int i)
 	char	*str;
 
 	str = NULL;
-	if ((size_t)all->precision > ft_strlen(num_str))
+	if ((size_t)all->prec > ft_strlen(num_str))
 	{
 		len = ft_strlen(num_str);
 		if (!(str = (char*)malloc(sizeof(char) *
-			(all->precision - (len + 1)))))
+			(all->prec - (len + 1)))))
 			ft_error(NULL, all->form);
 		i = 0;
-		while (i < all->precision - len)
+		while (i < all->prec - len)
 			str[i++] = '0';
 		str[i] = '\0';
 		num_str = ft_strjoinfree_error(str, num_str, all->form);
@@ -69,14 +69,14 @@ char		*ft_precision(char *num_str, t_print *all)
 {
 	int		i;
 
-	if ((i = ft_strlen(num_str)) < all->precision &&
+	if ((i = ft_strlen(num_str)) < all->prec &&
 		all->type != 's' && all->type != 'p' && all->type != 'f')
 		num_str = ft_prec_a(num_str, all, i);
-	else if (all->type == 's' && all->precision)
-		num_str[all->precision] = '\0';
-	else if (all->type == 'p' && all->precision && all->num_zero)
+	else if (all->type == 's' && all->prec)
+		num_str[all->prec] = '\0';
+	else if (all->type == 'p' && all->prec && all->num_zero)
 		num_str = ft_prec_b(num_str, all, i);
-	else if (all->type == 'p' && all->precision && !all->num_zero)
+	else if (all->type == 'p' && all->prec && !all->num_zero)
 		num_str = ft_prec_c(num_str, all, i);
 	return (num_str);
 }

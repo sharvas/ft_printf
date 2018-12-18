@@ -12,35 +12,33 @@
 
 #include "ft_printf.h"
 
-char	*ft_9_float(char *num_str, t_print *all, int i, int len)
+char	*ft_9_float(char *s, t_print *all, int i, int len)
 {
-	while (num_str[i] && num_str[i] != '.')
+	while (s[i] && s[i] != '.')
 		i++;
-	if (num_str[i + all->precision + 1] > '4')
+	if (s[i + all->prec + 1] > '4')
 	{
-		if (num_str[i + all->precision] < '9')
-			num_str[i + all->precision]++;
+		if (s[i + all->prec] < '9')
+			s[i + all->prec]++;
 		else
 		{
 			len = i;
-			while (num_str[i + all->precision] == '9' ||
-				num_str[i + all->precision] == '.')
+			while (s[i + all->prec] == '9' || s[i + all->prec] == '.')
 				i--;
 			while (i < len + 1)
 			{
-				if (num_str[i + all->precision] == '.')
+				if (s[i + all->prec] == '.')
 					i++;
-				if (num_str[i + all->precision] == '9')
-					num_str[i + all->precision] = '0';
+				if (s[i + all->prec] == '9')
+					s[i++ + all->prec] = '0';
 				else
-					num_str[i + all->precision]++;
-				i++;
+					s[i++ + all->prec]++;
 			}
 			i--;
 		}
 	}
-	num_str[i + all->precision + 1] = '\0';
-	return (num_str);
+	s[i + all->prec + 1] = '\0';
+	return (s);
 }
 
 char	*ft_0_float(char *num_str, t_print *all, int l, int len)
@@ -48,7 +46,7 @@ char	*ft_0_float(char *num_str, t_print *all, int l, int len)
 	char	*tmp;
 	int		i;
 
-	len = (all->precision - l + 1);
+	len = (all->prec - l + 1);
 	if (!(tmp = ft_strnew(len)))
 		ft_error(NULL, all->form);
 	i = 0;
@@ -68,7 +66,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 
 	i = 0;
 	len = 0;
-	if (all->precision == 0 && all->prec_set)
+	if (all->prec == 0 && all->prec_set)
 	{
 		tmp = ft_strchr(num_str, '.');
 		if (*(tmp + 1) > '4')
@@ -78,7 +76,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	}
 	else
 	{
-		if ((l = ft_strlen(ft_strchr(num_str, '.'))) > all->precision - 1)
+		if ((l = ft_strlen(ft_strchr(num_str, '.'))) > all->prec - 1)
 			num_str = ft_9_float(num_str, all, i, len);
 		else
 			num_str = ft_0_float(num_str, all, l, len);

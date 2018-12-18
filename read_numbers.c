@@ -24,7 +24,7 @@ void		ft_int(t_print *all, va_list ap)
 		num = -num;
 	}
 	if ((all->type == 'd' || all->type == 'i')
-		&& !all->precision && all->prec_set && num == 0)
+		&& !all->prec && all->prec_set && num == 0)
 		num_str = ft_strdup_empty(all->form);
 	else
 	{
@@ -42,7 +42,7 @@ void		ft_unsigned(t_print *all, va_list ap)
 	num = ft_unsigned_len(all, ap);
 	if (num == 0)
 		all->num_zero = 1;
-	if (all->type == 'u' && !all->precision && all->prec_set && num == 0)
+	if (all->type == 'u' && !all->prec && all->prec_set && num == 0)
 		num_str = ft_strdup_empty(all->form);
 	else
 	{
@@ -67,8 +67,8 @@ void		ft_int_octal(t_print *all, va_list ap)
 	}
 	else
 		num_str = ft_strdup_empty(all->form);
-	if (all->hash && all->precision && (!all->num_zero || all->width))
-		all->precision--;
+	if (all->hash && all->prec && (!all->num_zero || all->width))
+		all->prec--;
 	ft_justify(num_str, all);
 }
 
