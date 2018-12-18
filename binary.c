@@ -18,14 +18,7 @@ void	ft_binary(t_print *all, va_list ap)
 	char		*num_str;
 
 	num = ft_unsigned_len(all, ap);
-	if (num == 0)
-		all->num_zero = 1;
-/*	if (!all->num_zero)
-	{
-		if (!(num_str = ft_itoa_base(num, 2, all->type)))
-			ft_error(NULL);
-	}
-	else*/
-		num_str = ft_strdup_empty();
+	if (!(num_str = ft_itoa_base(num, 2, all->type)))
+		ft_error(NULL);
 	ft_justify(num_str, all);
 }

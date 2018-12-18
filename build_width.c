@@ -78,9 +78,9 @@ char		*ft_fill_width(char *num_str, t_print *all, char c)
 		all->width = all->width - i;
 		str = ft_build_width(all, c);
 		if (all->minus || (all->type == 'p' && all->zero))
-			num_str = ft_strjoinfree(num_str, str);
+			num_str = ft_strjoinfree_error(num_str, str);
 		else
-			num_str = ft_strjoinfree(str, num_str);
+			num_str = ft_strjoinfree_error(str, num_str);
 	}
 	else if (all->type == 'f')
 		num_str = ft_negative(num_str, all);

@@ -51,12 +51,10 @@ char		*ft_itoa_float(float n, t_print *all)
 	n_int = (uintmax_t)((n - (uintmax_t)n) * ft_pow(10, all->precision));
 	if (!(num = ft_itoa_intmax((intmax_t)n)))
 		ft_error(NULL);
-	if (!(num = ft_strjoinfree_s1(num, ".")))
-		ft_error(NULL);
+	num = ft_strjoinfree_s1_error(num, ".");
 	if (!(num_end = ft_itoa_unsigned(n_int)))
 		ft_error(NULL);
-	if (!(num = ft_strjoinfree(num, num_end)))
-		ft_error(NULL);
+	num = ft_strjoinfree_error(num, num_end);
 	return (num);
 }
 
@@ -76,11 +74,9 @@ char		*ft_itoa_double(long double n, t_print *all)
 	n_int = (uintmax_t)((n - (uintmax_t)n) * ft_pow(10, all->precision));
 	if (!(num = ft_itoa_intmax((intmax_t)n)))
 		ft_error(NULL);
-	if (!(num = ft_strjoinfree_s1(num, ".")))
-		ft_error(NULL);
+	num = ft_strjoinfree_s1_error(num, ".");
 	if (!(num_end = ft_itoa_unsigned(n_int)))
 		ft_error(NULL);
-	if (!(num = ft_strjoinfree(num, num_end)))
-		ft_error(NULL);
+	num = ft_strjoinfree_error(num, num_end);
 	return (num);
 }

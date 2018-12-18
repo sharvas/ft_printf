@@ -15,7 +15,7 @@
 char		*ft_negative(char *num_str, t_print *all)
 {
 	if (all->sign && !all->print_negative)
-		num_str = ft_strjoinfree_s2("-", num_str);
+		num_str = ft_strjoinfree_s2_error("-", num_str);
 	all->print_negative = 1;
 	return (num_str);
 }
@@ -40,16 +40,16 @@ char		*ft_build_prefix(char *num_str, t_print *all)
 		!all->print_plus && !all->sign)
 	{
 		if (all->plus)
-			num_str = ft_strjoinfree_s2("+", num_str);
+			num_str = ft_strjoinfree_s2_error("+", num_str);
 		else if (all->space && !all->plus)
-			num_str = ft_strjoinfree_s2(" ", num_str);
+			num_str = ft_strjoinfree_s2_error(" ", num_str);
 	}
 	else if (all->type == 'x' && ft_0x_condition(all))
-		num_str = ft_strjoinfree_s2("0x", num_str);
+		num_str = ft_strjoinfree_s2_error("0x", num_str);
 	else if (all->type == 'X' && ft_0x_condition(all))
-		num_str = ft_strjoinfree_s2("0X", num_str);
+		num_str = ft_strjoinfree_s2_error("0X", num_str);
 	else if (all->type == 'o' && ft_o_condition(all))
-		num_str = ft_strjoinfree_s2("0", num_str);
+		num_str = ft_strjoinfree_s2_error("0", num_str);
 	all->print_plus = 1;
 	return (num_str);
 }

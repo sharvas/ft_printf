@@ -24,8 +24,7 @@ char		*ft_prec_a(char *num_str, t_print *all, int i)
 	while (i < all->precision)
 		str[i++] = '0';
 	str[i] = '\0';
-	if (!(num_str = ft_strjoinfree(str, num_str)))
-		ft_error(NULL);
+	num_str = ft_strjoinfree_error(str, num_str);
 	return (num_str);
 }
 
@@ -40,7 +39,7 @@ char		*ft_prec_b(char *num_str, t_print *all, int i)
 	while (i < all->precision - 1)
 		str[i++] = '0';
 	str[i] = '\0';
-	num_str = ft_strjoinfree(num_str, str);
+	num_str = ft_strjoinfree_error(num_str, str);
 	return (num_str);
 }
 
@@ -60,10 +59,9 @@ char		*ft_prec_c(char *num_str, t_print *all, int i)
 		while (i < all->precision - len)
 			str[i++] = '0';
 		str[i] = '\0';
-		if (!(num_str = ft_strjoinfree(str, num_str)))
-			ft_error(NULL);
+		num_str = ft_strjoinfree_error(str, num_str);
 	}
-	num_str = ft_strjoinfree_s2("0x", num_str);
+	num_str = ft_strjoinfree_s2_error("0x", num_str);
 	return (num_str);
 }
 

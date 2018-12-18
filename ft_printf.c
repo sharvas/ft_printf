@@ -79,6 +79,8 @@ void	ft_type_switch(t_print *all, va_list ap)
 		ft_pointer(all, ap);
 	else if (all->type == 'f')
 		ft_float_type(all, ap);
+	else if (all->type == 'b')
+		ft_binary(all, ap);
 }
 
 int		ft_printf(char const *format, ...)

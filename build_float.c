@@ -69,7 +69,7 @@ char	*ft_0_float(char *num_str, t_print *all, int l, int len)
 	while (i < len)
 		tmp[i++] = '0';
 	tmp[i] = '\0';
-	num_str = ft_strjoinfree(num_str, tmp);
+	num_str = ft_strjoinfree_error(num_str, tmp);
 	return (num_str);
 }
 
