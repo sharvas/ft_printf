@@ -62,8 +62,8 @@ void		ft_float_type(t_print *all, va_list ap)
 {
 	if (all->l)
 		ft_double(all, ap);
-	else if (all->L)
+	else if (all->up_l)
 		ft_long_double(all, ap);
-	else if (!all->l && !all->L)
+	else if (!all->l && !all->up_l)
 		ft_float(all, ap);
 }

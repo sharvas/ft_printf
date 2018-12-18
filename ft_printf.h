@@ -17,8 +17,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> //for testing
-//# define malloc(...) NULL //for testing
 
 typedef struct		s_print
 {
@@ -31,7 +29,7 @@ typedef struct		s_print
 	int				j;
 	int				ll;
 	int				l;
-	int				L;
+	int				up_l;
 	int				z;
 	int				hash;
 	int				zero;
@@ -155,9 +153,10 @@ char				*ft_build_prefix(char *num_str, t_print *all);
 /*
 **		build_float.c
 */
-char				*ft_round_float(char *num_str, t_print *all, int i, int len);
+char				*ft_build_fl_width(int len);
+char				*ft_9_float(char *num_str, t_print *all, int i, int len);
+char				*ft_0_float(char *num_str, t_print *all, int l, int len);
 char				*ft_precision_float(char *num_str, t_print *all);
-long long			ft_multiply_float(long double n, t_print *all);
 
 /*
 **		float_support.c

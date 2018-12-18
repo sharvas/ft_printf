@@ -28,7 +28,7 @@ void	ft_init_partial(t_print *all)
 	all->j = 0;
 	all->ll = 0;
 	all->l = 0;
-	all->L = 0;
+	all->up_l = 0;
 	all->z = 0;
 	all->hash = 0;
 	all->zero = 0;
