@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:57:46 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 12:57:55 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 14:11:51 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_init_partial(t_print *all)
 	all->precision = 0;
 	all->prec_set = 0;
 	all->sign = 0;
-	all->long_float = 0;
+//	all->long_float = 0;
 	all->hex_o_zero = 0;
 	all->num_zero = 0;
 	all->char_zero = 0;

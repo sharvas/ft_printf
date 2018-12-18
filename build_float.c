@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 19:00:20 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 19:00:22 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/18 17:48:54 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ char	*ft_round_float(char *num_str, t_print *all, int i, int len)
 			num_str[i + all->precision]++;
 		else
 		{
-			len = i + 1;
+			len = i;
 			while (num_str[i + all->precision] == '9' ||
 				num_str[i + all->precision] == '.')
 				i--;
-			while (i < len)
+			while (i < len + 1)
 			{
 				if (num_str[i + all->precision] == '.')
 					i++;
@@ -76,7 +76,7 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	}
 	else
 	{
-		if ((l = ft_strlen(ft_strchr(num_str, '.'))) > all->precision)
+		if ((l = ft_strlen(ft_strchr(num_str, '.'))) > all->precision - 1)
 			num_str = ft_round_float(num_str, all, i, len);
 		else
 		{

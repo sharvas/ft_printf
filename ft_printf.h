@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:06:08 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 18:13:59 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 14:21:14 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct		s_print
 	int				precision;
 	int				prec_set;
 	int				sign;
-	int				long_float;
+//	int				long_float;
 	int				hex_o_zero;
 	int				num_zero;
 	int				char_zero;
@@ -162,9 +162,9 @@ long long			ft_multiply_float(long double n, t_print *all);
 /*
 **		float_support.c
 */
-uintmax_t			ft_pow(int a, int b);
-int					ft_len_int(long long n);
+//uintmax_t			ft_pow(int a, int b);
+//int					ft_len_int(long long n);
 char				*ft_itoa_double(long double n, t_print *all);
-char				*ft_itoa_float(float n, t_print *all);
+char				*ft_itoa_float(long double n, t_print *all);
 
 #endif

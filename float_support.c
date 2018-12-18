@@ -6,65 +6,35 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 19:00:32 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 19:00:34 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/18 17:53:13 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_len_int(long long n)
+char		*ft_itoa_float(long double n, t_print *all)
 {
-	int len;
+	char	*number;
+	int		i;
 
-	len = 0;
-	while (n > 0)
+	if (!(number = ft_strnew(all->precision + 1)))
+		ft_error(NULL);
+	i = 0;
+	n = n - (intmax_t)n;
+	while (i < (all->precision + 1))
 	{
-		n = n / 10;
-		len++;
+		n = n * 10;
+		number[i] = ((intmax_t)n) + '0';
+		n = (n - (intmax_t)n);
+		i++;
 	}
-	return (len);
-}
-
-uintmax_t	ft_pow(int a, int b)
-{
-	uintmax_t	res;
-
-	res = a;
-	while (b--)
-		res = res * a;
-	return (res);
-}
-
-char		*ft_itoa_float(float n, t_print *all)
-{
-	char		*num;
-	char		*num_end;
-	uintmax_t	n_int;
-
-	if (n == 0)
-		return (ft_strdup("0."));
-	if (n < 0)
-	{
-		all->sign = 1;
-		n = -n;
-	}
-	n_int = (uintmax_t)((n - (uintmax_t)n) * ft_pow(10, all->precision));
-	if (!(num = ft_itoa_intmax((intmax_t)n)))
-		ft_error(NULL);
-	if (!(num = ft_strjoinfree_s1(num, ".")))
-		ft_error(NULL);
-	if (!(num_end = ft_itoa_unsigned(n_int)))
-		ft_error(NULL);
-	if (!(num = ft_strjoinfree(num, num_end)))
-		ft_error(NULL);
-	return (num);
+	return (number);
 }
 
 char		*ft_itoa_double(long double n, t_print *all)
 {
 	char		*num;
 	char		*num_end;
-	uintmax_t	n_int;
 
 	if (n == 0)
 		return (ft_strdup("0."));
@@ -73,12 +43,11 @@ char		*ft_itoa_double(long double n, t_print *all)
 		all->sign = 1;
 		n = -n;
 	}
-	n_int = (uintmax_t)((n - (uintmax_t)n) * ft_pow(10, all->precision));
 	if (!(num = ft_itoa_intmax((intmax_t)n)))
 		ft_error(NULL);
 	if (!(num = ft_strjoinfree_s1(num, ".")))
 		ft_error(NULL);
-	if (!(num_end = ft_itoa_unsigned(n_int)))
+	if (!(num_end = ft_itoa_float(n, all)))
 		ft_error(NULL);
 	if (!(num = ft_strjoinfree(num, num_end)))
 		ft_error(NULL);

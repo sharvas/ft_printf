@@ -6,11 +6,12 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:56:11 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 18:56:15 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/18 17:21:13 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+//#include <stdio.h>
 
 void		ft_double(t_print *all, va_list ap)
 {
@@ -18,12 +19,14 @@ void		ft_double(t_print *all, va_list ap)
 	char		*num_str;
 
 	num = (long double)va_arg(ap, double);
+//	printf("number = %.20Lf\n", num);
 	num_str = ft_itoa_double(num, all);
+//	printf("str = %s\n", num_str);
 	num_str = ft_precision_float(num_str, all);
 	ft_justify(num_str, all);
 }
 
-void		ft_float(t_print *all, va_list ap)
+/*void		ft_float(t_print *all, va_list ap)
 {
 	float	num;
 	double	long_num;
@@ -45,7 +48,7 @@ void		ft_float(t_print *all, va_list ap)
 		num_str = ft_precision_float(num_str, all);
 		ft_justify(num_str, all);
 	}
-}
+}*/
 
 void		ft_long_double(t_print *all, va_list ap)
 {
@@ -60,10 +63,10 @@ void		ft_long_double(t_print *all, va_list ap)
 
 void		ft_float_type(t_print *all, va_list ap)
 {
-	if (all->l)
-		ft_double(all, ap);
-	else if (all->L)
+//	if (all->l)
+//		ft_double(all, ap);
+	if (all->L)
 		ft_long_double(all, ap);
-	else if (!all->l && !all->L)
-		ft_float(all, ap);
+	else
+		ft_double(all, ap);
 }
