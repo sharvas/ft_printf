@@ -119,7 +119,6 @@ void				ft_pointer(t_print *all, va_list ap);
 /*
 **		convert.c
 */
-void				ft_error(char *str);
 void				ft_print(char *num_str, t_print *all);
 void				ft_justify(char *num_str, t_print *all);
 
@@ -165,17 +164,17 @@ char				*ft_itoa_double(long double n, t_print *all);
 char				*ft_itoa_float(float n, t_print *all);
 
 /*
-**		binary.c
-*/
-void				ft_binary(t_print *all, va_list ap);
-
-/*
 **		error_protection.c
 */
+void				ft_error(char *str);
 char				*ft_strdup_empty(void);
-char				*ft_strjoin_error(char *s1, char *s2);
 char				*ft_strjoinfree_error(char *s1, char *s2);
 char				*ft_strjoinfree_s1_error(char *s1, char *s2);
 char				*ft_strjoinfree_s2_error(char *s1, char *s2);
+
+/*
+**		binary.c
+*/
+void				ft_binary(t_print *all, va_list ap);
 
 #endif

@@ -12,6 +12,16 @@
 
 #include "ft_printf.h"
 
+void		ft_error(char *str)
+{
+	if (str)
+	{
+		free(str);
+		str = NULL;
+	}
+	exit(1);
+}
+
 char		*ft_strdup_empty(void)
 {
 	char	*num_str;
@@ -22,23 +32,20 @@ char		*ft_strdup_empty(void)
 	return (num_str);
 }
 
-char		*ft_strjoin_error(char *s1, char *s2)
-{
-	char	*num_str;
-
-	num_str = NULL;
-	if (!(num_str = ft_strjoin(s1, s2)))
-		ft_error(NULL);
-	return (num_str);
-}
-
 char		*ft_strjoinfree_error(char *s1, char *s2)
 {
 	char	*num_str;
 
 	num_str = NULL;
 	if (!(num_str = ft_strjoinfree(s1, s2)))
-		ft_error(NULL);
+	{
+		if (s1)
+		{
+			free(s1);
+			s1 = NULL;
+		}
+		ft_error(s2);
+	}
 	return (num_str);
 }
 
@@ -48,7 +55,7 @@ char		*ft_strjoinfree_s1_error(char *s1, char *s2)
 
 	num_str = NULL;
 	if (!(num_str = ft_strjoinfree_s1(s1, s2)))
-		ft_error(NULL);
+		ft_error(s1);
 	return (num_str);
 }
 
@@ -58,6 +65,6 @@ char		*ft_strjoinfree_s2_error(char *s1, char *s2)
 
 	num_str = NULL;
 	if (!(num_str = ft_strjoinfree_s2(s1, s2)))
-		ft_error(NULL);
+		ft_error(s2);
 	return (num_str);
 }

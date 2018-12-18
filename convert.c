@@ -12,13 +12,6 @@
 
 #include "ft_printf.h"
 
-void		ft_error(char *str)
-{
-	if (str)
-		free(str);
-	exit(1);
-}
-
 void		ft_print(char *num_str, t_print *all)
 {
 	if (all->type == 'c' && all->char_zero == 1)
