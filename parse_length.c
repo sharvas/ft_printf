@@ -50,7 +50,7 @@ void	ft_update_length(t_print *all)
 				all->l = 1;
 		}
 		if (all->form[all->len] == 'L')
-			all->L = 1;
+			all->up_l = 1;
 		if (all->form[all->len] == 'z')
 			all->z = 1;
 		all->len++;

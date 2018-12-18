@@ -10,15 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include "libft/libft.h"
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> //for testing
-//# define malloc(...) NULL //for testing
 
 typedef struct		s_print
 {
@@ -31,7 +29,7 @@ typedef struct		s_print
 	int				j;
 	int				ll;
 	int				l;
-	int				L;
+	int				up_l;
 	int				z;
 	int				hash;
 	int				zero;
@@ -121,9 +119,6 @@ void				ft_pointer(t_print *all, va_list ap);
 /*
 **		convert.c
 */
-char				*ft_strdup_empty(void);
-void				ft_error(char *str);
-char				*ft_strjoin_error(char *s1, char *s2);
 void				ft_print(char *num_str, t_print *all);
 void				ft_justify(char *num_str, t_print *all);
 
@@ -155,9 +150,9 @@ char				*ft_build_prefix(char *num_str, t_print *all);
 /*
 **		build_float.c
 */
-char				*ft_round_float(char *num_str, t_print *all, int i, int len);
+char				*ft_9_float(char *num_str, t_print *all, int i, int len);
+char				*ft_0_float(char *num_str, t_print *all, int l, int len);
 char				*ft_precision_float(char *num_str, t_print *all);
-long long			ft_multiply_float(long double n, t_print *all);
 
 /*
 **		float_support.c
@@ -166,5 +161,19 @@ long long			ft_multiply_float(long double n, t_print *all);
 //int					ft_len_int(long long n);
 char				*ft_itoa_double(long double n, t_print *all);
 char				*ft_itoa_float(long double n, t_print *all);
+
+/*
+**		error_protection.c
+*/
+void				ft_error(char *s1, char *s2);
+char				*ft_strdup_empty(char *form);
+char				*ft_strjoinfree_error(char *s1, char *s2, char *form);
+char				*ft_strjoinfree_s1_error(char *s1, char *s2, char *form);
+char				*ft_strjoinfree_s2_error(char *s1, char *s2, char *form);
+
+/*
+**		binary.c
+*/
+void				ft_binary(t_print *all, va_list ap);
 
 #endif

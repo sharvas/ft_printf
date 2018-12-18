@@ -16,7 +16,7 @@ int		ft_istype(char c)
 {
 	return (c == 'c' || c == 'd' || c == 'e' || c == 'f' || c == 'g' ||
 		c == 'i' || c == 'o' || c == 'p' || c == 's' || c == 'u' ||
-		c == 'x' || c == 'X' || c == '%');
+		c == 'x' || c == 'X' || c == '%' || c == 'b');
 }
 
 void	ft_update_type(t_print *all)

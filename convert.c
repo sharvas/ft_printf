@@ -12,33 +12,6 @@
 
 #include "ft_printf.h"
 
-char		*ft_strdup_empty(void)
-{
-	char	*num_str;
-
-	num_str = NULL;
-	if (!(num_str = ft_strdup("")))
-		ft_error(NULL);
-	return (num_str);
-}
-
-void		ft_error(char *str)
-{
-	if (str)
-		free(str);
-	exit(1);
-}
-
-char		*ft_strjoin_error(char *s1, char *s2)
-{
-	char	*num_str;
-
-	num_str = NULL;
-	if (!(num_str = ft_strjoin(s1, s2)))
-		ft_error(NULL);
-	return (num_str);
-}
-
 void		ft_print(char *num_str, t_print *all)
 {
 	if (all->type == 'c' && all->char_zero == 1)

@@ -6,27 +6,13 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 19:00:20 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/18 17:48:54 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 18:07:04 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_build_fl_width(int len)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-		ft_error(NULL);
-	while (i < len)
-		str[i++] = '0';
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_round_float(char *num_str, t_print *all, int i, int len)
+char	*ft_9_float(char *num_str, t_print *all, int i, int len)
 {
 	while (num_str[i] && num_str[i] != '.')
 		i++;
@@ -57,6 +43,22 @@ char	*ft_round_float(char *num_str, t_print *all, int i, int len)
 	return (num_str);
 }
 
+char	*ft_0_float(char *num_str, t_print *all, int l, int len)
+{
+	char	*tmp;
+	int		i;
+
+	len = (all->precision - l + 1);
+	if (!(tmp = ft_strnew(len)))
+		ft_error(NULL, all->form);
+	i = 0;
+	while (i < len)
+		tmp[i++] = '0';
+	tmp[i] = '\0';
+	num_str = ft_strjoinfree_error(num_str, tmp, all->form);
+	return (num_str);
+}
+
 char	*ft_precision_float(char *num_str, t_print *all)
 {
 	int		i;
@@ -77,18 +79,9 @@ char	*ft_precision_float(char *num_str, t_print *all)
 	else
 	{
 		if ((l = ft_strlen(ft_strchr(num_str, '.'))) > all->precision - 1)
-			num_str = ft_round_float(num_str, all, i, len);
+			num_str = ft_9_float(num_str, all, i, len);
 		else
-		{
-			len = (all->precision - l + 1);
-			if (!(tmp = ft_strnew(len)))
-				ft_error(NULL);
-			i = 0;
-			while (i < len)
-				tmp[i++] = '0';
-			tmp[i] = '\0';
-			num_str = ft_strjoinfree(num_str, tmp);
-		}
+			num_str = ft_0_float(num_str, all, l, len);
 	}
 	return (num_str);
 }

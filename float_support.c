@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 19:00:32 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/18 17:53:13 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 18:05:22 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*ft_itoa_float(long double n, t_print *all)
 	int		i;
 
 	if (!(number = ft_strnew(all->precision + 1)))
-		ft_error(NULL);
+		ft_error(all->form, NULL);
 	i = 0;
 	n = n - (intmax_t)n;
 	while (i < (all->precision + 1))
@@ -44,12 +44,10 @@ char		*ft_itoa_double(long double n, t_print *all)
 		n = -n;
 	}
 	if (!(num = ft_itoa_intmax((intmax_t)n)))
-		ft_error(NULL);
-	if (!(num = ft_strjoinfree_s1(num, ".")))
-		ft_error(NULL);
+		ft_error(all->form, NULL);
+	num = ft_strjoinfree_s1_error(num, ".");
 	if (!(num_end = ft_itoa_float(n, all)))
-		ft_error(NULL);
-	if (!(num = ft_strjoinfree(num, num_end)))
-		ft_error(NULL);
+		ft_error(all->form, NULL);
+	num = ft_strjoinfree_error(num, num_end);
 	return (num);
 }

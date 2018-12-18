@@ -28,7 +28,7 @@ void	ft_init_partial(t_print *all)
 	all->j = 0;
 	all->ll = 0;
 	all->l = 0;
-	all->L = 0;
+	all->up_l = 0;
 	all->z = 0;
 	all->hash = 0;
 	all->zero = 0;
@@ -79,6 +79,8 @@ void	ft_type_switch(t_print *all, va_list ap)
 		ft_pointer(all, ap);
 	else if (all->type == 'f')
 		ft_float_type(all, ap);
+	else if (all->type == 'b')
+		ft_binary(all, ap);
 }
 
 int		ft_printf(char const *format, ...)
@@ -89,7 +91,7 @@ int		ft_printf(char const *format, ...)
 	va_start(ap, format);
 	ft_init(&all);
 	if (!(all.form = ft_strdup(format)))
-		ft_error(NULL);
+		ft_error(NULL, all.form);
 	while (all.form[all.len] != '\0')
 	{
 		if (all.form[all.len] == '%')

@@ -56,26 +56,21 @@ void		ft_string(t_print *all, va_list ap)
 {
 	char	*str;
 
+	str = NULL;
 	if (!(str = va_arg(ap, char*)))
 	{
 		if (all->prec_set && !all->precision)
-		{
-			if (!(str = ft_strdup("\0")))
-				ft_error(NULL);
-		}
+			str = ft_strdup_empty(all->form);
 		else
 		{
 			if (!(str = ft_strdup("(null)")))
-				ft_error(NULL);
+				ft_error(NULL, all->form);
 		}
 	}
 	else if (all->prec_set && !all->precision)
-	{
-		if (!(str = ft_strdup("\0")))
-			ft_error(NULL);
-	}
+		str = ft_strdup_empty(all->form);
 	else if (!(str = ft_strdup(str)))
-		ft_error(NULL);
+		ft_error(NULL, all->form);
 	ft_justify(str, all);
 }
 
@@ -89,7 +84,7 @@ void		ft_char(t_print *all, va_list ap)
 	else
 		c = (char)va_arg(ap, int);
 	if (!(str = malloc(sizeof(char) * 2)))
-		ft_error(NULL);
+		ft_error(NULL, all->form);
 	if (c == '\0')
 		all->char_zero = 1;
 	str[0] = c;
@@ -104,18 +99,15 @@ void		ft_pointer(t_print *all, va_list ap)
 
 	num = (uintmax_t)va_arg(ap, void*);
 	if (all->type == 'p' && all->prec_set && !all->precision && num == 0)
-		num_str = ft_strdup_empty();
+		num_str = ft_strdup_empty(all->form);
 	else
 	{
 		if (!(num_str = ft_itoa_base(num, 16, 'x')))
-			ft_error(NULL);
+			ft_error(NULL, all->form);
 	}
 	if (num == 0)
 		all->num_zero = 1;
 	if (!all->precision || all->num_zero)
-	{
-		if (!(num_str = ft_strjoinfree_s2("0x", num_str)))
-			ft_error(NULL);
-	}
+		num_str = ft_strjoinfree_s2_error("0x", num_str, all->form);
 	ft_justify(num_str, all);
 }

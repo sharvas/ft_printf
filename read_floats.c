@@ -63,10 +63,19 @@ void		ft_long_double(t_print *all, va_list ap)
 
 void		ft_float_type(t_print *all, va_list ap)
 {
+<<<<<<< HEAD
 //	if (all->l)
 //		ft_double(all, ap);
 	if (all->L)
 		ft_long_double(all, ap);
 	else
 		ft_double(all, ap);
+=======
+	if (all->l)
+		ft_double(all, ap);
+	else if (all->up_l)
+		ft_long_double(all, ap);
+	else if (!all->l && !all->up_l)
+		ft_float(all, ap);
+>>>>>>> c0ec578794964c5c44c802b905aab1de0a840930
 }

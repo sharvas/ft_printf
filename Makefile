@@ -25,7 +25,9 @@ SRCS = ft_printf.c \
 		build_width.c \
 		build_prefix.c \
 		build_float.c \
-		float_support.c
+		float_support.c \
+		error_protection.c \
+		binary.c
 
 LIBO = libft/ft_isdigit.o \
 		libft/ft_itoa_base.o \
@@ -65,10 +67,6 @@ $(NAME): $(OBJ)
 
 $(OBJ): $(SRCS)
 	@gcc -c $(FLAGS) $(SRCS) -I $(INC)
-
-##$(NAME): lib
-##	gcc $(FLAGS) $(HEADER) -c $(SRCS) -g
-##	gcc $(OBJ) $(HEADER) $(LIB) -g -o $(NAME)
 
 lib: 
 	@make -C libft/ all
