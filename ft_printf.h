@@ -152,10 +152,6 @@ char				*ft_build_prefix(char *num_str, t_print *all);
 char				*ft_9_float(char *num_str, t_print *all, int i, int len);
 char				*ft_0_float(char *num_str, t_print *all, int l, int len);
 char				*ft_precision_float(char *num_str, t_print *all);
-
-/*
-**		float_support.c
-*/
 char				*ft_itoa_double(long double n, t_print *all);
 char				*ft_itoa_float(long double n, t_print *all);
 
