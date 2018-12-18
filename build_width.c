@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 15:20:13 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 18:29:37 by svaskeli         ###   ########.fr       */
+/*   Updated: 2018/12/18 11:03:09 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			ft_is_unsigned(t_print *all)
 
 int			ft_is_unsigned_wo(t_print *all)
 {
-	return (all->type == 'u' || all->type == 'U' ||
+	return (all->type == 'u' || all->type == 'U' || (all->type == 'o' && all->zero && all->num_zero) ||
 			(all->type == 'x' && all->plus));
 }
 
