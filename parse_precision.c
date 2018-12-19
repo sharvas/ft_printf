@@ -31,7 +31,7 @@ void	ft_read_prec(t_print *all, unsigned int n)
 	}
 }
 
-void	ft_update_precision(t_print *all, va_list ap)
+void	ft_parse_precision(t_print *all, va_list ap)
 {
 	unsigned int	n;
 	unsigned int	count;

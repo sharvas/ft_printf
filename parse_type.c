@@ -19,15 +19,15 @@ int		ft_istype(char c)
 		c == 'x' || c == 'X' || c == '%' || c == 'b');
 }
 
-void	ft_update_type(t_print *all)
+void	ft_parse_type(t_print *all)
 {
 	if (ft_istype(all->form[all->len]))
 		all->type = all->form[all->len++];
 	else
-		ft_update_upcase(all);
+		ft_parse_upcase(all);
 }
 
-void	ft_update_upcase(t_print *all)
+void	ft_parse_upcase(t_print *all)
 {
 	if (all->form[all->len] == 'D')
 	{

@@ -68,16 +68,16 @@ void				ft_init_partial(t_print *all);
 **		parse_flags_width.c
 */
 int					ft_isflag(char c);
-void				ft_update_flags(t_print *all);
+void				ft_parse_flags(t_print *all);
 void				ft_wild_width(t_print *all, va_list ap);
-void				ft_update_width(t_print *all, va_list ap);
+void				ft_parse_width(t_print *all, va_list ap);
 
 /*
 **		parse_precision.c
 */
 void				ft_wild_prec(t_print *all, va_list ap);
 void				ft_read_prec(t_print *all, unsigned int n);
-void				ft_update_precision(t_print *all, va_list ap);
+void				ft_parse_precision(t_print *all, va_list ap);
 
 /*
 **		parse_length.c
@@ -85,14 +85,14 @@ void				ft_update_precision(t_print *all, va_list ap);
 int					ft_islength(char c);
 void				ft_hh(t_print *all);
 void				ft_ll(t_print *all);
-void				ft_update_length(t_print *all);
+void				ft_parse_length(t_print *all);
 
 /*
 **		parse_type.c
 */
 int					ft_istype(char c);
-void				ft_update_type(t_print *all);
-void				ft_update_upcase(t_print *all);
+void				ft_parse_type(t_print *all);
+void				ft_parse_upcase(t_print *all);
 void				ft_update_conflicts(t_print *all);
 
 /*

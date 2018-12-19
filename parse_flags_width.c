@@ -19,7 +19,7 @@ int		ft_isflag(char c)
 	return (0);
 }
 
-void	ft_update_flags(t_print *all)
+void	ft_parse_flags(t_print *all)
 {
 	while (ft_isflag(all->form[all->len]))
 	{
@@ -50,7 +50,7 @@ void	ft_wild_width(t_print *all, va_list ap)
 	all->len++;
 }
 
-void	ft_update_width(t_print *all, va_list ap)
+void	ft_parse_width(t_print *all, va_list ap)
 {
 	unsigned int	n;
 	unsigned int	count;

@@ -29,7 +29,7 @@ void	ft_ll(t_print *all)
 	all->len++;
 }
 
-void	ft_update_length(t_print *all)
+void	ft_parse_length(t_print *all)
 {
 	if (ft_islength(all->form[all->len]))
 	{

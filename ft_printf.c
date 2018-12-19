@@ -17,12 +17,12 @@ void	ft_parse(t_print *all, va_list ap)
 	while (all->form[all->len] &&
 		ft_strchr("+- #0123456789.hlLjz*", all->form[all->len]))
 	{
-		ft_update_flags(all);
-		ft_update_width(all, ap);
-		ft_update_precision(all, ap);
-		ft_update_length(all);
+		ft_parse_flags(all);
+		ft_parse_width(all, ap);
+		ft_parse_precision(all, ap);
+		ft_parse_length(all);
 	}
-	ft_update_type(all);
+	ft_parse_type(all);
 	ft_update_conflicts(all);
 }
 
