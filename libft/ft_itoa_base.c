@@ -6,7 +6,7 @@
 /*   By: dfinnis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 17:06:26 by dfinnis           #+#    #+#             */
-/*   Updated: 2018/12/17 17:06:31 by dfinnis          ###   ########.fr       */
+/*   Updated: 2018/12/19 09:59:13 by svaskeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,8 @@ static int	ft_find_len(uintmax_t n, int b)
 	return (len);
 }
 
-char		*ft_itoa_base(uintmax_t n, int b, char type)
+static char	*ft_strdup_base(char *base, char type)
 {
-	char	*base;
-	char	*fresh;
-	int		len;
-
-	if (n == 0)
-		return (ft_strdup("0"));
 	if (type == 'X')
 	{
 		if (!(base = ft_strdup("0123456789ABCDEF")))
@@ -40,6 +34,20 @@ char		*ft_itoa_base(uintmax_t n, int b, char type)
 		if (!(base = ft_strdup("0123456789abcdef")))
 			return (NULL);
 	}
+	return (base);
+}
+
+char		*ft_itoa_base(uintmax_t n, int b, char type)
+{
+	char	*base;
+	char	*fresh;
+	int		len;
+
+	base = NULL;
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (!(base = ft_strdup_base(base, type)))
+		return (NULL);
 	len = ft_find_len(n, b);
 	if (!(fresh = ft_strnew(len + 1)))
 		return (NULL);
