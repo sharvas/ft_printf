@@ -26,7 +26,7 @@ void	ft_parse(t_print *all, va_list ap)
 	ft_update_conflicts(all);
 }
 
-void	ft_type_switch(t_print *all, va_list ap)
+void	ft_read(t_print *all, va_list ap)
 {
 	if (all->type == 'i' || all->type == 'd' || all->type == 'u' ||
 			all->type == 'o' || all->type == 'x' || all->type == 'X')
@@ -99,7 +99,7 @@ int		ft_printf(char const *format, ...)
 	t_print			all;
 
 	va_start(ap, format);
-	ft_init(&all);
+	ft_initialize(&all);
 	if (!(all.form = ft_strdup(format)))
 		ft_error(NULL, all.form);
 	while (all.form[all.len] != '\0')
@@ -108,8 +108,8 @@ int		ft_printf(char const *format, ...)
 		{
 			all.len++;
 			ft_parse(&all, ap);
-			ft_type_switch(&all, ap);
-			ft_init_partial(&all);
+			ft_read(&all, ap);
+			ft_reinitialize(&all);
 		}
 		else
 		{

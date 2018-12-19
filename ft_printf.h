@@ -53,7 +53,7 @@ typedef struct		s_print
 **		ft_printf.c
 */
 void				ft_parse(t_print *all, va_list ap);
-void				ft_type_switch(t_print *all, va_list ap);
+void				ft_read(t_print *all, va_list ap);
 void				ft_justify(char *num_str, t_print *all);
 void				ft_print(char *num_str, t_print *all);
 int					ft_printf(char const *format, ...);
@@ -61,8 +61,8 @@ int					ft_printf(char const *format, ...);
 /*
 **		initialize.c
 */
-void				ft_init(t_print *all);
-void				ft_init_partial(t_print *all);
+void				ft_initialize(t_print *all);
+void				ft_reinitialize(t_print *all);
 
 /*
 **		parse_flags_width.c
