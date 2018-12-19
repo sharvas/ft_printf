@@ -13,6 +13,7 @@
 NAME = libftprintf.a
 
 SRCS = ft_printf.c \
+		initialize.c \
 		parse_flags_width.c \
 		parse_precision.c \
 		parse_length.c \
@@ -20,7 +21,6 @@ SRCS = ft_printf.c \
 		read_numbers.c \
 		read_floats.c \
 		read_others.c \
-		convert.c \
 		build_precision.c \
 		build_width.c \
 		build_prefix.c \

@@ -12,42 +12,6 @@
 
 #include "ft_printf.h"
 
-void	ft_init(t_print *all)
-{
-	all->printed = 0;
-	all->len = 0;
-	all->form = NULL;
-	ft_init_partial(all);
-}
-
-void	ft_init_partial(t_print *all)
-{
-	all->type = '0';
-	all->hh = 0;
-	all->h = 0;
-	all->j = 0;
-	all->ll = 0;
-	all->l = 0;
-	all->up_l = 0;
-	all->z = 0;
-	all->hash = 0;
-	all->zero = 0;
-	all->minus = 0;
-	all->plus = 0;
-	all->space = 0;
-	all->width = 0;
-	all->prec = 0;
-	all->prec_set = 0;
-	all->sign = 0;
-	all->hex_o_zero = 0;
-	all->num_zero = 0;
-	all->char_zero = 0;
-	all->print_negative = 0;
-	all->print_plus = 0;
-	all->wild_width = 0;
-	all->wild_prec = 0;
-}
-
 void	ft_parse(t_print *all, va_list ap)
 {
 	while (all->form[all->len] &&
@@ -80,6 +44,54 @@ void	ft_type_switch(t_print *all, va_list ap)
 		ft_float_type(all, ap);
 	else if (all->type == 'b')
 		ft_binary(all, ap);
+}
+
+void	ft_justify(char *num_str, t_print *all)
+{
+	if (all->prec)
+		num_str = ft_precision(num_str, all);
+	if ((!all->minus && (all->plus || all->hash || all->space) && (!all->zero
+		|| all->type == 'o' || ((all->type == 'x' || all->type == 'X') &&
+		(!all->zero) && !all->width)) && all->type != 'c') || (all->type == 'x'
+		&& all->hash && all->prec_set && all->width && !all->num_zero))
+		num_str = ft_build_prefix(num_str, all);
+	if (all->type == 'c' && all->char_zero == 1)
+		all->width--;
+	if (all->width && !all->zero)
+		num_str = ft_fill_width(num_str, all, ' ');
+	else if (all->width && all->zero)
+		num_str = ft_fill_width(num_str, all, '0');
+	if ((all->minus || all->zero || all->prec_set || all->prec) &&
+		(!all->width || all->zero))
+		num_str = ft_negative(num_str, all);
+	if ((all->minus && (all->plus || all->hash || all->space)) ||
+		(all->zero && all->type != 'o'))
+		num_str = ft_build_prefix(num_str, all);
+	if (all->sign && !all->print_negative)
+		num_str = ft_negative(num_str, all);
+	ft_print(num_str, all);
+	free(num_str);
+}
+
+void	ft_print(char *num_str, t_print *all)
+{
+	if (all->type == 'c' && all->char_zero == 1)
+	{
+		if (all->minus)
+		{
+			ft_putchar('\0');
+			ft_putstr(num_str);
+		}
+		else
+		{
+			ft_putstr(num_str);
+			ft_putchar('\0');
+		}
+		all->printed++;
+	}
+	else
+		ft_putstr(num_str);
+	all->printed = all->printed + ft_strlen(num_str);
 }
 
 int		ft_printf(char const *format, ...)

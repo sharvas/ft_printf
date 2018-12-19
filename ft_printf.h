@@ -52,11 +52,17 @@ typedef struct		s_print
 /*
 **		ft_printf.c
 */
-void				ft_init(t_print *all);
-void				ft_init_partial(t_print *all);
 void				ft_parse(t_print *all, va_list ap);
 void				ft_type_switch(t_print *all, va_list ap);
+void				ft_justify(char *num_str, t_print *all);
+void				ft_print(char *num_str, t_print *all);
 int					ft_printf(char const *format, ...);
+
+/*
+**		initialize.c
+*/
+void				ft_init(t_print *all);
+void				ft_init_partial(t_print *all);
 
 /*
 **		parse_flags_width.c
@@ -114,12 +120,6 @@ uintmax_t			ft_unsigned_len(t_print *all, va_list ap);
 void				ft_string(t_print *all, va_list ap);
 void				ft_char(t_print *all, va_list ap);
 void				ft_pointer(t_print *all, va_list ap);
-
-/*
-**		convert.c
-*/
-void				ft_print(char *num_str, t_print *all);
-void				ft_justify(char *num_str, t_print *all);
 
 /*
 **		build_precision.c
