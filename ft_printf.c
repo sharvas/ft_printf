@@ -23,7 +23,6 @@ void	ft_parse(t_print *all, va_list ap)
 		ft_update_length(all);
 	}
 	ft_update_type(all);
-	ft_update_upcase(all);
 	ft_update_conflicts(all);
 }
 

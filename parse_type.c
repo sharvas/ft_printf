@@ -23,6 +23,8 @@ void	ft_update_type(t_print *all)
 {
 	if (ft_istype(all->form[all->len]))
 		all->type = all->form[all->len++];
+	else
+		ft_update_upcase(all);
 }
 
 void	ft_update_upcase(t_print *all)
