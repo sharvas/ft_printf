@@ -18,7 +18,9 @@ void		ft_int(t_print *all, va_list ap)
 	char		*num_str;
 
 	num = ft_int_len(all, ap);
-	if (num < 0)
+	if (num < -9223372036854775807)
+		all->sign = 1;
+	else if (num < 0)
 	{
 		all->sign = 1;
 		num = -num;
