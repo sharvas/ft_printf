@@ -3,9 +3,14 @@
 The goal of this project was to recode C Standard Library printf function.
 
 For example:
-```ft_printf("%s is a %d student\n", "Dav", 42);```
+```c
+ft_printf("%s studies at %d\n", "Sarunas", 42);
+```
+```c
 printf("%s is a %d student\n", "Dav", 42);
-Should give back:
+```
+
+Will return:
 
 Dav is a 42 student
 Dav is a 42 student
@@ -37,5 +42,5 @@ Then compile with a program:
 
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDUzOTI0OTZdfQ==
+eyJoaXN0b3J5IjpbLTE2ODg3MTAwN119
 -->
