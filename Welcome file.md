@@ -24,9 +24,10 @@ Manage the precision
 
 Allowed functions are **write**, **malloc**, **free**, **exit**, **stdarg** functions. Everything else is forbidden. The project was written in accordance with the 42 standard - handle errors carefully,  in no way can your program quit in an unexpected manner (Segmentation fault, bus error, double free, etc).
 
-Using the project
-To compile, run make. This will compile libftprintf.a. To use, include ft_printf.h (located inside includes directory) and use just like printf:
+***Using the project***
+To compile, run make. This will compile libftprintf.a. To use, include ft_printf.h (in includes) and use just like printf:
 
+```c
 #include "ft_printf.h"
 
 int				main(void)
@@ -34,9 +35,11 @@ int				main(void)
 	ft_printf("%s, %s!\n", "Hello", "world");
 	return (0);
 }
+```
 Then compile with a program:
-
-gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
+```
+gcc main.c libftprintf.a -I includes
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0ODcxOTkxLC0yMDkwNTIwMTk3XX0=
+eyJoaXN0b3J5IjpbMTc3NjcwNjgyNywtMjA5MDUyMDE5N119
 -->
