@@ -14,11 +14,11 @@ Will result in:
 ```Sarunas studies at 42```
 ```Sarunas studies at 42```
 
-The number of parameters is indefinite and variadic arguments were used. ft_printf must achieve the following mandatory requirements:
+The number of parameters is indefinite and variadic arguments were used. ft_printf has the following functionality:
 
-Manage the following conversions: c, s, p, d, i, o, O, u, U, x, X C
-Manage %%
-Manage the flags #, 0, -, + & space
+Conversions: c, s, p, d, i, o, O, u, U, x, X, f, %%
+Flags #, 0, -, + & space
+Flags hh, h, l, ll, L
 Manage the minimum field-width
 Manage the precision
 Manage the flags hh, h, l, ll, j, & z.
@@ -39,5 +39,5 @@ Then compile with a program:
 
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzMzAyNTExOF19
+eyJoaXN0b3J5IjpbLTcwNjQxMzg1Ml19
 -->
