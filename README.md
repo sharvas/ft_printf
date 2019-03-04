@@ -5,16 +5,12 @@ The goal of this project was to recode C Standard Library ***printf*** function.
 For example:
 ```c
 ft_printf("%s from %d\n", "Sarunas", 42);
-```
-```c
 printf("%s from %d\n", "Sarunas", 42);
 ```
 
 Will result in:
 ```
 Sarunas from 42
-```
-```
 Sarunas from 42
 ```
 
@@ -45,5 +41,5 @@ Then compile with a program:
 gcc main.c libftprintf.a -I includes
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDgwOTI0MDg3LDI0OTQ5NjY4OF19
+eyJoaXN0b3J5IjpbNTIwMjM1NzU2LDI0OTQ5NjY4OF19
 -->
