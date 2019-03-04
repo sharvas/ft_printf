@@ -14,7 +14,7 @@ Sarunas from 42
 Sarunas from 42
 ```
 
-The number of parameters is indefinite and variadic arguments were used. ***ft_printf*** has the following functionality:
+The number of parameters is indefinite (variadic arguments were used for this). ***ft_printf*** has the following functionality:
 
 * **Conversions:** ```c, s, p, d, i, o, O, u, U, x, X, f, %%, b (binary)```
 * **Style flags:** ```#, 0, -, +, space, *```
@@ -41,5 +41,5 @@ Then compile with a program:
 gcc main.c libftprintf.a -I includes
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTE3NzU2MjcsMjQ5NDk2Njg4XX0=
+eyJoaXN0b3J5IjpbOTE1MjI4MzIsMjQ5NDk2Njg4XX0=
 -->
