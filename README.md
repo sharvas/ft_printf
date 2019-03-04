@@ -25,7 +25,8 @@ The number of parameters is indefinite (variadic arguments were used for this). 
 Allowed functions are **write**, **malloc**, **free**, **exit**, **stdarg** functions. Everything else is forbidden. The project was written in accordance with the 42 standard - handle errors carefully,  in no way can your program quit in an unexpected manner (Segmentation fault, bus error, double free, etc).
 
 ***Using the project***
-To compile, run make. This will compile libftprintf.a. To use, include ft_printf.h (in includes) and use just like printf:
+
+To compile - run ```make```. This will compile ***libftprintf.a***. To use, include ***ft_printf.h*** (in includes) and use just like printf:
 
 ```c
 #include "ft_printf.h"
