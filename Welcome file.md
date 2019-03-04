@@ -1,13 +1,13 @@
 # ft_printf
 
-The goal of this project was to recode C Standard Library printf function.
+The goal of this project was to recode C Standard Library ***printf*** function.
 
 For example:
 ```c
 ft_printf("%s studies at %d\n", "Sarunas", 42);
 ```
 ```c
-printf("%s is a %d student\n", "Dav", 42);
+printf("%s studies at %d\n", "Sarunas", 42);
 ```
 
 Will result in:
@@ -41,5 +41,5 @@ Then compile with a program:
 gcc main.c libftprintf.a -I includes
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NjcwNjgyNywtMjA5MDUyMDE5N119
+eyJoaXN0b3J5IjpbNjQ0Mjk4OTk1LC0yMDkwNTIwMTk3XX0=
 -->
