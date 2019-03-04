@@ -12,6 +12,8 @@
 
 NAME = libftprintf.a
 
+FLAGS = -Wall -Werror -Wextra -g
+
 SRCS = ft_printf.c \
 		initialize.c \
 		parse_flags_width.c \
@@ -28,60 +30,71 @@ SRCS = ft_printf.c \
 		error_protection.c \
 		binary.c
 
-LIBO = libft/ft_isdigit.o \
-		libft/ft_itoa_base.o \
-		libft/ft_itoa_intmax.o \
-		libft/ft_itoa_unsigned.o \
-		libft/ft_putchar.o \
-		libft/ft_putstr.o \
-		libft/ft_strchr.o \
-		libft/ft_strdup.o \
-		libft/ft_strndup.o \
-		libft/ft_strjoin.o \
-		libft/ft_strlen.o \
-		libft/ft_strcat.o \
-		libft/ft_strcpy.o \
-		libft/ft_strnew.o \
-		libft/ft_bzero.o \
-		libft/ft_memset.o \
-		libft/ft_strjoinfree.o \
-		libft/ft_strjoinfree_s1.o \
-		libft/ft_strjoinfree_s2.o
+LIBO = ft_isdigit.o \
+		ft_itoa_base.o \
+		ft_itoa_intmax.o \
+		ft_itoa_unsigned.o \
+		ft_putchar.o \
+		ft_putstr.o \
+		ft_strchr.o \
+		ft_strdup.o \
+		ft_strndup.o \
+		ft_strjoin.o \
+		ft_strlen.o \
+		ft_strcat.o \
+		ft_strcpy.o \
+		ft_strnew.o \
+		ft_bzero.o \
+		ft_memset.o \
+		ft_strjoinfree.o \
+		ft_strjoinfree_s1.o \
+		ft_strjoinfree_s2.o
 
-OBJ = $(SRCS:.c=.o)
+SRCS_DIR = srcs/
+LIBFT = libft/
+OBJS_DIR = objs/
+INC = includes/
 
-FLAGS = -Wall -Werror -Wextra
+HEADER = $(INC)ft_printf.h $(LIBFT)libft.h
+SRCS_PATH = $(SRCS:%=$(SRCS_DIR)%)
 
-HEADER = -I libft/
+OBJS = $(SRCS:%.c=%.o)
+OBJS_PATH = $(addprefix $(OBJS_DIR), $(OBJS))
+OBJS_LBFT = $(addprefix $(LIBFT), $(LIBO))
 
-INC = ft_printf.h
-
-LIB = -L libft/ -lft
+GREEN = "\033[0;32m"
+RED = "\033[0;31m"
+DEFAULT = "\033[0m"
 
 all: lib $(NAME)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ) $(LIBO)
-	@ranlib $(NAME)
+$(NAME): $(OBJS_DIR) $(OBJS_PATH) $(OBJS_LBFT) $(HEADER)
+	@echo "COMPILING:" $(GREEN) $(NAME) $(DEFAULT)
+	ar rc $(NAME) $(OBJS_PATH) $(OBJS_LBFT)
+	ranlib $(NAME)
 
-$(OBJ): $(SRCS)
-	@gcc -c $(FLAGS) $(SRCS) -I $(INC)
+$(OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
+	@echo "Compiling:" $(GREEN) $< $(DEFAULT)
+	gcc -c $(FLAGS) $< -o $@ -I $(INC)
 
 lib: 
-	@make -C libft/ all
+	@make -C $(LIBFT) all
 
 libfclean:
-	@make -C libft/ fclean
+	@make -C $(LIBFT) fclean
 
 libclean:
-	@make -C libft/ clean
+	@make -C $(LIBFT) clean
 
 clean: libclean
-	@/bin/rm -f $(OBJ)
+	@/bin/rm -rf $(OBJS_DIR)
 
 fclean: clean libfclean
-	@/bin/rm -f $(NAME)
+	@/bin/rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re lib libclean libfclean
