@@ -20,11 +20,11 @@ Sarunas from 42
 
 The number of parameters is indefinite and variadic arguments were used. ***ft_printf*** has the following functionality:
 
-Conversions: ```c, s, p, d, i, o, O, u, U, x, X, f, %%, b (binary)```
+**Conversions:** ```c, s, p, d, i, o, O, u, U, x, X, f, %%, b (binary)```
 
-Flags ```#, 0, -, +, space, *```
+**Style flags:** ```#, 0, -, +, space, *```
 
-Flags ```hh, h, l, ll, L, z, j```
+**Conversion flags:** ```hh, h, l, ll, L, z, j```
 
 Manage the minimum field-width
 
@@ -49,5 +49,5 @@ Then compile with a program:
 gcc main.c libftprintf.a -I includes
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxOTE0MjkwMCwyNDk0OTY2ODhdfQ==
+eyJoaXN0b3J5IjpbMTQxNDQ0ODkwNSwyNDk0OTY2ODhdfQ==
 -->
