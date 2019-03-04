@@ -14,11 +14,11 @@ Will result in:
 ```Sarunas studies at 42```
 ```Sarunas studies at 42```
 
-The number of parameters is indefinite and variadic arguments were used. ft_printf has the following functionality:
+The number of parameters is indefinite and variadic arguments were used. ***ft_printf*** has the following functionality:
 
-Conversions: c, s, p, d, i, o, O, u, U, x, X, f, %%, b (binary)
-Flags #, 0, -, +, space, *
-Flags hh, h, l, ll, L, z, j
+Conversions: ```c, s, p, d, i, o, O, u, U, x, X, f, %%, b (binary)```
+Flags ```#, 0, -, +, space, *```
+Flags ```hh, h, l, ll, L, z, j```
 Manage the minimum field-width
 Manage the precision
 
@@ -38,5 +38,5 @@ Then compile with a program:
 
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTA1MjAxOTddfQ==
+eyJoaXN0b3J5IjpbMTU0ODcxOTkxLC0yMDkwNTIwMTk3XX0=
 -->
