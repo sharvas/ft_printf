@@ -4,18 +4,18 @@ The goal of this project was to recode C Standard Library ***printf*** function.
 
 For example:
 ```c
-ft_printf("%s studies at %d\n", "Sarunas", 42);
+ft_printf("%s from %d\n", "Sarunas", 42);
 ```
 ```c
-printf("%s studies at %d\n", "Sarunas", 42);
+printf("%s from %d\n", "Sarunas", 42);
 ```
 
 Will result in:
 ```
-Sarunas studies at 42
+Sarunas from 42
 ```
 ```
-Sarunas studies at 42
+Sarunas from 42
 ```
 
 The number of parameters is indefinite and variadic arguments were used. ***ft_printf*** has the following functionality:
@@ -49,5 +49,5 @@ Then compile with a program:
 gcc main.c libftprintf.a -I includes
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ5NDk2Njg4XX0=
+eyJoaXN0b3J5IjpbMTkxOTE0MjkwMCwyNDk0OTY2ODhdfQ==
 -->
