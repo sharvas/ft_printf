@@ -23,11 +23,7 @@ Manage the minimum field-width
 Manage the precision
 Manage the flags hh, h, l, ll, j, & z.
 
-Allowed functions are write
-¶ malloc
-¶ free
-¶ exit
-¶ The functions of man 3 stdargwrite, getloacale, malloc, free, exit and the three functions of stdarg. Everything else is forbidden.
+Allowed functions are write, malloc, free, exit, stdarg functions. Everything else is forbidden. The project was written in accordance with the 42 standard - handle errors carefully. In no way can your program quit in an unex- pected manner (Segmentation fault, bus error, double free, etc).
 
 Using the project
 To compile, run make. This will compile libftprintf.a. To use, include ft_printf.h (located inside includes directory) and use just like printf:
@@ -43,5 +39,5 @@ Then compile with a program:
 
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4MTM4OTQzM119
+eyJoaXN0b3J5IjpbLTE1ODY2MDk3NzRdfQ==
 -->
