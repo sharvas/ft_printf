@@ -1,10 +1,9 @@
 # ft_printf
 
-The goal of this project was to recode  printf.
+The goal of this project was to recode C Standard Library printf function.
 
-At 42, students are not allowed to use library functions. We can only submit wholly self-written functions (no strlen, strdup, bzero etc.). ft_printf must be formatted in the same manor as libc's printf. For example:
-
-ft_printf("%s is a %d student\n", "Dav", 42);
+For example:
+```ft_printf("%s is a %d student\n", "Dav", 42);```
 printf("%s is a %d student\n", "Dav", 42);
 Should give back:
 
@@ -38,5 +37,5 @@ Then compile with a program:
 
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4MDgwODc2MV19
+eyJoaXN0b3J5IjpbLTExMDUzOTI0OTZdfQ==
 -->
