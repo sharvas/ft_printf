@@ -10,13 +10,11 @@ ft_printf("%s studies at %d\n", "Sarunas", 42);
 printf("%s is a %d student\n", "Dav", 42);
 ```
 
-Will return:
+Will result in:
+```Sarunas studies at 42```
+```Sarunas studies at 42```
 
-Dav is a 42 student
-Dav is a 42 student
-The project is complicated as the number of parameters is indefinite. We use variadic arguments in this case.
-
-ft_printf must achieve the following mandatory requirements:
+The number of parameters is indefinite and variadic arguments were used. ft_printf must achieve the following mandatory requirements:
 
 Manage the following conversions: s, S, p, d, D, i, o, O, u, U, x, X, c & C
 Manage %%
@@ -42,5 +40,5 @@ Then compile with a program:
 
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODg3MTAwN119
+eyJoaXN0b3J5IjpbNDEyNzAzNjFdfQ==
 -->
