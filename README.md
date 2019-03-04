@@ -1,6 +1,6 @@
 # ft_printf
 
-The goal of this project was to recode C Standard Library ***printf*** function. It is now part of my personal libft library.
+The goal of this project was to recode C Standard Library ***printf*** function. It is now part of my personal [libft](https://github.com/sharvas/libft) library.
 
 For example:
 ```c
@@ -41,5 +41,5 @@ Then compile with a program:
 gcc main.c libftprintf.a -I includes
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIwMjM1NzU2LDI0OTQ5NjY4OF19
+eyJoaXN0b3J5IjpbLTIwNTE3NzU2MjcsMjQ5NDk2Njg4XX0=
 -->
