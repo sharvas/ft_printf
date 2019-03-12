@@ -41,3 +41,5 @@ Then compile with a program:
 ```
 gcc main.c libftprintf.a -I includes
 ```
+
+The project was completed in a team with [@dfinnis](https://github.com/dfinnis).
